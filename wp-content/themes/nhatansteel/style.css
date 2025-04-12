@@ -1,0 +1,10 @@
+/*
+ Theme Name:   Nhat An Steel 
+ Description:  Child theme for Flatsome
+ Author:       thanhdanh2604@gmail.com
+ Template:     flatsome
+ Version:      1.0.0
+*/
+
+/* Import styles from the parent theme */
+@import url("../flatsome/style.css");
