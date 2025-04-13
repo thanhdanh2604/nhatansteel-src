@@ -1,24 +1,10 @@
-/data
+
 /wp-config.php
 /wp-content/uploads
-/wp-content/upgrade
 /wp-content/cache
 /wp-content/backups
 /wp-content/advanced-cache.php
 
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
-
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
 
 # Configuration
 wp-config.php
