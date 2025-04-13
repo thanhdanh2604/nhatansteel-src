@@ -115,7 +115,7 @@ if ( ! function_exists( 'flatsome_defaults' ) ) {
 			'header_bg_img'                  => '',
 			'header_bg_img_repeat'           => 'repeat-x',
 			'nav_style_main'                 => 'nav-uppercase',
-			'google_map_api'                 => 'AIzaSyCnQHEUD4Yvg4m1ul3PWUwsjctR1Cl2NFc',
+			'google_map_api'                 => MAP_API,
 			'nav_size'                       => '',
 			'nav_spacing'                    => '',
 			'deparments_menu_label'          => 'Departments',
