@@ -1,7 +1,7 @@
 <?php
 
 function nhatan_enqueue_styles() {
-    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+    // wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
     wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style'));
     wp_enqueue_style('custom-style', get_stylesheet_directory_uri() . '/assets/css/custom.css');
     wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/assets/js/custom.js', array('jquery'), '1.0', true);
@@ -39,3 +39,8 @@ function flatsome_child_include_inc_files() {
     }
 }
 add_action('after_setup_theme', 'flatsome_child_include_inc_files');
+
+add_action('init', 'do_output_buffer');
+function do_output_buffer() {
+    ob_start();
+}
