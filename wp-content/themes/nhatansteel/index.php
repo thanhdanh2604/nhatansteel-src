@@ -1,46 +1,57 @@
 <?php
 /**
- * wp-blank WordPress Theme, ordasvit.com
- * wp-blank is distributed under the terms of the GNU GPL
- * Copyright: OrdaSvit, Andrey Kvasnevskiy, ordasvit.com
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package nhatansteel
  */
 
 get_header();
 ?>
 
-<div id="main" class="site-main">
+	<main id="primary" class="site-main">
 
+		<?php
+		if ( have_posts() ) :
 
-  <div class="<?php if (wp_blank_is_active_sidebar("sidebar_right") && wp_blank_is_active_sidebar("sidebar_left")) {
-    echo ('col-lg-6 col-md-12 col-sm-12 col-xs-12');
-  } else if (wp_blank_is_active_sidebar("sidebar_right") || wp_blank_is_active_sidebar("sidebar_left")) {
-    echo ('col-lg-9 col-md-12 col-sm-12 col-xs-12');
-  } else {
-    echo ('col-lg-12 col-md-12 col-sm-12 col-xs-12');
-  } ?>  main_page">
-    <?php wp_blank_show_position_preview("main_content"); ?>
+			if ( is_home() && ! is_front_page() ) :
+				?>
+				<header>
+					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+				</header>
+				<?php
+			endif;
 
-    <h2 class="entry-title">
-      <?php the_title(); ?>
-    </h2>
-    <?php while (have_posts()):
-      the_post(); ?>
-      <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <?php if (has_post_thumbnail() ): ?>
-          <div class="entry-thumbnail">
-            <?php the_post_thumbnail(); ?>
-          </div>
-        <?php endif; ?>
+			/* Start the Loop */
+			while ( have_posts() ) :
+				the_post();
 
-        <div class="entry-content">
-          <?php the_content(); ?>
-        </div><!-- .entry-content -->
-      </div><!-- #post -->
+				/*
+				 * Include the Post-Type-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', get_post_type() );
 
-    <?php endwhile; ?>
-  </div>
+			endwhile;
 
-  <?php get_template_part('templates/positions-after-content'); ?>
+			the_posts_navigation();
 
-</div><!-- #main -->
-<?php get_footer(); ?>
+		else :
+
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif;
+		?>
+
+	</main><!-- #main -->
+
+<?php
+get_sidebar();
+get_footer();
