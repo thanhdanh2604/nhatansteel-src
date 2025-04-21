@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nhat An Steel</title>
-    <link data-n-head="ssr" rel="icon" type="image/x-icon" href="./assets/images/icons/favicon.png">
+    <link data-n-head="ssr" rel="icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -16,7 +16,8 @@
     <!-- LightGallery CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
 
-    <link rel="stylesheet" href="assets/scss/fe-styles.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/scss/fe-styles.css">
 
 </head>
 <!-- Top Bar -->
@@ -24,12 +25,12 @@
   <div class="container">
     <div class="row">
       <div class="col-6 d-flex align-items-center">
-        <a class="logo" href="#"><img src="assets/images/icons/i-building.svg" alt="icon building"> Công ty TNHH Xây dựng Nhật An</a>
+        <a class="logo" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>assets/images/icons/i-building.svg" alt="icon building"> Công ty TNHH Xây dựng Nhật An</a>
       </div>
       <div class="col-6 d-flex justify-content-end align-items-center">
         <div class="social-icons">
-          <a href="#"><img src="assets/images/icons/i-facebook.svg" alt="icon facebook" width="20"></a>
-          <a href="#"><img src="assets/images/icons/i-email.svg" alt="icon email" width="20"></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-facebook.svg" alt="icon facebook" width="20"></a>
+          <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email.svg" alt="icon email" width="20"></a>
           <a class="active" href="#">VIE</a>
           <a href="#">ENG</a>
         </div>
@@ -42,7 +43,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
   <div class="container">
     <a class="navbar-brand" href="index.php">
-      <img src="assets/images/icons/logo.svg" alt="Nhat An Steel">
+      <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/logo.svg" alt="Nhat An Steel">
     </a>
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <span class="navbar-toggler-icon"></span>
@@ -70,7 +71,7 @@
         </li>
         <li class="nav-item"><a class="nav-link" href="tintuc.php">Tin tức</a></li>
         <li class="nav-item"><a class="nav-link" href="lienhe.php">Liên hệ</a></li>
-        <li class="nav-item"><a class="nav-link link-brochure ripple-btn" href="#" data-tooltip="Tải brochure">Brochure <img src="assets/images/icons/i-download.svg" alt="icon download"> </a></li>
+        <li class="nav-item"><a class="nav-link link-brochure ripple-btn" href="#" data-tooltip="Tải brochure">Brochure <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg" alt="icon download"> </a></li>
         <li class="nav-item"><a class="nav-link nav-link-search" href="#"><i class="i-search"></i></a></li>
       </ul>
     </div>
