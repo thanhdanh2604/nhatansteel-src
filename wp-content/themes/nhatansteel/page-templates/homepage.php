@@ -30,42 +30,6 @@ $banners = get_field('banners');
                 </div>
             <?php }
              ?>
-            <!-- <div class="carousel-cell">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner01.jpg" alt="banner" class="img-fluid">
-                <div class="box-content">
-                <div class="container">
-                    <p>25 năm</p>
-                    <h1>Nhà thép tiền chế</h1>
-                </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner01.jpg" alt="banner" class="img-fluid">
-                <div class="box-content">
-                <div class="container">
-                    <p>25 năm</p>
-                    <h1>Nhà thép tiền chế</h1>
-                </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner01.jpg" alt="banner" class="img-fluid">
-                <div class="box-content">
-                <div class="container">
-                    <p>25 năm</p>
-                    <h1>Nhà thép tiền chế</h1>
-                </div>
-                </div>
-            </div>
-            <div class="carousel-cell">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner01.jpg" alt="banner" class="img-fluid">
-                <div class="box-content">
-                <div class="container">
-                    <p>25 năm</p>
-                    <h1>Nhà thép tiền chế</h1>
-                </div>
-                </div>
-            </div> -->
         </div>
     </section>
     <section class="about-section">
@@ -74,10 +38,10 @@ $banners = get_field('banners');
             <div class="col-lg-6 mb-4 mb-lg-0 position-relative">
             <div class="box-about-img">
                 <div class="about-img">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about01.jpg" alt="ảnh 1" class="img-fluid rounded shadow">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about01.jpg" alt="ảnh 1" class="img-fluid rounded shadow">
                 </div>
                 <div class="about-img">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about02.jpg" alt="ảnh 2" class="img-fluid rounded shadow">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about02.jpg" alt="ảnh 2" class="img-fluid rounded shadow">
                 </div>
             </div>
             </div>
