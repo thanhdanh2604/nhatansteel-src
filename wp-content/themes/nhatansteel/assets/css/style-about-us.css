@@ -1,0 +1,81 @@
+@media (min-width: 769px) and (max-width: 900px) {
+  #ban-quan-tri .col-sm-6 {
+    padding: 0 12px;
+  }
+}
+.vision-section .vision-tab div {
+  color: #252f87;
+}
+.vision-section .vision-tab svg path {
+  fill: #252f87;
+}
+.vision-section .vision-tab.active svg path {
+  fill: white;
+}
+.vision-section .vision-tab.active div {
+  color: white;
+}
+.mission-section .mission-tab div {
+  color: #252f87;
+}
+.mission-section .mission-tab svg path {
+  fill: #252f87;
+}
+.mission-section .mission-tab.active div {
+  color: white;
+}
+.mission-section .mission-tab.active svg path {
+  fill: white;
+}
+.mission-section .mission-tab.active svg path {
+  fill: white;
+}
+.core-values-section .core-tab div {
+  color: #252f87;
+  min-height: 40px;
+}
+.core-values-section .core-tab.active div {
+  color: white;
+}
+.core-values-section .core-tab.active svg path {
+  fill: white;
+}
+@media (max-width: 768px) {
+  .vision-section .vision-tab svg {
+    width: 50px;
+    height: 50px;
+  }
+  .mission-section .mission-tab svg {
+    width: 50px;
+    height: 50px;
+  }
+  .core-values-section .core-tab svg {
+    width: 50px;
+    height: 50px;
+  }
+  .timeline::before {
+    left: 50%;
+  }
+  .timeline-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeline-item {
+    margin: 50px 0;
+    text-align: left;
+  }
+  .timeline-item .year {
+    top: unset;
+  }
+  .timeline-item .dot {
+    bottom: unset !important;
+    top: unset;
+    transform: translateY(-10px);
+  }
+}
+@media (max-width: 767px) {
+  .timeline-section {
+    padding: 20px 0;
+    margin-bottom: 50px;
+  }
+}
