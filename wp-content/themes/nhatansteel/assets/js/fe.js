@@ -1,5 +1,5 @@
-const serviceBoxes = document.querySelectorAll(".service-box");
-
+// Khởi tạo LightGallery cho ảnh trong tab
+const serviceBoxes = document.querySelectorAll('.service-box');
 serviceBoxes.forEach((box) => {
   box.addEventListener("click", () => {
     serviceBoxes.forEach((b) => {
@@ -10,6 +10,85 @@ serviceBoxes.forEach((box) => {
   });
 });
 
+// navbar scroll
+document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+});
+
+// search overlay
+document.addEventListener('DOMContentLoaded', function () {
+    const searchBtn = document.querySelector('.nav-link-search');
+    const searchOverlay = document.querySelector('.navbar-search-overlay');
+    const closeBtn = document.querySelector('.btn-close-search');
+
+    if (searchBtn && searchOverlay && closeBtn) {
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchOverlay.classList.add('active');
+            searchOverlay.querySelector('input').focus();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            searchOverlay.classList.remove('active');
+        });
+
+        // Optional: bấm ESC để đóng
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchOverlay.classList.remove('active');
+            }
+        });
+    }
+});
+
+// dropdown hover
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdowns = document.querySelectorAll('.navbar .dropdown');
+
+    if (window.innerWidth >= 992) {
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', function () {
+                const menu = this.querySelector('.dropdown-menu');
+                menu.classList.add('show');
+            });
+
+            dropdown.addEventListener('mouseleave', function () {
+                const menu = this.querySelector('.dropdown-menu');
+                menu.classList.remove('show');
+            });
+        });
+    }
+});
+
+// ripple effect
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.ripple-btn').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            const rect = this.getBoundingClientRect();
+            ripple.style.left = `${e.clientX - rect.left}px`;
+            ripple.style.top = `${e.clientY - rect.top}px`;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+
+// Khởi tạo LightGallery cho ảnh trong tab
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar");
   if (!navbar) return;
@@ -32,16 +111,33 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const searchBtn = document.querySelector(".nav-link-search");
-  const searchOverlay = document.querySelector(".navbar-search-overlay");
-  const closeBtn = document.querySelector(".btn-close-search");
+// Smooth scroll to section
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebarLinks = document.querySelectorAll(".about-sidebar a");
+    const sections = document.querySelectorAll(".section-block");
+    const headerOffset = 80;
 
-  if (searchBtn && searchOverlay && closeBtn) {
-    searchBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      searchOverlay.classList.add("active");
-      searchOverlay.querySelector("input").focus();
+    function isDesktop() {
+        return window.innerWidth >= 992;
+    }
+
+    function scrollWithOffset(el, offset = 80) {
+        const y = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+    }
+
+    // Click menu
+    sidebarLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) {
+                scrollWithOffset(target, headerOffset); // luôn scroll tới nội dung, kể cả trên mobile
+            }
+
+            sidebarLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+        });
     });
 
     closeBtn.addEventListener("click", () => {
@@ -362,15 +458,133 @@ document.addEventListener("DOMContentLoaded", () => {
                   behavior: "smooth",
                   block: "nearest",
                 });
-              }
+
+                const targetContent = document.getElementById(target);
+                if (targetContent) {
+                    targetContent.classList.remove("d-none");
+                    setTimeout(() => targetContent.classList.add("active"), 10);
+                }
+
+                updateHighlight(tab);
+            });
+        });
+
+        window.addEventListener("resize", () => {
+            const currentTab = document.querySelector(`${tabSelector}.active`);
+            if (currentTab) updateHighlight(currentTab);
+        });
+    }
+
+    // Init for Vision
+    createTabSystem({
+        tabSelector: ".vision-tab",
+        contentSelector: ".vision-content",
+        highlightId: "highlightBar"
+    });
+
+    // Init for Mission
+    createTabSystem({
+        tabSelector: ".mission-tab",
+        contentSelector: ".mission-content",
+        highlightId: "highlightBarMission"
+    });
+
+    // Init for Core Values
+    createTabSystem({
+        tabSelector: ".core-tab",
+        contentSelector: ".core-content",
+        highlightId: "highlightBarCore"
+    });
+});
+
+// Tab system for About Us
+document.addEventListener("DOMContentLoaded", () => {
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabPanes = document.querySelectorAll(".tab-pane");
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const target = btn.dataset.tab;
+
+            // Toggle tab button active
+            tabButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            // Show content pane
+            tabPanes.forEach(pane => {
+                pane.classList.add("d-none");
+                pane.classList.remove("active");
+            });
+
+            const activePane = document.getElementById(target);
+            if (activePane) {
+                activePane.classList.remove("d-none");
+                setTimeout(() => activePane.classList.add("active"), 10);
             }
           }
         });
       }, observerOptions);
 
-      sections.forEach((section) => {
-        observer.observe(section);
-      });
+// Tab system for About Us with sidebar
+document.addEventListener("DOMContentLoaded", () => {
+    const headerOffset = 80;
+
+    function isDesktop() {
+        return window.innerWidth >= 992;
+    }
+
+    function scrollWithOffset(el, offset = 80) {
+        const y = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+    }
+
+    document.querySelectorAll(".steel-tabs-sidebar .about-wrapper").forEach(wrapper => {
+        const sidebarLinks = wrapper.querySelectorAll(".steel-tabs-sidebar a");
+        const sections = wrapper.querySelectorAll(".section-block");
+
+        // Click: scroll và active
+        sidebarLinks.forEach(link => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute("href"));
+                if (target) {
+                    scrollWithOffset(target, headerOffset);
+                }
+
+                sidebarLinks.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+        // Sử dụng IntersectionObserver để cập nhật active
+        const observerOptions = {
+            root: null,
+            rootMargin: `-${headerOffset}px 0px 0px 0px`,
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute("id");
+                const link = wrapper.querySelector(`.about-sidebar a[href="#${id}"]`);
+                if (entry.isIntersecting) {
+                    sidebarLinks.forEach(l => l.classList.remove("active"));
+                    if (link) {
+                        link.classList.add("active");
+                        if (isDesktop()) {
+                            link.scrollIntoView({
+                                behavior: "smooth",
+                                block: "nearest"
+                            });
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     });
 });
 
@@ -398,6 +612,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+// Timeline hover effect
 document.addEventListener("DOMContentLoaded", () => {
   const timelineItems = document.querySelectorAll(".timeline-item");
 
@@ -438,30 +654,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const dropdowns = document.querySelectorAll(".navbar .dropdown-toggle");
+// Dropdown click to navigate
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdowns = document.querySelectorAll('.navbar .dropdown-toggle');
 
-  dropdowns.forEach((toggle) => {
-    toggle.addEventListener("click", function (e) {
-      if (window.innerWidth >= 992) {
-        // Nếu đang ở desktop, cho click chuyển trang luôn
-        window.location.href = this.getAttribute("href");
-      }
+    dropdowns.forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+            if (window.innerWidth >= 992) {
+                // Nếu đang ở desktop, cho click chuyển trang luôn
+                window.location.href = this.getAttribute('href');
+            }
+        });
     });
   });
 });
 
+// Counter animation
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
     let startTime = null;
 
-  function updateCounter(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const progress = timestamp - startTime;
-    const current = Math.min(
-      start + (progress / duration) * (target - start),
-      target
-    );
+    function updateCounter(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+        const current = Math.min(start + (progress / duration) * (target - start), target);
 
         // Format with dots instead of commas and add "+"
         element.textContent = Math.floor(current)
@@ -477,30 +693,30 @@ function animateCounter(element, target, duration = 2000) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll(".count-number");
-  counters.forEach((counter) => {
-    const target = parseInt(counter.dataset.target, 10);
-    animateCounter(counter, target, 1500);
-  });
+    const counters = document.querySelectorAll(".count-number");
+    counters.forEach(counter => {
+        const target = parseInt(counter.dataset.target, 10);
+        animateCounter(counter, target, 1500);
+    });
 });
 
 // Trigger khi vào viewport
 function triggerCounters() {
-  const counters = document.querySelectorAll(".count-number");
-  const options = {
-    threshold: 0.6,
-  };
+    const counters = document.querySelectorAll('.count-number');
+    const options = {
+        threshold: 0.6
+    };
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target); // chỉ chạy 1 lần
-      }
-    });
-  }, options);
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target); // chỉ chạy 1 lần
+            }
+        });
+    }, options);
 
-  counters.forEach((counter) => observer.observe(counter));
+    counters.forEach(counter => observer.observe(counter));
 }
 
 // Run after DOM loaded
@@ -509,19 +725,136 @@ document.addEventListener("DOMContentLoaded", triggerCounters);
 document.addEventListener("DOMContentLoaded", () => {
     const scrollBtn = document.getElementById("scrollToTop");
 
-  // Hiện nút khi scroll xuống
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      scrollBtn.classList.add("show");
-    } else {
-      scrollBtn.classList.remove("show");
-    }
-  });
+    // Hiện nút khi scroll xuống
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollBtn.classList.add("show");
+        } else {
+            scrollBtn.classList.remove("show");
+        }
+    });
 
-  // Bấm để scroll lên top
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+    // Bấm để scroll lên top
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
+
+
+// Khởi tạo Flickity cho carousel banner
+document.addEventListener("DOMContentLoaded", function () {
+    const carouselElem = document.getElementById('customCarousel');
+    if (!carouselElem) return; // Ngăn lỗi nếu không có phần tử
+    const flkty = new Flickity(carouselElem, {
+        cellAlign: 'left',
+        contain: true,
+        wrapAround: true,
+        prevNextButtons: false, // hide default
+        pageDots: false         // hide default
+    });
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const customDots = document.getElementById('customDots');
+
+    // Tạo dot tương ứng
+    for (let i = 0; i < flkty.slides.length; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === flkty.selectedIndex) dot.classList.add('active');
+        dot.addEventListener('click', () => flkty.select(i));
+        customDots.appendChild(dot);
+    }
+
+    // Cập nhật active dot khi thay slide
+    flkty.on('change', (index) => {
+        document.querySelectorAll('#customDots .dot').forEach((d, i) => {
+            d.classList.toggle('active', i === index);
+        });
+    });
+
+    // Bấm nút
+    prevBtn.addEventListener('click', () => flkty.previous());
+    nextBtn.addEventListener('click', () => flkty.next());
+});
+
+// Tab system for Structure Detail
+document.addEventListener("DOMContentLoaded", () => {
+    const tabLinks = document.querySelectorAll(".structure-detail-section .nav-link");
+    const tabPanes = document.querySelectorAll(".structure-detail-section .tab-pane");
+
+    tabLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            const target = link.dataset.tab;
+
+            tabLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+
+            tabPanes.forEach(pane => {
+                pane.classList.add("d-none");
+                pane.classList.remove("active");
+            });
+
+            const activePane = document.getElementById(target);
+            if (activePane) {
+                activePane.classList.remove("d-none");
+                setTimeout(() => activePane.classList.add("active"), 10);
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.querySelector('.steel-tabs-sidebar');
+    const sidebarWrapper = document.querySelector('.steel-tabs-sidebar-wrapper');
+    const sidebarLinks = sidebar.querySelectorAll('a');
+    const sections = document.querySelectorAll('.section-block');
+    const headerOffset = 100;
+
+    // Smooth scroll khi click menu
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+
+            sidebarLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    // Scroll highlight và cuộn sidebar theo
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset + headerOffset + 1;
+
+        sections.forEach(section => {
+            const id = section.getAttribute('id');
+            const link = sidebar.querySelector(`a[href="#${id}"]`);
+            if (
+                section.offsetTop <= scrollPosition &&
+                section.offsetTop + section.offsetHeight > scrollPosition
+            ) {
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                if (link) {
+                    link.classList.add('active');
+
+                    // ⭐ Cuộn mục đó vào giữa sidebar
+                    const linkOffsetTop = link.offsetTop;
+                    const wrapperHeight = sidebarWrapper.clientHeight;
+                    const targetScrollTop = linkOffsetTop - wrapperHeight / 2 + link.offsetHeight / 2;
+
+                    sidebarWrapper.scrollTo({
+                        top: targetScrollTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
     });
 });
