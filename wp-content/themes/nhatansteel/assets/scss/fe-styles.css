@@ -135,8 +135,7 @@ section {
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
   50% {
@@ -219,12 +218,13 @@ section {
 
 .navbar {
   padding: 35px 0;
-  transition: transform 0.4s ease, opacity 0.3s ease;
-  will-change: transform, opacity;
+  transition: all 0.3s ease-in-out;
 }
-.navbar.navbar-hide {
-  transform: translateY(-100%);
-  opacity: 0;
+.navbar.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  padding: 20px 0;
 }
 .navbar .dropdown-menu {
   position: absolute;
@@ -248,8 +248,7 @@ section {
   transform: translateY(10px);
   pointer-events: auto;
 }
-.navbar .nav-item:hover .nav-link,
-.navbar .nav-item.active .nav-link {
+.navbar .nav-item:hover .nav-link, .navbar .nav-item.active .nav-link {
   color: #f5a623;
   text-decoration: underline;
 }
@@ -257,6 +256,9 @@ section {
   color: #283678;
   padding: 0 20px;
   position: relative;
+}
+.navbar .nav-item .nav-link.nav-link-search {
+  padding-right: 0;
 }
 .navbar .nav-item .nav-link.link-brochure {
   border-left: 1px solid #283678;
@@ -296,7 +298,10 @@ section {
   padding: 0;
   position: relative;
   color: white;
-  /* Nút mũi tên */
+  overflow: hidden;
+}
+.section-banner .carousel {
+  position: relative;
 }
 .section-banner .carousel-cell {
   width: 100%;
@@ -311,20 +316,15 @@ section {
   width: 100%;
   height: 100%;
   z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(40, 54, 120, 0) 0%,
-    rgba(40, 54, 120, 0.412) 74%,
-    rgba(40, 54, 120, 0.8) 100%
-  );
+  background: linear-gradient(180deg, rgba(40, 54, 120, 0) 0%, rgba(40, 54, 120, 0.412) 74%, rgba(40, 54, 120, 0.8) 100%);
 }
 .section-banner .carousel-cell img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 .section-banner .box-content {
   position: absolute;
@@ -342,6 +342,7 @@ section {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2509803922);
   color: white;
   line-height: 1em;
+  margin-bottom: 0;
 }
 .section-banner .box-content p {
   color: white;
@@ -352,50 +353,62 @@ section {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2509803922);
 }
 .section-banner .flickity-page-dots {
+  display: flex;
+  gap: 8px;
   z-index: 200;
   bottom: 65px;
-  right: 10%;
+  left: calc(50% - 50px);
   text-align: right;
 }
 .section-banner .flickity-page-dots .dot {
   background: #fff;
   opacity: 1;
+  margin: 0;
 }
 .section-banner .flickity-page-dots .dot.is-selected {
   background: #f5a623;
 }
-.section-banner .flickity-prev-next-button {
-  width: 21px;
-  height: 14px;
-  background: none;
+
+.box-nav-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  margin: auto;
+}
+.box-nav-bottom .container {
+  position: relative;
+}
+.box-nav-bottom .flickity-custom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn-custom-nav {
+  background: transparent;
+  color: white;
   border: none;
-  top: unset;
-  bottom: 59px;
-  z-index: 999;
-  transition: all 0.3s ease;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
 }
-.section-banner .flickity-prev-next-button.previous {
-  left: calc(87% - 120px);
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 21 15'%3e%3c!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152) --%3e%3cdefs%3e%3cstyle%3e .st0 %7b fill: %23fff; fill-rule: evenodd;%7d %3c/style%3e%3c/defs%3e%3cpath class='st0' d='M20.41,6.84H2.15L7.61,1.4c.26-.26.26-.67,0-.93-.26-.26-.67-.26-.93,0L.19,6.97c-.25.25-.25.68,0,.93l6.5,6.5c.26.26.67.26.93,0,.26-.26.26-.67,0-.93l-5.46-5.31h18.26c.36,0,.66-.29.66-.66s-.29-.66-.66-.66Z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
+
+#customDots .dot {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  opacity: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.section-banner .flickity-prev-next-button.next {
-  right: calc(16% - 110px);
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' encoding='UTF-8'?%3e%3csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 21 15'%3e%3c!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152) --%3e%3cdefs%3e%3cstyle%3e .st0 %7b fill: %23fff; fill-rule: evenodd;%7d %3c/style%3e%3c/defs%3e%3cpath class='st0' d='M.59,8.16h18.26l-5.46,5.44c-.26.26-.26.67,0,.93.26.26.67.26.93,0l6.5-6.5c.25-.25.25-.68,0-.93L14.31.61c-.26-.26-.67-.26-.93,0-.26.26-.26.67,0,.93l5.46,5.31H.59c-.36,0-.66.29-.66.66,0,.36.29.66.66.66Z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-}
-.section-banner .flickity-prev-next-button svg {
-  width: 21px;
-  height: 14px;
-  fill: white;
-  transition: transform 0.3s ease;
-}
-.section-banner .flickity-prev-next-button svg path {
-  display: none;
-}
-.section-banner .flickity-prev-next-button:hover svg {
-  transform: scale(1.2);
-  fill: #ffae00;
+
+#customDots .dot.active {
+  background-color: #fcb900;
+  opacity: 1;
 }
 
 .footer .footer-top {
@@ -481,9 +494,9 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 .about-section .about-content {
   position: relative;
@@ -562,9 +575,9 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
   border-radius: 10px;
 }
 .product-section .product-item {
@@ -575,6 +588,25 @@ section {
   border-radius: 10px;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+.product-section .product-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+.product-section .product-item:hover::before, .product-section .product-item.active::before {
+  width: 100%;
 }
 .product-section .product-item .product-item-img {
   position: relative;
@@ -589,17 +621,23 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 .product-section .product-item .product-item-content {
   width: 200px;
+  transition: color 0.4s ease;
 }
 .product-section .product-item .product-item-content p {
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 600;
+  color: #fff;
+  transition: color 0.4s ease, transform 0.3s ease;
+}
+.product-section .product-item .product-item-content p .arrow {
+  transition: color 0.4s ease, transform 0.3s ease;
 }
 .product-section .product-item.active {
   background-color: #e6e6e6;
@@ -609,11 +647,12 @@ section {
 .product-section .product-item.active span {
   color: #252f87;
 }
-.product-section .product-item:hover {
-  background-color: #e6e6e6;
-  cursor: pointer;
-  color: #252f87;
-  transition: background 0.3s;
+.product-section .product-item:hover .product-item-content p, .product-section .product-item.active .product-item-content p {
+  color: #0e1b4d;
+}
+.product-section .product-item:hover .product-item-content .arrow, .product-section .product-item.active .product-item-content .arrow {
+  color: #f39800;
+  transform: translateX(4px);
 }
 .product-section .product-item img {
   border-radius: 8px;
@@ -651,18 +690,15 @@ section {
   transition: all 0.4s ease;
   height: 100%;
 }
-.service-section .service-box.active,
-.service-section .service-box:hover {
+.service-section .service-box.active, .service-section .service-box:hover {
   background-color: #f5a623;
 }
 .service-section .service-box.active .image-box,
-.service-section .service-box.active .custom-btn,
-.service-section .service-box:hover .image-box,
+.service-section .service-box.active .custom-btn, .service-section .service-box:hover .image-box,
 .service-section .service-box:hover .custom-btn {
   display: none;
 }
-.service-section .service-box.active .description,
-.service-section .service-box:hover .description {
+.service-section .service-box.active .description, .service-section .service-box:hover .description {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
@@ -679,7 +715,7 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: transform 0.3s ease;
 }
 .service-section .service-box .description {
@@ -777,9 +813,9 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 .project-section .project-card .project-card-img a {
   display: block;
@@ -850,9 +886,9 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 .customers-partners-section .flickity-prev-next-button .flickity-button-icon {
   width: 15px;
@@ -896,12 +932,15 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
   border-radius: 10px;
 }
 .news-section .highlight-news h6 {
+  color: #fff;
+}
+.news-section .highlight-news p {
   color: #fff;
 }
 .news-section .news-item .arrow-icon {
@@ -923,9 +962,9 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
   border-radius: 10px;
 }
 .news-section .news-item h6 a {
@@ -994,7 +1033,7 @@ section {
 .contact-section .map img {
   border-radius: 12px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .contact-section .social-follow {
   border-top: 1px solid #9a9999;
@@ -1077,6 +1116,9 @@ section {
   .section-banner .carousel-cell {
     height: 300px;
   }
+  .section-banner .box-content {
+    bottom: 90px;
+  }
   .section-banner .box-content h1 {
     font-size: 36px;
     line-height: 1.2em;
@@ -1085,13 +1127,11 @@ section {
     font-size: 24px;
     line-height: 1.2em;
   }
-  .section-banner .flickity-prev-next-button {
-    display: none;
+  .section-banner .box-nav-bottom {
+    bottom: 10px;
   }
-  .section-banner .flickity-page-dots {
-    bottom: 15px;
-    right: inherit;
-    text-align: center;
+  .section-banner .box-nav-bottom .flickity-custom-controls {
+    justify-content: center;
   }
   .about-section {
     padding: 60px 0;
@@ -1123,12 +1163,7 @@ section {
   }
 }
 .about-banner {
-  background-image: linear-gradient(
-      to top,
-      rgba(0, 32, 96, 0.9),
-      rgba(0, 0, 0, 0)
-    ),
-    url("../images/banner-gioithieu.jpg");
+  background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0)), url("../images/banner-gioithieu.jpg");
   background-size: cover;
   background-position: center;
   height: 250px;
@@ -1136,12 +1171,7 @@ section {
   color: white;
 }
 .about-banner.product-services-banner {
-  background-image: linear-gradient(
-      to top,
-      rgba(0, 32, 96, 0.9),
-      rgba(0, 0, 0, 0)
-    ),
-    url("../images/banner-dichvu.jpg");
+  background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0)), url("../images/banner-dichvu.jpg");
 }
 .about-banner .banner-text {
   position: relative;
@@ -1202,8 +1232,7 @@ section {
   font-weight: 600;
   transition: all 0.2s ease;
 }
-.about-sidebar a:hover,
-.about-sidebar a.active,
+.about-sidebar a:hover, .about-sidebar a.active,
 .steel-tabs-sidebar a:hover,
 .steel-tabs-sidebar a.active {
   color: #0b2c6b;
@@ -1227,13 +1256,9 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
-@media (min-width: 769px) and (max-width: 900px) {
-  #ban-quan-tri .col-sm-6 {
-    padding: 0 12px;
-  }
-}
+
 .sub-title {
   font-weight: 700;
   border-left: 5px solid #f9a61c;
@@ -1257,9 +1282,9 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 
 .vision-section .text-orange {
@@ -1276,7 +1301,7 @@ section {
 .vision-section .vision-tab img {
   height: 36px;
 }
-.vision-section .vision-tab div {
+.vision-section .vision-tab p {
   color: #252f87;
 }
 .vision-section .vision-tab svg {
@@ -1284,16 +1309,16 @@ section {
   height: 65px;
   margin-bottom: 15px;
 }
-.vision-section .vision-tab svg path {
+.vision-section .vision-tab svg .st0 {
   fill: #252f87;
 }
 .vision-section .vision-tab.active {
   background: #252f87;
 }
-.vision-section .vision-tab.active svg path {
+.vision-section .vision-tab.active svg .st0 {
   fill: white;
 }
-.vision-section .vision-tab.active div {
+.vision-section .vision-tab.active p {
   color: white;
 }
 .vision-section .vision-tab:hover {
@@ -1341,7 +1366,7 @@ section {
 .mission-section .mission-tab img {
   height: 36px;
 }
-.mission-section .mission-tab div {
+.mission-section .mission-tab p {
   color: #252f87;
 }
 .mission-section .mission-tab svg {
@@ -1349,19 +1374,19 @@ section {
   height: 65px;
   margin-bottom: 15px;
 }
-.mission-section .mission-tab svg path {
+.mission-section .mission-tab svg .st0 {
   fill: #252f87;
 }
 .mission-section .mission-tab.active {
   background: #252f87;
 }
-.mission-section .mission-tab.active div {
+.mission-section .mission-tab.active p {
   color: white;
 }
-.mission-section .mission-tab.active svg path {
+.mission-section .mission-tab.active svg .st0 {
   fill: white;
 }
-.mission-section .mission-tab.active svg path {
+.mission-section .mission-tab.active svg .st1 {
   fill: white;
 }
 .mission-section .mission-tab:hover {
@@ -1406,7 +1431,7 @@ section {
 .core-values-section .core-tab img {
   height: 36px;
 }
-.core-values-section .core-tab div {
+.core-values-section .core-tab p {
   color: #252f87;
   min-height: 40px;
 }
@@ -1418,10 +1443,10 @@ section {
 .core-values-section .core-tab.active {
   background: #252f87;
 }
-.core-values-section .core-tab.active div {
+.core-values-section .core-tab.active p {
   color: white;
 }
-.core-values-section .core-tab.active svg path {
+.core-values-section .core-tab.active svg .st1 {
   fill: white;
 }
 .core-values-section .core-tab:hover {
@@ -1536,25 +1561,28 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
 }
 
 .box-big-img {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-bottom: 1px solid #d9d9d9;
-  padding-bottom: 35px;
 }
 .box-big-img img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
-  object-position: center;
+     object-position: center;
+}
+
+.section-block {
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 70px;
 }
 
 .list-products {
@@ -1631,6 +1659,12 @@ section {
   white-space: nowrap;
   transition: 0.3s;
 }
+.structure-detail-section .nav-tabs-scroll .nav-tabs button:first-child {
+  padding-left: 0;
+}
+.structure-detail-section .nav-tabs-scroll .nav-tabs button:last-child {
+  padding-right: 0;
+}
 .structure-detail-section .nav-tabs-scroll .nav-tabs button.active {
   color: #283678;
   border-bottom: 3px solid #f5a623;
@@ -1653,7 +1687,7 @@ section {
 .structure-detail-section .img-box img {
   max-height: 260px;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .structure-detail-section .img-box button {
   background-color: #283678;
@@ -1729,7 +1763,7 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 0.5rem;
   transition: transform 0.5s ease, filter 0.5s ease;
 }
@@ -1827,14 +1861,14 @@ section {
 .project-filter .filter-form .form-group .form-select {
   background-color: rgba(255, 255, 255, 0.9);
   -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   font-size: 0.95rem;
   padding: 0.6rem 1rem;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   position: relative;
   z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg fill='navy' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
@@ -1925,7 +1959,7 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .project-detail-section .carousel-nav .carousel-cell {
   width: 150px;
@@ -1937,7 +1971,7 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 10px;
   transition: 0.3s ease;
   will-change: transform, border-color;
@@ -1990,7 +2024,7 @@ section {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 12px;
   transition: transform 0.4s ease;
 }
@@ -2107,7 +2141,7 @@ section {
   width: 100%;
   height: auto;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .news-detail-section .latest-news-widget {
   background: #fff;
@@ -2142,7 +2176,7 @@ section {
   width: 60px;
   height: 45px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .news-detail-section .latest-news-widget .news-item a {
   color: #1e2d5c;
@@ -2358,7 +2392,8 @@ section {
 .count-number {
   display: inline-block;
   font-weight: bold;
-  color: #f9a825; /* vàng cam */
+  color: #f9a825;
+  /* vàng cam */
   transition: transform 0.3s ease;
 }
 
@@ -2464,16 +2499,28 @@ section {
   top: 8px;
 }
 
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+.navbar-toggler[aria-expanded=true] .navbar-toggler-icon:after {
   transform: rotate(45deg);
 }
 
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+.navbar-toggler[aria-expanded=true] .navbar-toggler-icon:before {
   transform: translateY(8px) rotate(-45deg);
 }
 
-.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+.navbar-toggler[aria-expanded=true] .navbar-toggler-icon {
   border-color: transparent;
+}
+
+.steel-tabs-sidebar-wrapper {
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.steel-tabs-sidebar-wrapper a.active {
+  font-weight: bold;
+  color: #f7941e;
 }
 
 @media (max-width: 991.98px) {
@@ -2560,23 +2607,15 @@ section {
   .timeline::before {
     width: 1px;
     height: 100%;
-    left: 50%;
+    left: 33px;
   }
   .timeline-list {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   .timeline-item {
-    margin: 50px 0;
+    margin: 30px 0;
     text-align: left;
-  }
-  .timeline-item .year {
-    top: unset;
-  }
-  .timeline-item .dot {
-    bottom: unset !important;
-    top: unset;
-    transform: translateY(-10px);
   }
   .timeline-item::before {
     height: inherit;
@@ -2613,7 +2652,6 @@ section {
 @media (max-width: 767px) {
   .timeline-section {
     padding: 20px 0;
-    margin-bottom: 50px;
   }
   .core-values-section .core-tab svg {
     width: 20px;
@@ -2627,4 +2665,21 @@ section {
   .core-values-section ul li {
     min-width: inherit;
   }
-} /*# sourceMappingURL=fe-styles.css.map */
+  .customers-partners-section .carousel .carousel-cell {
+    width: 50%;
+    height: 100px;
+    margin-right: 0;
+  }
+  .customers-partners-section .flickity-prev-next-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .customers-partners-section .flickity-prev-next-button .flickity-button-icon {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}/*# sourceMappingURL=fe-styles.css.map */
