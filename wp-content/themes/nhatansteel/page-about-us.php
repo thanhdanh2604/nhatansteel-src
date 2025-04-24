@@ -177,7 +177,7 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
                             <h2 class="title"><?php echo $vision_title ?></h2>
                             <!-- Tabs -->
                             <?php if (!empty($vision_list_tap_vision) && is_array($vision_list_tap_vision)): ?>
-                                <div class="row g-5 mb-4 justify-content-start">
+                                <div class="row g-3 mb-4 justify-content-start">
                                     <?php foreach ($vision_list_tap_vision  as $index => $item): ?>
                                         <?php
                                         $is_active = $index === 0 ? 'active' : '';
@@ -323,4 +323,6 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
 
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/fe.js"></script>
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-about-us.css">
+
 <?php get_footer(); ?>
