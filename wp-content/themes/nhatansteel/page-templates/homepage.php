@@ -89,7 +89,7 @@ $banners = get_field('banners');
             <div class="col-md-7">
             <div class="row gy-3 gx-2">
                 <div class="col-sm-6">
-                <div class="product-item active">
+                <div class="product-item">
                     <div class="product-item-img">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/sanpham01.jpg" alt="" class="img-fluid">
                     </div>
@@ -156,7 +156,7 @@ $banners = get_field('banners');
         <div class="row g-4 justify-content-center">
             <!-- Block 1 (Active/Default) -->
             <div class="col-md-4">
-            <div class="service-box active">
+            <div class="service-box">
                 <div class="image-box">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dichvu.jpg" class="img-fluid w-100 h-100 object-cover" alt="THIẾT KẾ">
                 </div>

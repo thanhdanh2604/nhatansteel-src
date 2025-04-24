@@ -1,5 +1,5 @@
+// Khởi tạo LightGallery cho ảnh trong tab
 const serviceBoxes = document.querySelectorAll('.service-box');
-
 serviceBoxes.forEach((box) => {
     box.addEventListener('click', () => {
         serviceBoxes.forEach((b) => {
@@ -10,28 +10,20 @@ serviceBoxes.forEach((box) => {
     });
 });
 
-
+// navbar scroll
 document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
 
-    let lastScrollTop = 0;
-
-    window.addEventListener('scroll', function () {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-            // Scroll xuống
-            navbar.classList.add('navbar-hide');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
         } else {
-            // Scroll lên
-            navbar.classList.remove('navbar-hide');
+            navbar.classList.remove('scrolled');
         }
-
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
 });
 
+// search overlay
 document.addEventListener('DOMContentLoaded', function () {
     const searchBtn = document.querySelector('.nav-link-search');
     const searchOverlay = document.querySelector('.navbar-search-overlay');
@@ -57,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
+// dropdown hover
 document.addEventListener('DOMContentLoaded', function () {
     const dropdowns = document.querySelectorAll('.navbar .dropdown');
 
@@ -76,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// ripple effect
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.ripple-btn').forEach(btn => {
         btn.addEventListener('click', function (e) {
@@ -95,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+// Khởi tạo LightGallery cho ảnh trong tab
 document.addEventListener("DOMContentLoaded", function () {
     const navbar = document.getElementById("mainNav");
 
@@ -153,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
+// Smooth scroll to section
 document.addEventListener("DOMContentLoaded", () => {
     const sidebarLinks = document.querySelectorAll(".about-sidebar a");
     const sections = document.querySelectorAll(".section-block");
@@ -210,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Tab system for Vision, Mission, and Core Values
 document.addEventListener("DOMContentLoaded", () => {
     // COMMON fade + highlight logic for tabs
     function createTabSystem({ tabSelector, contentSelector, highlightId }) {
@@ -278,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
+// Tab system for About Us
 document.addEventListener("DOMContentLoaded", () => {
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabPanes = document.querySelectorAll(".tab-pane");
@@ -306,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
+// Tab system for About Us with sidebar
 document.addEventListener("DOMContentLoaded", () => {
     const headerOffset = 80;
 
@@ -394,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
+// Timeline hover effect
 document.addEventListener("DOMContentLoaded", () => {
     const timelineItems = document.querySelectorAll(".timeline-item");
 
@@ -412,6 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Timeline progress bar
 document.addEventListener("DOMContentLoaded", () => {
     const progress = document.querySelector(".timeline-progress");
     const items = document.querySelectorAll(".timeline-item");
@@ -434,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
+// Dropdown click to navigate
 document.addEventListener('DOMContentLoaded', () => {
     const dropdowns = document.querySelectorAll('.navbar .dropdown-toggle');
 
@@ -448,56 +443,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
+// Counter animation
 function animateCounter(element, target, duration = 2000) {
-  let start = 0;
-  let startTime = null;
+    let start = 0;
+    let startTime = null;
 
-  function updateCounter(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const progress = timestamp - startTime;
-    const current = Math.min(start + (progress / duration) * (target - start), target);
+    function updateCounter(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+        const current = Math.min(start + (progress / duration) * (target - start), target);
 
-    // Format with dots instead of commas and add "+"
-    element.textContent = Math.floor(current)
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        // Format with dots instead of commas and add "+"
+        element.textContent = Math.floor(current)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-    if (current < target) {
-      requestAnimationFrame(updateCounter);
+        if (current < target) {
+            requestAnimationFrame(updateCounter);
+        }
     }
-  }
 
-  requestAnimationFrame(updateCounter);
+    requestAnimationFrame(updateCounter);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll(".count-number");
-  counters.forEach(counter => {
-    const target = parseInt(counter.dataset.target, 10);
-    animateCounter(counter, target, 1500);
-  });
+    const counters = document.querySelectorAll(".count-number");
+    counters.forEach(counter => {
+        const target = parseInt(counter.dataset.target, 10);
+        animateCounter(counter, target, 1500);
+    });
 });
 
 
 
 // Trigger khi vào viewport
 function triggerCounters() {
-  const counters = document.querySelectorAll('.count-number');
-  const options = {
-    threshold: 0.6
-  };
+    const counters = document.querySelectorAll('.count-number');
+    const options = {
+        threshold: 0.6
+    };
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target); // chỉ chạy 1 lần
-      }
-    });
-  }, options);
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target); // chỉ chạy 1 lần
+            }
+        });
+    }, options);
 
-  counters.forEach(counter => observer.observe(counter));
+    counters.forEach(counter => observer.observe(counter));
 }
 
 // Run after DOM loaded
@@ -505,22 +500,138 @@ document.addEventListener('DOMContentLoaded', triggerCounters);
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const scrollBtn = document.getElementById("scrollToTop");
+    const scrollBtn = document.getElementById("scrollToTop");
 
-  // Hiện nút khi scroll xuống
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      scrollBtn.classList.add("show");
-    } else {
-      scrollBtn.classList.remove("show");
-    }
-  });
-
-  // Bấm để scroll lên top
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+    // Hiện nút khi scroll xuống
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollBtn.classList.add("show");
+        } else {
+            scrollBtn.classList.remove("show");
+        }
     });
-  });
+
+    // Bấm để scroll lên top
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
+
+
+// Khởi tạo Flickity cho carousel banner
+document.addEventListener("DOMContentLoaded", function () {
+    const carouselElem = document.getElementById('customCarousel');
+    if (!carouselElem) return; // Ngăn lỗi nếu không có phần tử
+    const flkty = new Flickity(carouselElem, {
+        cellAlign: 'left',
+        contain: true,
+        wrapAround: true,
+        prevNextButtons: false, // hide default
+        pageDots: false         // hide default
+    });
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const customDots = document.getElementById('customDots');
+
+    // Tạo dot tương ứng
+    for (let i = 0; i < flkty.slides.length; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === flkty.selectedIndex) dot.classList.add('active');
+        dot.addEventListener('click', () => flkty.select(i));
+        customDots.appendChild(dot);
+    }
+
+    // Cập nhật active dot khi thay slide
+    flkty.on('change', (index) => {
+        document.querySelectorAll('#customDots .dot').forEach((d, i) => {
+            d.classList.toggle('active', i === index);
+        });
+    });
+
+    // Bấm nút
+    prevBtn.addEventListener('click', () => flkty.previous());
+    nextBtn.addEventListener('click', () => flkty.next());
+});
+
+// Tab system for Structure Detail
+document.addEventListener("DOMContentLoaded", () => {
+    const tabLinks = document.querySelectorAll(".structure-detail-section .nav-link");
+    const tabPanes = document.querySelectorAll(".structure-detail-section .tab-pane");
+
+    tabLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            const target = link.dataset.tab;
+
+            tabLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+
+            tabPanes.forEach(pane => {
+                pane.classList.add("d-none");
+                pane.classList.remove("active");
+            });
+
+            const activePane = document.getElementById(target);
+            if (activePane) {
+                activePane.classList.remove("d-none");
+                setTimeout(() => activePane.classList.add("active"), 10);
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.querySelector('.steel-tabs-sidebar');
+    const sidebarWrapper = document.querySelector('.steel-tabs-sidebar-wrapper');
+    const sidebarLinks = sidebar.querySelectorAll('a');
+    const sections = document.querySelectorAll('.section-block');
+    const headerOffset = 100;
+
+    // Smooth scroll khi click menu
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+
+            sidebarLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    // Scroll highlight và cuộn sidebar theo
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset + headerOffset + 1;
+
+        sections.forEach(section => {
+            const id = section.getAttribute('id');
+            const link = sidebar.querySelector(`a[href="#${id}"]`);
+            if (
+                section.offsetTop <= scrollPosition &&
+                section.offsetTop + section.offsetHeight > scrollPosition
+            ) {
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                if (link) {
+                    link.classList.add('active');
+
+                    // ⭐ Cuộn mục đó vào giữa sidebar
+                    const linkOffsetTop = link.offsetTop;
+                    const wrapperHeight = sidebarWrapper.clientHeight;
+                    const targetScrollTop = linkOffsetTop - wrapperHeight / 2 + link.offsetHeight / 2;
+
+                    sidebarWrapper.scrollTo({
+                        top: targetScrollTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
 });

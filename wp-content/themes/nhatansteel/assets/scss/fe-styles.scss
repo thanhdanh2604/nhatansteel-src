@@ -153,6 +153,7 @@ section {
 
 // Pulse loop animation
 @keyframes pulse {
+
   0%,
   100% {
     transform: translateY(0);
@@ -253,12 +254,18 @@ section {
 
 .navbar {
   padding: 35px 0;
-  transition: transform 0.4s ease, opacity 0.3s ease;
-  will-change: transform, opacity;
+  transition: all 0.3s ease-in-out;
 
-  &.navbar-hide {
-    transform: translateY(-100%);
-    opacity: 0;
+  // &.navbar-hide {
+  //   transform: translateY(-100%);
+  //   opacity: 0;
+  // }
+
+  &.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    padding: 20px 0;
   }
 
   .dropdown-menu {
@@ -289,6 +296,7 @@ section {
   }
 
   .nav-item {
+
     &:hover,
     &.active {
       .nav-link {
@@ -301,6 +309,10 @@ section {
       color: #283678;
       padding: 0 20px;
       position: relative;
+
+      &.nav-link-search {
+        padding-right: 0;
+      }
 
       &.link-brochure {
         border-left: 1px solid #283678;
@@ -348,6 +360,11 @@ section {
   padding: 0;
   position: relative;
   color: white;
+  overflow: hidden;
+
+  .carousel {
+    position: relative;
+  }
 
   .carousel-cell {
     width: 100%;
@@ -362,12 +379,10 @@ section {
       width: 100%;
       height: 100%;
       z-index: 1;
-      background: linear-gradient(
-        180deg,
-        rgba(40, 54, 120, 0) 0%,
-        rgba(40, 54, 120, 0.412) 74%,
-        rgba(40, 54, 120, 0.8) 100%
-      );
+      background: linear-gradient(180deg,
+          rgba(40, 54, 120, 0) 0%,
+          rgba(40, 54, 120, 0.412) 74%,
+          rgba(40, 54, 120, 0.8) 100%);
     }
 
     img {
@@ -394,6 +409,7 @@ section {
       text-shadow: 0px 4px 4px #00000040;
       color: white;
       line-height: 1em;
+      margin-bottom: 0;
     }
 
     p {
@@ -407,14 +423,18 @@ section {
   }
 
   .flickity-page-dots {
+    display: flex;
+    gap: 8px;
     z-index: 200;
     bottom: 65px;
-    right: 10%;
+    // right: 10%;
+    left: calc(50% - 50px); // căn giữa theo container
     text-align: right;
 
     .dot {
       background: #fff;
       opacity: 1;
+      margin: 0;
 
       &.is-selected {
         background: $main-orange;
@@ -422,45 +442,53 @@ section {
     }
   }
 
-  /* Nút mũi tên */
-  .flickity-prev-next-button {
-    width: 21px;
-    height: 14px;
-    background: none;
-    border: none;
-    top: unset;
-    bottom: 59px;
-    z-index: 999;
-    transition: all 0.3s ease;
 
-    &.previous {
-      left: calc(87% - 120px);
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 21 15'%3e%3c!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152) --%3e%3cdefs%3e%3cstyle%3e .st0 %7b fill: %23fff; fill-rule: evenodd;%7d %3c/style%3e%3c/defs%3e%3cpath class='st0' d='M20.41,6.84H2.15L7.61,1.4c.26-.26.26-.67,0-.93-.26-.26-.67-.26-.93,0L.19,6.97c-.25.25-.25.68,0,.93l6.5,6.5c.26.26.67.26.93,0,.26-.26.26-.67,0-.93l-5.46-5.31h18.26c.36,0,.66-.29.66-.66s-.29-.66-.66-.66Z'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-    }
+}
 
-    &.next {
-      right: calc(16% - 110px);
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' encoding='UTF-8'?%3e%3csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 21 15'%3e%3c!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152) --%3e%3cdefs%3e%3cstyle%3e .st0 %7b fill: %23fff; fill-rule: evenodd;%7d %3c/style%3e%3c/defs%3e%3cpath class='st0' d='M.59,8.16h18.26l-5.46,5.44c-.26.26-.26.67,0,.93.26.26.67.26.93,0l6.5-6.5c.25-.25.25-.68,0-.93L14.31.61c-.26-.26-.67-.26-.93,0-.26.26-.26.67,0,.93l5.46,5.31H.59c-.36,0-.66.29-.66.66,0,.36.29.66.66.66Z'/%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-    }
+.box-nav-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  margin: auto;
 
-    svg {
-      width: 21px;
-      height: 14px;
-      fill: white;
-      transition: transform 0.3s ease;
-      path {
-        display: none;
-      }
-    }
+  .container {
+    position: relative; // 🔑 Cho phép các nút định vị bên trong container
+  }
 
-    &:hover svg {
-      transform: scale(1.2);
-      fill: #ffae00; // tùy chỉnh theo màu thương hiệu
-    }
+  .flickity-custom-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
+
+.btn-custom-nav {
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+#customDots .dot {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  opacity: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#customDots .dot.active {
+  background-color: #fcb900;
+  opacity: 1;
+}
+
 
 // footer
 .footer {
@@ -685,6 +713,30 @@ $text-orange: #f5a623;
     border-radius: 10px;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    text-decoration: none;
+
+    // Layer background white
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 12px;
+      transition: width 0.4s ease;
+      z-index: -1;
+    }
+
+    // Khi hover hoặc active
+    &:hover::before,
+    &.active::before {
+      width: 100%;
+    }
 
     .product-item-img {
       position: relative;
@@ -705,11 +757,18 @@ $text-orange: #f5a623;
 
     .product-item-content {
       width: 200px;
+      transition: color 0.4s ease;
 
       p {
         text-transform: uppercase;
         font-size: 16px;
         font-weight: 600;
+        color: #fff;
+        transition: color 0.4s ease, transform 0.3s ease;
+
+        .arrow {
+          transition: color 0.4s ease, transform 0.3s ease;
+        }
       }
     }
 
@@ -723,11 +782,16 @@ $text-orange: #f5a623;
       }
     }
 
-    &:hover {
-      background-color: #e6e6e6;
-      cursor: pointer;
-      color: $product-blue;
-      transition: background 0.3s;
+    &:hover .product-item-content,
+    &.active .product-item-content {
+      p {
+        color: #0e1b4d; // navy dark text
+      }
+
+      .arrow {
+        color: #f39800;
+        transform: translateX(4px);
+      }
     }
 
     img {
@@ -1065,6 +1129,10 @@ $blue-dark: #0b2c6b;
     h6 {
       color: #fff;
     }
+
+    p {
+      color: #fff;
+    }
   }
 
   .news-item {
@@ -1299,6 +1367,8 @@ $deep-blue: #252f87;
     }
 
     .box-content {
+      bottom: 90px;
+
       h1 {
         font-size: 36px;
         line-height: 1.2em;
@@ -1310,14 +1380,12 @@ $deep-blue: #252f87;
       }
     }
 
-    .flickity-prev-next-button {
-      display: none;
-    }
+    .box-nav-bottom {
+      bottom: 10px;
 
-    .flickity-page-dots {
-      bottom: 15px;
-      right: inherit;
-      text-align: center;
+      .flickity-custom-controls {
+        justify-content: center;
+      }
     }
   }
 
@@ -1861,8 +1929,6 @@ $dark-blue: #252f87;
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-bottom: 1px solid #d9d9d9;
-  padding-bottom: 35px;
 
   img {
     width: 100%;
@@ -1870,6 +1936,11 @@ $dark-blue: #252f87;
     object-fit: cover;
     object-position: center;
   }
+}
+
+.section-block {
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 70px;
 }
 
 .list-products {
@@ -1957,6 +2028,14 @@ $dark-blue: #252f87;
         border-bottom: 3px solid transparent;
         white-space: nowrap;
         transition: 0.3s;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
 
         &.active {
           color: #283678;
@@ -2193,9 +2272,7 @@ $dark-blue: #252f87;
 
       .form-select {
         background-color: rgba(255, 255, 255, 0.9); // Nền gần như trong suốt
-        backdrop-filter: blur(
-          8px
-        ); // Làm mờ nền phía sau (hiệu ứng đẹp như ảnh)
+        backdrop-filter: blur(8px); // Làm mờ nền phía sau (hiệu ứng đẹp như ảnh)
         border: 1px solid #ccc;
         border-radius: 0.5rem;
         font-size: 0.95rem;
@@ -2818,7 +2895,8 @@ $dark-blue: #252f87;
 .count-number {
   display: inline-block;
   font-weight: bold;
-  color: #f9a825; /* vàng cam */
+  color: #f9a825;
+  /* vàng cam */
   transition: transform 0.3s ease;
 }
 
@@ -2830,9 +2908,11 @@ $dark-blue: #252f87;
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.3);
   }
+
   100% {
     transform: scale(1);
   }
@@ -2937,6 +3017,23 @@ $dark-blue: #252f87;
 .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-color: transparent;
 }
+
+.steel-tabs-sidebar-wrapper {
+  position: sticky;
+  top: 100px; // nếu navbar cao khoảng 80–100px
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  a {
+    &.active {
+      font-weight: bold;
+      color: #f7941e;
+    }
+  }
+}
+
+
 
 @media (max-width: 991.98px) {
   .navbar-collapse {
@@ -3133,6 +3230,30 @@ $dark-blue: #252f87;
 
       li {
         min-width: inherit;
+      }
+    }
+  }
+
+  .customers-partners-section {
+    .carousel {
+      .carousel-cell {
+        width: 50%;
+        height: 100px;
+        margin-right: 0;
+      }
+    }
+
+    .flickity-prev-next-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .flickity-button-icon {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
       }
     }
   }
