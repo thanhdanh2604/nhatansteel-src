@@ -1,4 +1,11 @@
-@media (min-width: 769px) and (max-width: 900px) {
+@media (max-width: 1024px) {
+  .core-values-section ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 900px) {
   #ban-quan-tri .col-sm-6 {
     padding: 0 12px;
   }
@@ -40,6 +47,12 @@
 .core-values-section .core-tab.active svg path {
   fill: white;
 }
+.manager-card img {
+  background-color: #fff;
+}
+.timeline-list .timeline-item:hover .year {
+  opacity: 0;
+}
 @media (max-width: 768px) {
   .vision-section .vision-tab svg {
     width: 50px;
@@ -62,20 +75,37 @@
   }
   .timeline-item {
     margin: 50px 0;
-    text-align: left;
+    text-align: center;
+    position: unset;
+    width: 100%;
   }
   .timeline-item .year {
     top: unset;
+    display: none;
   }
   .timeline-item .dot {
     bottom: unset !important;
     top: unset;
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+  }
+  .timeline-item .hover-content {
+    display: block;
+    position: unset;
+    transform: unset;
+    width: auto;
+  }
+  .timeline-item .hover-content::after {
+    display: none;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .timeline-section {
     padding: 20px 0;
     margin-bottom: 50px;
+  }
+}
+@media (max-width: 767px) {
+  .core-values-section ul li {
+    width: 48%;
   }
 }
