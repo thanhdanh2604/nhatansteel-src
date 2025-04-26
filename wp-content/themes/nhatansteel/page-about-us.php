@@ -69,8 +69,8 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
                 <ul class="about-sidebar list-unstyled">
                     <li><a class="active" href="#gioi-thieu"><?php echo esc_html(get_the_title()); ?></a></li>
                     <li><a href="#ban-quan-tri"><?php echo $manager_title  ?></a></li>
-                    <li><a href="#sang-lap"><?php echo $journey_title  ?></a></li>
-                    <li><a href="#lich-su"><?php echo $chairman_message_title ?></a></li>
+                    <li><a href="#sang-lap"><?php echo $chairman_message_title ?></a></li>
+                    <li><a href="#lich-su"><?php echo  $journey_title  ?></a></li>
                     <?php if (!empty($vision_title) && !empty($mission_title) && !empty($core_value_title)): ?>
                         <li>
                             <a href="#tam-nhin">
@@ -322,7 +322,6 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
 </section>
 
 
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/fe.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom-about-us.js"></script>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-about-us.css">
-
 <?php get_footer(); ?>
