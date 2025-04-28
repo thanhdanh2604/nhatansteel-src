@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: News page
+ * Template Name: Posts page
  */
 get_header();
 ?>
@@ -19,7 +19,7 @@ $news_title = get_field('news_title') ?? '';
 // Posts configurations
 $see_more_button_content = get_field('see_more_button_content') ?? "Xem thêm";
 $no_post_found = get_field('no_post_found') ?? "Không có bài viết nào"
-?>
+  ?>
 
 <section class="about-banner" style="
   background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0))<?php if ($image_url): ?>, url('<?php echo $image_url; ?>')<?php endif; ?>;
@@ -88,47 +88,17 @@ $no_post_found = get_field('no_post_found') ?? "Không có bài viết nào"
         endwhile;
         wp_reset_postdata();
       else:
-        echo '<li class="no-post-found">Không có bài viết nào.</li>';
+        echo '<li class="no-post-found">' . esc_html($no_post_found) . '</li>';
       endif;
       ?>
     </ul>
 
     <!-- Pagination -->
-    <nav class="custom-pagination mt-4" aria-label="Pagination">
-      <ul class="pagination-list">
-        <?php
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        $total_pages = $news_query->max_num_pages;
-
-        if ($total_pages > 1):
-          $paginate_links = paginate_links(array(
-            'total' => $total_pages,
-            'current' => $paged,
-            'type' => 'array',
-            'add_args' => false,
-            'prev_next' => false,
-          ));
-
-          if (is_array($paginate_links)):
-            $first_pages = array_slice($paginate_links, 0, 3);
-            $last_page = end($paginate_links);
-
-            foreach ($first_pages as $page):
-              echo '<li class="pagination-item">' . $page . '</li>';
-            endforeach;
-
-            if ($total_pages > 3):
-              echo '<li class="pagination-item"><span class="page-separator">...</span></li>';
-              echo '<li class="pagination-item">' . $last_page . '</li>';
-            endif;
-          endif;
-        endif;
-        ?>
-      </ul>
-    </nav>
+    <?php render_custom_pagination($news_query); ?>
   </div>
 </section>
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles-news.css">
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles-pagination.css">
 
 <?php get_footer(); ?>
