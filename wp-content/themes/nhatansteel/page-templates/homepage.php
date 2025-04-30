@@ -8,9 +8,9 @@
 get_header(); ?>
 <?php
 $banners = get_field('banners');
-
+$customers_partners = get_field('gallery_of_customer_and_partner');
 // About Section
-
+var_dump($customers_partners);
 ?>
 <div class="">
     <section class="section-banner">
@@ -62,19 +62,19 @@ $banners = get_field('banners');
 
         <div class="row text-center mt-5 stats-row">
             <div class="col-md-4 mb-4">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-construction-site.svg" alt="Dự án" class="mb-4" style="height: 120px;">
-            <h4><span class="count-number" data-target="1000">0</span>+</h4>
-            <p class="mb-0">Dự án</p>
+            <img src="<?php echo get_field('about_image_number_project') ?>" alt="Dự án" class="mb-4" style="height: 120px;">
+            <h4><span class="count-number" data-target="<?php echo get_field('about_number_project') ?>">0</span>+</h4>
+            <p class="mb-0"><?php echo get_field('about_title_number_projects') ?></p>
             </div>
             <div class="col-md-4 mb-4">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-steel-beam.svg" alt="Sản lượng" class="mb-4" style="height: 120px;">
-            <h4><span class="count-number" data-target="10000">0</span>+</h4>
-            <p class="mb-0">Sản lượng thép<br>hàng năm</p>
+            <img src="<?php echo get_field('about_image_steel_output_number') ?>" alt="Sản lượng" class="mb-4" style="height: 120px;">
+            <h4><span class="count-number" data-target="<?php echo get_field('about_number_output_steel') ?>">0</span>+</h4>
+            <p class="mb-0"><?php echo get_field('about_image_title_output_steel_number') ?></p>
             </div>
             <div class="col-md-4 mb-4">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-target.svg" alt="Khách hàng" class="mb-4" style="height: 120px;">
-            <h4><span class="count-number" data-target="300">0</span>+</h4>
-            <p class="mb-0">Khách hàng</p>
+            <img src="<?php echo get_field('about_image_number_customer') ?>" alt="Khách hàng" class="mb-4" style="height: 120px;">
+            <h4><span class="count-number" data-target="<?php echo get_field('about_number_of_customer') ?>">0</span>+</h4>
+            <p class="mb-0"><?php echo get_field('about_title_number_customer') ?></p>
             </div>
         </div>
         </div>
@@ -355,35 +355,19 @@ $banners = get_field('banners');
             <div class="col-12">
             <h2 class="title">Khách hàng & Đối tác</h2>
             <div class="carousel" data-flickity='{ "groupCells": true, "pageDots": false }'>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac01.png" alt="đối tác"></a>
+                <?php
+                foreach ($customers_partners as $customer_partner) {
+                ?>
+                
+                    <div class="carousel-cell">
+                    <a href="#"><img class="img-fluid" src="<?php echo $customer_partner['url'];?>" alt="đối tác"></a>
                 </div>
+                <?php } ?>
                 <div class="carousel-cell">
                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac02.png" alt="đối tác"></a>
                 </div>
                 <div class="carousel-cell">
                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac01.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac02.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac01.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac02.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac01.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac02.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac01.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac02.png" alt="đối tác"></a>
                 </div>
             </div>
             </div>
