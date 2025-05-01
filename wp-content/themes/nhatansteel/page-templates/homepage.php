@@ -432,30 +432,14 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
 
     <section class="contact-section">
         <div class="container">
-        <h2 class="title mb-4">Liên hệ</h2>
+        <h2 class="title mb-4"><?php echo get_field('home_title_contact_section')?></h2>
         <div class="row g-4">
             <!-- Form -->
             <div class="col-lg-6">
-            <div class="contact-form p-4 rounded">
-                <h5>Gửi tin nhắn cho chúng tôi</h5>
-                <form>
-                <input type="text" class="form-control mb-3" placeholder="Tên">
-                <div class="d-flex gap-2 flex-column flex-md-row mb-3">
-                    <input type="text" class="form-control" placeholder="Số điện thoại">
-                    <input type="email" class="form-control" placeholder="E-mail">
+                <div class="contact-form p-4 rounded">
+                    <h5><?php echo get_field('home_title_contact_form')?></h5>
+                    <?php echo do_shortcode('[contact-form-7 id="4e3fc7d" title="Contact form trang chủ"]') ?>
                 </div>
-                <input type="text" class="form-control mb-3" placeholder="Tiêu đề">
-                <textarea class="form-control mb-3" rows="3" placeholder="Nội dung"></textarea>
-                <select class="form-select mb-3">
-                    <option>Bạn biết đến chúng tôi thông qua kênh nào</option>
-                    <option>LinkedIn</option>
-                    <option>Facebook</option>
-                    <option>Người giới thiệu</option>
-                    <option>Khác...</option>
-                </select>
-                <button type="submit" class="btn btn-orange">Gửi</button>
-                </form>
-            </div>
             </div>
 
             <!-- Info -->
