@@ -9,8 +9,6 @@ get_header(); ?>
 <?php
 $banners = get_field('banners');
 $customers_partners = get_field('gallery_of_customer_and_partner');
-// About Section
-var_dump($customers_partners);
 ?>
 <div class="">
     <section class="section-banner">
