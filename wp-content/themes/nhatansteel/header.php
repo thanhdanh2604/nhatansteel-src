@@ -25,7 +25,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6 d-flex align-items-center">
-        <a class="logo" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>assets/images/icons/i-building.svg" alt="icon building"> Công ty TNHH Xây dựng Nhật An</a>
+        <a class="logo" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="icon building"><?php echo the_field('company_name','option') ?></a>
       </div>
       <div class="col-6 d-flex justify-content-end align-items-center">
         <div class="social-icons">

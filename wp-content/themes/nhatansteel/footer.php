@@ -11,28 +11,28 @@
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="building" width="20">
                 <div class="footer-heading-text">
                     <h6>Trụ sở chính</h6>
-                    <p>285/18A Trịnh Đình Trọng, Phường Hòa Thạnh,<br>Quận Tân Phú, Thành phố Hồ Chí Minh</p>
+                    <p><?php the_field('company_address','option')?></p>
                 </div>
             </div>
-          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Điện thoại:</strong> 08.39733385</p>
-          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-printer.svg" alt="printer" width="20"> <strong>Fax:</strong> 08.38605496</p>
+          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Điện thoại:</strong> <?php the_field('company_phone','option')?></p>
+          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-printer.svg" alt="printer" width="20"> <strong>Fax:</strong> <?php the_field('company_fax','option')?></p>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <div class="footer-heading">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-industry.svg" alt="industry" width="20">
                 <div class="footer-heading-text">
                     <h6>Nhà máy</h6>
-                    <p>Lô số 1, Đường số 7A, KCN Nhơn Trạch, Huyện Nhơn Trạch, Tỉnh Đồng Nai</p>
+                    <p><?php the_field('factory_address','option')?></p>
                 </div>
             </div>
-          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Điện thoại:</strong> 0613.569138</p>
-          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-printer.svg" alt="printer" width="20"> <strong>Fax:</strong> 0613.569138</p>
+          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Điện thoại:</strong> <?php the_field('factory_phone','option')?></p>
+          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-printer.svg" alt="printer" width="20"> <strong>Fax:</strong> <?php the_field('factory_fax','option')?></p>
         </div>
       </div>
     </div>
   </div>
   <div class="footer-bottom text-center">
-    © Bản quyền thuộc về <a href="index.php">Công ty TNHH Xây dựng Nhật An</a>
+     © Bản quyền thuộc về <a href="<?php echo home_url(); ?>"><?php the_field('company_name','option')?></a>
   </div>
 </footer>
 
