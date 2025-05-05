@@ -1,0 +1,28 @@
+.box-product-info .content-box p {
+  color: #fff;
+}
+.box-big-img {
+  height: fit-content;
+}
+@media (max-width: 1024px) {
+  .steel-tabs-section .box-product-info .tab-product-img {
+    top: -25px;
+    width: auto;
+  }
+}
+@media (max-width: 768px) {
+  .steel-tabs-section .box-product-info .tab-product-img {
+    top: -85px;
+  }
+}
+@media (max-width: 640px) {
+  .list-products.accessory-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .container .tab-btn {
+    width: 100%;
+    margin: unset;
+  }
+}
