@@ -46,3 +46,47 @@ function do_output_buffer() {
 }
 
 add_theme_support('post-thumbnails');
+function nhatansteel_register_menus() {
+    register_nav_menus(
+        array(
+            'primary-menu' => __( 'Primary Menu', 'nhatansteel' ),
+        )
+    );
+}
+add_action( 'after_setup_theme', 'nhatansteel_register_menus' );
+class Bootstrap_NavWalker extends Walker_Nav_Menu {
+    public function start_lvl( &$output, $depth = 0, $args = null ) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
+    }
+
+    public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        $classes[] = 'nav-item';
+        if ( in_array( 'menu-item-has-children', $classes ) ) {
+            $classes[] = 'dropdown';
+        }
+        $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+        $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+
+        $output .= '<li' . $class_names .'>';
+
+        $atts = array();
+        $atts['class'] = 'nav-link';
+        if ( in_array( 'menu-item-has-children', $classes ) ) {
+            $atts['class'] .= ' dropdown-toggle';
+            $atts['data-bs-toggle'] = 'dropdown';
+        }
+        $atts['href'] = ! empty( $item->url ) ? $item->url : '';
+
+        $attributes = '';
+        foreach ( $atts as $attr => $value ) {
+            if ( ! empty( $value ) ) {
+                $attributes .= ' ' . $attr . '="' . esc_attr( $value ) . '"';
+            }
+        }
+
+        $title = apply_filters( 'the_title', $item->title, $item->ID );
+        $output .= '<a'. $attributes .'>'. $title .'</a>';
+    }
+}
