@@ -25,7 +25,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6 d-flex align-items-center">
-        <a class="logo" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>assets/images/icons/i-building.svg" alt="icon building"> Công ty TNHH Xây dựng Nhật An</a>
+        <a class="logo" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="icon building"><?php echo the_field('company_name','option') ?></a>
       </div>
       <div class="col-6 d-flex justify-content-end align-items-center">
         <div class="social-icons">
@@ -52,6 +52,21 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
+    <?php
+      wp_nav_menu(
+          array(
+              'theme_location'  => 'primary-menu',
+              'container'       => false,
+              'menu_class'      => 'navbar-nav ms-auto mb-2 mb-lg-0',
+              'fallback_cb'     => false,
+              'depth'           => 2,
+              'walker'          => new Bootstrap_NavWalker(), // Custom walker for Bootstrap
+          )
+      );
+    ?>
+    </div>
+</div>
+    <!-- <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item active"><a class="nav-link" href="index.php">Trang chủ</a></li>
         <li class="nav-item"><a class="nav-link" href="gioithieu.php">Giới thiệu</a></li>
@@ -74,7 +89,7 @@
         <li class="nav-item"><a class="nav-link link-brochure ripple-btn" href="#" data-tooltip="Tải brochure">Brochure <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg" alt="icon download"> </a></li>
         <li class="nav-item"><a class="nav-link nav-link-search" href="#"><i class="i-search"></i></a></li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </nav>
 
