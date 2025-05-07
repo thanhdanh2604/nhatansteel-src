@@ -1,4 +1,5 @@
 .no-post-found {
+  grid-column: span 3;
   width: 100%;
   color: #283678;
   text-align: center;

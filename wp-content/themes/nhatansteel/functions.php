@@ -90,3 +90,7 @@ class Bootstrap_NavWalker extends Walker_Nav_Menu {
         $output .= '<a'. $attributes .'>'. $title .'</a>';
     }
 }
+
+add_action('wp_enqueue_scripts', 'enqueue_custom_pagination_styles');
+
+require_once get_stylesheet_directory() . '/inc/template-functions.php';
