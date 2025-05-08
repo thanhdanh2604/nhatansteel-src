@@ -74,7 +74,7 @@ $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào
                 <input type="text" class="form-control" name="search_term" placeholder="Tên dự án"
                     value="<?php echo isset($_GET['search_term']) ? esc_attr($_GET['search_term']) : ''; ?>">
                 <span class="search-icon">
-                    <img src="assets/images/icons/i-search.svg" alt="search" width="18">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icons/i-search.svg' ?>" alt="search" width="18">
                 </span>
             </div>
 
