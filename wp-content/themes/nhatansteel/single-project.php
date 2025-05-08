@@ -27,7 +27,7 @@ $gallery = get_field('gallery', $project->ID);
             <h1>Dự án</h1>
             <p class="breadcrumb-text mb-0">
                 <a href="<?php echo home_url(); ?>">Trang chủ</a> /
-                <a href="<?php echo get_permalink(get_page_by_path('projects')->ID); ?>">Dự án</a> /
+                <a href="<?php echo get_page_permalink_by_template('page-projects.php'); ?>">Dự án</a> /
                 <a href="<?php echo get_permalink($project->ID); ?>"><?php echo $title; ?></a>
             </p>
         </div>
