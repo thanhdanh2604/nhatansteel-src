@@ -20,6 +20,7 @@ $content_intro = $section_gioi_thieu['content'] ?? '';
 $section_mo_hinh = $detail['section_mo_hinh'] ?? [];
 $image_mo_hinh = $section_mo_hinh['main_image']['url']  ?? '';
 $title_mo_hinh = $section_mo_hinh['title'] ?? '';
+$desc_mo_hinh = $section_mo_hinh['list_colum_desc'] ??  [];
 
 // Section Hệ thống khung
 $section_khung = $detail['section_hethong_khung'] ?? [];
@@ -31,6 +32,11 @@ $section_ketcau = $detail['section_chitiet_ketcau'] ?? [];
 $title_ketcau = $section_ketcau['title'] ?? '';
 $list_tap = $section_ketcau['list_tap'] ?? [];
 $list_content_tap = $section_ketcau['list_content_tap'] ?? [];
+
+// Section kết cấu phụ khác
+$section_ketcau_phukhac = $detail['section_ketcau_phukhac'] ?? [];
+$title_ketcau_phukhac = $section_ketcau_phukhac['title']  ?? '';
+$list_products_ketcau_phukhac = $section_ketcau_phukhac['list_products'] ?? [];
 
 // Section Hệ thống bao che
 $section_baoche = $detail['section_hethong_baoche'] ?? [];
@@ -54,6 +60,7 @@ $section_tieuchuan_phanmem = $detail['section_tieuchuan_phanmem'] ?? [];
 $image_tieuchuan = $section_tieuchuan_phanmem['main_image']['url'] ?? '';
 $title_tieuchuan = $section_tieuchuan_phanmem['title'] ?? '';
 $design_list = $section_tieuchuan_phanmem['design_list'] ?? [];
+$software_category = $section_tieuchuan_phanmem['software_category'] ?? [];
 
 
 // Section Gia công
@@ -127,6 +134,7 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                         <li><a class="active" href="#mo-hinh"><?php echo $title_mo_hinh ?></a></li>
                                         <li><a href="#hethong-khung"><?php echo $title_khung ?></a></li>
                                         <li><a href="#chitiet-ketcau"><?php echo $title_ketcau ?></a></li>
+                                        <li><a href="#ketcau-phukhac"><?php echo $title_ketcau_phukhac ?></a></li>
                                         <li><a href="#hethong-baoche"><?php echo $title_baoche ?></a></li>
                                         <li><a href="#phu-kien"><?php echo $title_phukien ?></a></li>
                                     </ul>
@@ -142,6 +150,16 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                             <img src="<?= esc_url($image_mo_hinh) ?>" alt="products" class="img-fluid">
                                         </div>
                                     <?php endif; ?>
+                                    <?php if (!empty($desc_mo_hinh)): ?>
+                                        <div class="mo-hinh-desc">
+                                            <?php foreach ($desc_mo_hinh as $item): ?>
+                                                <div class="mo-hinh-desc-col">
+                                                    <?php echo ($item['content_detail']); ?>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+
                                 </div>
 
                                 <div id="hethong-khung" class="section-block mb-5">
@@ -208,7 +226,27 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                     </section>
 
                                 </div>
-
+                                <div id="ketcau-phukhac" class="section-block mb-5">
+                                    <h2 class="title"><?php echo $title_ketcau_phukhac ?></h2>
+                                    <?php if (!empty($list_products_ketcau_phukhac)): ?>
+                                        <ul class="list-products accessory-list">
+                                            <?php foreach ($list_products_ketcau_phukhac as $item): ?>
+                                                <?php
+                                                $image_url = $item['main_image']['url'] ?? '';
+                                                $title = $item['title'] ?? '';
+                                                ?>
+                                                <li>
+                                                    <div class="box-img">
+                                                        <?php if ($image_url): ?>
+                                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-fluid">
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <h4><?php echo esc_html($title); ?></h4>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                </div>
                                 <div id="hethong-baoche" class="section-block mb-5">
                                     <h2 class="title"><?php echo $title_baoche ?></h2>
                                     <?php if (!empty($list_products_baoche)): ?>
@@ -307,6 +345,32 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                 </li>
                                             <?php endforeach; ?>
                                         </ul>
+                                    <?php endif; ?>
+                                    <?php if (!empty($software_category)): ?>
+                                        <div class="software-section">
+                                            <?php foreach ($software_category as $item): ?>
+                                                <div class="software-category">
+                                                    <p class="software-category__title">
+                                                        <?php echo esc_html($item['title'] ?? ''); ?>
+                                                    </p>
+                                                    <?php if (!empty($item['list_images'])): ?>
+                                                        <div class="software-category__images">
+                                                            <?php foreach ($item['list_images'] as $item_img): ?>
+                                                                <?php
+                                                                $img_url = $item_img['image_item']['url'] ?? '';
+                                                                $img_alt = $item_img['image_item']['alt'] ?? '';
+                                                                ?>
+                                                                <?php if (!empty($img_url)): ?>
+                                                                    <div class="software-category__image-item">
+                                                                        <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt); ?>" class="img-fluid" />
+                                                                    </div>
+                                                                <?php endif; ?>
+                                                            <?php endforeach; ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
 
