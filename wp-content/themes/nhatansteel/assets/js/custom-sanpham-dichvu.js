@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   sidebars.forEach((sidebar, index) => {
     const sidebarWrapper = sidebarWrappers[index];
     const sidebarLinks = sidebar.querySelectorAll("a");
-
+console.log(sidebarLinks)
     // Smooth scroll khi click menu
     sidebarLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
