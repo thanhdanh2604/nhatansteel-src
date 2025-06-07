@@ -1,9 +1,18 @@
 <?php
 
-/**
- * Template Name: News page
- */
 get_header();
+
+$default_cat_id = get_option('default_category');
+$categories = get_categories(array(
+  'taxonomy' => 'category',
+  'hide_empty' => true,
+  'exclude' => $default_cat_id,
+  'orderby' => 'name',
+  'order' => 'DES',
+));
+
+$post_categories = get_the_category();
+$post_cat_slugs = wp_list_pluck($post_categories, 'slug');
 ?>
 
 <section class="about-banner">
@@ -12,12 +21,31 @@ get_header();
             <h1>Tin tức</h1>
             <p class="breadcrumb-text mb-0">
                 <a href="<?php echo home_url(); ?>">Trang chủ</a> /
-                <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>">Bài viết</a> /
+                <a href="<?php echo get_page_permalink_by_template('page-posts.php'); ?>">Bài viết</a> /
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             </p>
         </div>
     </div>
 </section>
+
+<?php if (!empty($categories)): ?>
+  <section class="section-news-categories">
+    <div class="container">
+      <div class="categories-wrapper">
+        <?php foreach ($categories as $category):
+          $cat_slug = $category->slug;
+          $cat_name = esc_html($category->name);
+          $is_active = in_array($cat_slug, $post_cat_slugs);
+          ?>
+          <a class="category-btn <?php echo $is_active ? 'active' : ''; ?>"
+            href="<?php echo esc_url(add_query_arg('cat', $cat_slug, get_page_permalink_by_template('page-posts.php'))); ?>">
+            <?php echo $cat_name; ?>
+          </a>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
+<?php endif; ?>
 
 <section class="news-detail-section py-5">
     <div class="container">
@@ -75,7 +103,7 @@ get_header();
                         <?php wp_reset_postdata(); ?>
                     <?php endif; ?>
 
-                    <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="read-more">Xem thêm</a>
+                    <a class="read-more" href="<?php echo get_page_permalink_by_template('page-posts.php'); ?>">Xem thêm</a>
                 </div>
             </div>
         </div>
