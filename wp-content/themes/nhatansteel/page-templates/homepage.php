@@ -6,11 +6,13 @@
  */
 
 get_header(); ?>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles-home.css">
+
 <?php
 $banners = get_field('banners');
 $customers_partners = get_field('gallery_of_customer_and_partner');
 ?>
-<div class="">
+<div class="homepage">
     <section class="section-banner">
         <div class="carousel" data-flickity>
             <?php

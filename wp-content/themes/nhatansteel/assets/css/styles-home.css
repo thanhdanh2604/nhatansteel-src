@@ -1,0 +1,11 @@
+@media (min-width: 1024px) {
+    .homepage .section-banner .carousel-cell {
+        height: 619px;
+    }
+    .homepage{
+        margin-top: -116px;
+    }
+    .navbar{
+        opacity: 0.9;
+    }
+}
