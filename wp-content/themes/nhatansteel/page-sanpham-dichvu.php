@@ -93,7 +93,7 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
     </div>
 </section>
 
-<section class="steel-tabs-section py-5">
+<section class="steel-tabs-section">
     <!-- Tabs -->
     <div class="steel-tabs d-flex mb-5">
         <div class="container">
@@ -214,7 +214,9 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                                                 <img src="<?php echo esc_url($item['main_image']['url']); ?>" alt="<?php echo esc_attr($item['title'] ?? ''); ?>" class="img-fluid">
                                                                             <?php endif; ?>
                                                                         </div>
-                                                                        <h4><?php echo esc_html($item['title'] ?? ''); ?></h4>
+                                                                        <?php if (!empty($item['title'])): ?>
+                                                                            <h4><?php echo esc_html($item['title']); ?></h4>
+                                                                        <?php endif; ?>
                                                                     </li>
                                                                 <?php endforeach; ?>
                                                             </ul>
@@ -250,7 +252,7 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                 <div id="hethong-baoche" class="section-block mb-5">
                                     <h2 class="title"><?php echo $title_baoche ?></h2>
                                     <?php if (!empty($list_products_baoche)): ?>
-                                        <ul class="list-products">
+                                        <ul class="list-products accessory-list">
                                             <?php foreach ($list_products_baoche as $item): ?>
                                                 <?php
                                                 $image_url = $item['main_image']['url'] ?? '';

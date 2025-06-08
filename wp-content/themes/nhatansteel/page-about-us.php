@@ -73,8 +73,8 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
                     <li><a href="#lich-su"><?php echo  $journey_title  ?></a></li>
                     <?php if (!empty($vision_title) && !empty($mission_title) && !empty($core_value_title)): ?>
                         <li>
-                            <a href="#tam-nhin">
-                                <?php echo esc_html($vision_title . ', ' . $mission_title . ' & ' . $core_value_title); ?>
+                            <a href="#gia-tri-cot-loi">
+                                <?php echo esc_html( $core_value_title. ' - ' .$vision_title . ' - ' . $mission_title ) ; ?>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -171,6 +171,66 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
 
                 </div>
 
+                <div id="gia-tri-cot-loi" class="section-block mb-5">
+                    <section class="core-values-section py-3">
+                        <div class="container">
+                            <h2 class="title"><?php echo $core_value_title ?></h2>
+                            <!-- missions -->
+                            <?php if (!empty($core_value_list_tap_core_value) && is_array($core_value_list_tap_core_value)): ?>
+                                <div class="row g-3 mb-4 justify-content-start">
+                                    <ul class="core-values-tab-list">
+                                        <?php foreach ($core_value_list_tap_core_value as $index => $item): ?>
+                                            <?php
+                                            $is_active = $index === 0 ? 'active' : '';
+                                            $core_id = 'core' . ($index + 1);
+                                            ?>
+                                            <li>
+                                                <div class="core-tab <?php echo $is_active; ?>" data-tab="<?php echo esc_attr($core_id); ?>">
+                                                    <?php echo $item['svg_icon']; ?>
+                                                    <div class="mb-0 fw-bold"><?php echo nl2br($item['title']); ?></div>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+
+                                    </ul>
+                                    <!-- <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div> -->
+                                </div>
+                            <?php endif; ?>
+                            <!-- Nội dung -->
+                            <?php if (!empty($core_value_list_content_tap) && is_array($core_value_list_content_tap)): ?>
+                                <div class="core-content-wrap position-relative p-4 rounded">
+                                    <div class="highlight-bar" id="highlightBarCore"></div>
+                                    <?php foreach ($core_value_list_content_tap as $index => $item): ?>
+                                        <?php
+                                        $core_id = 'core' . ($index + 1);
+                                        $is_active = $index === 0 ? 'active' : 'd-none';
+                                        ?>
+                                        <div class="core-content <?php echo $is_active; ?>" id="<?php echo esc_attr($core_id); ?>">
+                                            <?php echo $item['content_detail']; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </section>
+
+                </div>
+
                 <div id="tam-nhin" class="section-block mb-5">
                     <section class="vision-section py-3">
                         <div class="container">
@@ -255,73 +315,12 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
                     </section>
 
                 </div>
-
-                <div id="gia-tri-cot-loi" class="section-block mb-5">
-                    <section class="core-values-section py-3">
-                        <div class="container">
-                            <h2 class="title"><?php echo $core_value_title ?></h2>
-                            <!-- missions -->
-                            <?php if (!empty($core_value_list_tap_core_value) && is_array($core_value_list_tap_core_value)): ?>
-                                <div class="row g-3 mb-4 justify-content-start">
-                                    <ul class="core-values-tab-list">
-                                        <?php foreach ($core_value_list_tap_core_value as $index => $item): ?>
-                                            <?php
-                                            $is_active = $index === 0 ? 'active' : '';
-                                            $core_id = 'core' . ($index + 1);
-                                            ?>
-                                            <li>
-                                                <div class="core-tab <?php echo $is_active; ?>" data-tab="<?php echo esc_attr($core_id); ?>">
-                                                    <?php echo $item['svg_icon']; ?>
-                                                    <div class="mb-0 fw-bold"><?php echo nl2br($item['title']); ?></div>
-                                                </div>
-                                            </li>
-                                        <?php endforeach; ?>
-
-                                    </ul>
-                                    <!-- <div class="col-md-2">
-
-                                    </div>
-                                    <div class="col-md-2">
-
-                                    </div>
-                                    <div class="col-md-2">
-
-                                    </div>
-                                    <div class="col-md-2">
-
-                                    </div>
-                                    <div class="col-md-2">
-
-                                    </div> -->
-                                </div>
-                            <?php endif; ?>
-                            <!-- Nội dung -->
-                            <?php if (!empty($core_value_list_content_tap) && is_array($core_value_list_content_tap)): ?>
-                                <div class="core-content-wrap position-relative p-4 rounded">
-                                    <div class="highlight-bar" id="highlightBarCore"></div>
-                                    <?php foreach ($core_value_list_content_tap as $index => $item): ?>
-                                        <?php
-                                        $core_id = 'core' . ($index + 1);
-                                        $is_active = $index === 0 ? 'active' : 'd-none';
-                                        ?>
-                                        <div class="core-content <?php echo $is_active; ?>" id="<?php echo esc_attr($core_id); ?>">
-                                            <?php echo $item['content_detail']; ?>
-                                        </div>
-                                    <?php endforeach; ?>
-
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    </section>
-
-                </div>
-
             </div>
         </div>
     </div>
 </section>
 
 
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom-about-us.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom-about-us.js?v=20250604"></script>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-about-us.css">
 <?php get_footer(); ?>

@@ -1,10 +1,21 @@
+.steel-tabs-section{
+  padding-top: 10px;
+  padding-bottom: 48px;
+}
+.steel-tabs-section .steel-tabs .tab-btn.active {
+  background-color: #f9a61c;
+}
+
+#tieuchuan-phanmem .design-list li .box-img {
+  background-color: transparent;
+}
 .box-product-info .content-box p {
   color: #fff;
 }
 .box-big-img {
   height: fit-content;
 }
-.design-list li p{
+.design-list li p {
   margin-bottom: 0;
 }
 .mo-hinh-desc {

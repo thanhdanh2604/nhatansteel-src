@@ -159,14 +159,14 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
   const sidebarLinks = document.querySelectorAll(".about-sidebar a");
   const sections = document.querySelectorAll(".section-block");
-  const headerOffset = 80;
+  const headerOffset = document.querySelector("nav")?.offsetHeight || 120;
 
   function isDesktop() {
     return window.innerWidth >= 992;
   }
 
-  function scrollWithOffset(el, offset = 80) {
-    const y = el.getBoundingClientRect().top + window.scrollY - offset;
+  function scrollWithOffset(el, headerOffset) {
+    const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
     window.scrollTo({ top: y, behavior: "smooth" });
   }
 
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute("href"));
       if (target) {
-        scrollWithOffset(target, headerOffset); // luôn scroll tới nội dung, kể cả trên mobile
+        scrollWithOffset(target, headerOffset); 
       }
 
       sidebarLinks.forEach((l) => l.classList.remove("active"));

@@ -1,4 +1,3 @@
-
 // js for tap active
 document.addEventListener("DOMContentLoaded", () => {
   // COMMON fade + highlight logic for tabs
@@ -67,62 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     tabSelector: ".core-tab",
     contentSelector: ".core-content",
     highlightId: "highlightBarCore",
-  });
-});
-// tap sidebar
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebarLinks = document.querySelectorAll(".about-sidebar a");
-  const sections = document.querySelectorAll(".section-block");
-  const headerOffset = document.querySelector("nav")?.offsetHeight || 100;
-
-  function isDesktop() {
-    return window.innerWidth >= 992;
-  }
-
-  function scrollWithOffset(el, headerOffset) {
-    const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  }
-
-  // Click menu
-  sidebarLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute("href"));
-      if (target) {
-        scrollWithOffset(target, headerOffset); // luôn scroll tới nội dung, kể cả trên mobile
-      }
-
-      sidebarLinks.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-    });
-  });
-
-  // Scroll highlight
-  window.addEventListener("scroll", () => {
-    const fromTop = window.scrollY + headerOffset + 1;
-
-    sections.forEach((section) => {
-      const id = section.getAttribute("id");
-      const link = document.querySelector(`.about-sidebar a[href="#${id}"]`);
-
-      if (
-        section.offsetTop <= fromTop &&
-        section.offsetTop + section.offsetHeight > fromTop
-      ) {
-        sidebarLinks.forEach((l) => l.classList.remove("active"));
-        if (link) {
-          link.classList.add("active");
-
-          if (isDesktop()) {
-            link.scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
-            });
-          }
-        }
-      }
-    });
   });
 });
 // timeline
