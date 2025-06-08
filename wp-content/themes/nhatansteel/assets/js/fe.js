@@ -456,12 +456,8 @@ function animateCounter(element, target, duration = 2000) {
   function updateCounter(timestamp) {
     if (!startTime) startTime = timestamp;
     const progress = timestamp - startTime;
-    const current = Math.min(
-      start + (progress / duration) * (target - start),
-      target
-    );
+    const current = Math.min(start + (progress / duration) * (target - start), target);
 
-    // Format with dots instead of commas and add "+"
     element.textContent = Math.floor(current)
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -473,7 +469,6 @@ function animateCounter(element, target, duration = 2000) {
 
   requestAnimationFrame(updateCounter);
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll(".count-number");
   counters.forEach((counter) => {
@@ -484,21 +479,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Trigger khi vào viewport
 function triggerCounters() {
-  const counters = document.querySelectorAll(".count-number");
+  const counters = document.querySelectorAll('.count-number');
   const options = {
-    threshold: 0.6,
+    threshold: 0.6
   };
 
   const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animateCounter(entry.target);
+        const rawTarget = entry.target.dataset.target?.replace(/[^\d]/g, '');
+        const target = parseInt(rawTarget, 10);
+
+        if (!isNaN(target)) {
+          animateCounter(entry.target, target);
+        }
+
         obs.unobserve(entry.target); // chỉ chạy 1 lần
       }
     });
   }, options);
 
-  counters.forEach((counter) => observer.observe(counter));
+  counters.forEach(counter => observer.observe(counter));
 }
 
 // Run after DOM loaded
