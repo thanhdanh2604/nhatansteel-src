@@ -1,0 +1,56 @@
+.navbar .nav-item:hover .nav-link{
+    color: #f5a623;
+    text-decoration: none;
+}
+.navbar{
+    background-color: #ffffffd9 !important;
+}
+.nav-item:hover,.nav_active{
+    color: #f5a623;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid white;
+    font-weight: 500;
+}
+.nav_active a{
+    color:#f5a623!important;
+}
+.nav-item a{
+    padding: 5px 10px;
+}
+.navbar {
+    text-transform: uppercase;
+}
+.menu-item{
+    border: 2px solid transparent;
+}
+span.logo{
+    color:#283678;
+    font-weight: 600;
+    padding-left:6px;
+}
+.link-brochure:hover,a.link-brochure{
+    color:#283678;
+    border: 1px solid white;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+.social-icon {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 148px;
+}
+footer hr{
+    width: 148px;
+}
+.contact-two-row p {
+    display: flex;
+    justify-content: center;
+    gap:11px;
+}
+.library-section{
+    background: rgb(255, 255, 255);
+    padding: 70px 0px 50px;
+}
