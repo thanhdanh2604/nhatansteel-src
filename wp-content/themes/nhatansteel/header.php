@@ -29,10 +29,10 @@
         <span class="logo" href="#"><?php echo the_field('company_name','option') ?></span>
       </div>
       <div class="col-6 d-flex justify-content-end align-items-center">
-        <a class="nav-link link-brochure ripple-btn" href="#" data-tooltip="Tải brochure">Brochure <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg" alt="icon download"> </a>
+        <a class="nav-link link-brochure ripple-btn" href="<?php echo esc_url( home_url( '/thu-vien' ) ); ?>" data-tooltip="Tải brochure">Brochure <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg" alt="icon download"> </a>
         <div class="social-icons">
-          <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-facebook.svg" alt="icon facebook" width="20"></a>
-          <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email.svg" alt="icon email" width="20"></a>
+          <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-facebook.svg" alt="icon facebook" width="20"></a>
+          <a href="mailto:<?php the_field('company_email','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email.svg" alt="icon email" width="20"></a>
           <a class="active" href="#">VIE</a>
           <a href="#">ENG</a>
         </div>

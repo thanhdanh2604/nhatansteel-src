@@ -25,3 +25,6 @@
     width:84px;
     height: 40px;
 }
+.product-item a{
+    text-decoration: none;
+}
