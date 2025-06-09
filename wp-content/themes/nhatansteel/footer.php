@@ -7,10 +7,9 @@
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/logo-footer.svg" alt="Nhat An Steel" class="mb-3" width="148">
           <hr style="">
           <div class="social-icon">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/FB icon.svg" alt="">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/Linkedin icon.svg" alt="">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/youtube 1.svg" alt="">
-
+            <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/FB icon.svg" alt=""></a>
+            <a href="<?php the_field('linkedin','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/Linkedin icon.svg" alt=""></a>
+            <a href="<?php the_field('youtube','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/youtube 1.svg" alt=""></a>
           </div>
         </div>
         <div class="col-12 col-md-5 mb-3">

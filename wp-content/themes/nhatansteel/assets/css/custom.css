@@ -54,3 +54,10 @@ footer hr{
     background: rgb(255, 255, 255);
     padding: 70px 0px 50px;
 }
+.lib-btn-download{
+    background-color: #283678;
+    color: #ffffff;
+}
+.link-view{
+    color:#283678;
+}
