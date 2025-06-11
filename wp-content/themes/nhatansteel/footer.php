@@ -5,7 +5,7 @@
       <div class="row align-items-start">
         <div class="col-12 col-md-3 mb-3 text-center text-md-start">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/logo-footer.svg" alt="Nhat An Steel" class="mb-3" width="148">
-          <hr style="">
+          <hr style="margin:10px">
           <div class="social-icon">
             <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/FB icon.svg" alt=""></a>
             <a href="<?php the_field('linkedin','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/Linkedin icon.svg" alt=""></a>

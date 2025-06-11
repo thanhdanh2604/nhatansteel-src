@@ -66,6 +66,7 @@
           )
       );
     ?>
+    <div class="nav-item"><a class="nav-link nav-link-search" href="#"><i class="i-search"></i></a></div>
     </div>
 </div>
   </div>
