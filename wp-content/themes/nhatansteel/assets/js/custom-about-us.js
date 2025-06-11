@@ -20,24 +20,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (initialTab) updateHighlight(initialTab);
 
     tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const target = tab.dataset.tab;
+      ["click", "mouseenter"].forEach((evt) => {
+        tab.addEventListener(evt, () => {
+          const target = tab.dataset.tab;
 
-        tabs.forEach((t) => t.classList.remove("active"));
-        tab.classList.add("active");
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
 
-        contents.forEach((c) => {
-          c.classList.remove("active");
-          c.classList.add("d-none");
+          contents.forEach((c) => {
+            c.classList.remove("active");
+            c.classList.add("d-none");
+          });
+
+          const targetContent = document.getElementById(target);
+          if (targetContent) {
+            targetContent.classList.remove("d-none");
+            setTimeout(() => targetContent.classList.add("active"), 10);
+          }
+
+          updateHighlight(tab);
         });
-
-        const targetContent = document.getElementById(target);
-        if (targetContent) {
-          targetContent.classList.remove("d-none");
-          setTimeout(() => targetContent.classList.add("active"), 10);
-        }
-
-        updateHighlight(tab);
       });
     });
 
