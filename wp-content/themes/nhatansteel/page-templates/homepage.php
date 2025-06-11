@@ -253,7 +253,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
     <section class="project-section">
         <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-            <h2 class="title mb-0">Dự án tiêu biểu</h2>
+            <h2 class="title mb-0">Dự án thực hiện</h2>
             <a href="/du-an" class="btn-xemtatca fw-medium text-decoration-none">Xem tất cả
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-all.svg" alt="Xem tất cả" width="16">
             </a>
