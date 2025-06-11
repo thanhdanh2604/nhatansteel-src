@@ -205,7 +205,7 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                             <?php if (!empty($list_content_tap) && is_array($list_content_tap)): ?>
                                                 <div class="tab-content-area">
                                                     <?php foreach ($list_content_tap as $index => $content): ?>
-                                                        <div class="tab-pane <?php echo $index === 0 ? 'active' : 'd-none'; ?>" id="tab<?php echo $index + 1; ?>">
+                                                        <div class="tab-content-detail <?php echo $index === 0 ? 'active' : 'd-none'; ?>" id="tab<?php echo $index + 1; ?>">
                                                             <ul class="list-products">
                                                                 <?php foreach ($content['list_products'] ?? [] as $item): ?>
                                                                     <li>
