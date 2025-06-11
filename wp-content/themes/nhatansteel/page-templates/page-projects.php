@@ -10,9 +10,10 @@ get_header();
 <?php
 // Banner image
 $image_url_banner = get_field('projects_page_banner');
+$default_image_url = get_stylesheet_directory_uri() . '/assets/images/duan01.jpg';
 $image_url = !empty($image_url_banner) && isset($image_url_banner['url'])
     ? esc_url($image_url_banner['url'])
-    : get_stylesheet_directory_uri() . '/assets/images/banner-gioithieu.jpg';
+    : $default_image_url;
 
 // Title
 $projects_page_title = get_field('projects_page_title') ?? '';
@@ -22,8 +23,11 @@ $projects_page_desc = get_field('projects_page_desc') ?? '';
 $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào'
     ?>
 
-<section class="about-banner" style="
-  background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0))<?php if ($image_url): ?>, url('<?php echo $image_url; ?>')<?php endif; ?>;
+<section class="about-banner project-banner" style="
+    background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0)), url('<?php echo $image_url; ?>');
+    background-position: center center<?php if ($image_url === $default_image_url): ?>, center -62rem<?php else: ?>, center center<?php endif; ?>;
+    background-repeat: no-repeat;
+    background-size: cover;
 ">
     <div class="container">
         <div class="banner-text">
