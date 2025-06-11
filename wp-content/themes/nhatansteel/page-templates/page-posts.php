@@ -12,7 +12,7 @@ get_header();
 $image_url_banner = get_field('banner_image');
 $image_url = !empty($image_url_banner) && isset($image_url_banner['url'])
   ? esc_url($image_url_banner['url'])
-  : get_stylesheet_directory_uri() . '/assets/images/banner-gioithieu.jpg';
+  : get_stylesheet_directory_uri() . '/assets/images/tintuc01.jpg';
 
 // Title
 $news_title = get_field('news_title') ?? '';
@@ -45,7 +45,9 @@ if (empty($_GET['cat']) && !empty($categories)) {
 ?>
 
 <section class="about-banner" style="
-  background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0))<?php if ($image_url): ?>, url('<?php echo $image_url; ?>')<?php endif; ?>;
+    background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0))<?php if ($image_url): ?>, url('<?php echo $image_url; ?>')<?php endif; ?>;
+    background-repeat: no-repeat;
+    background-size: cover;
 ">
   <div class="container">
     <div class="banner-text">
