@@ -67,7 +67,7 @@ get_header();
                     <div class="p-4 rounded-3 bg-light h-100 d-flex align-items-center gap-5">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Brochure/thumb branding guidelines.jpg" class="img-fluid rounded mb-3" alt="Brochure Tiếng Việt">
                         <div class="">
-                            <h6 class="fw-bold mb-3">BRAND GUIDELINES(TIẾNG VIỆT)</h6>
+                            <h6 class="fw-bold mb-3">BRAND GUIDELINES (TIẾNG VIỆT)</h6>
                             <div class="d-flex justify-content-center align-items-center gap-3">
                                 <a download href="<?php echo get_field('brand_guidelines') ?>" class="btn btn-primary fw-bold px-4 lib-btn-download ">Download</a>
                                 <a target="__blank" href="<?php echo get_field('brand_guidelines') ?>" class="text-decoration-none fw-medium link-view">

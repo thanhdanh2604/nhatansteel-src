@@ -11,7 +11,7 @@ get_header();
 $image_url_banner = get_field('projects_page_banner');
 $image_url = !empty($image_url_banner) && isset($image_url_banner['url'])
     ? esc_url($image_url_banner['url'])
-    : get_stylesheet_directory_uri() . '/assets/images/banner-gioithieu.jpg';
+    : get_stylesheet_directory_uri() . '/assets/images/banner-project.jpg';
 
 // Title
 $projects_page_title = get_field('projects_page_title') ?? '';

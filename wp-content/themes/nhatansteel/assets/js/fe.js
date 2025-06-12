@@ -382,6 +382,7 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapAround: true,
     pageDots: false,
     imagesLoaded: true,
+    autoPlay: true,
   });
 
   // Khởi tạo LightGallery

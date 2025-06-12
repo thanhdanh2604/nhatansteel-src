@@ -40,7 +40,7 @@ get_header();
                         <!-- Trụ sở chính -->
                         <div class="col-md-6">
                             <div class="head-office">
-                                <h6>Trụ sở chính</h6>
+                                <h6>TRỤ SỞ CHÍNH</h6>
                                 <div class="map"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="map" class="img-fluid rounded w-100"></div>
                                 <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> <?php the_field('company_address','option')?></p>
                                 <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:<?php the_field('company_phone','option')?>"><?php the_field('company_phone','option')?></a></p>
@@ -51,7 +51,7 @@ get_header();
                         <!-- Nhà máy -->
                         <div class="col-md-6">
                             <div class="head-office">
-                                <h6>Our Factory</h6>
+                                <h6>NHÀ MÁY</h6>
                                 <div class="map"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="map" class="img-fluid rounded w-100"></div>
                                 <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> <?php the_field('factory_address','option')?></p>
                                 <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:<?php the_field('factory_phone','option')?>"><?php the_field('factory_phone','option')?></a></p>
