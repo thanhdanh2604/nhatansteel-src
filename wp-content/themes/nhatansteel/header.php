@@ -24,17 +24,19 @@
 <div class="top-bar">
   <div class="container">
     <div class="row">
-      <div class="col-6 d-flex align-items-center">
+      <div class="col-6 d-flex align-items-center text-uppercase">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="icon building">
-        <span class="logo" href="#"><?php echo the_field('company_name','option') ?></span>
+        <span class="logo" href="#" style="padding-top: 3px;font-weight: 700;"><?php echo the_field('company_name','option') ?></span>
       </div>
       <div class="col-6 d-flex justify-content-end align-items-center">
         <a class="nav-link link-brochure ripple-btn" href="<?php echo esc_url( home_url( '/thu-vien' ) ); ?>" data-tooltip="Tải brochure">Brochure <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg" alt="icon download"> </a>
         <div class="social-icons">
           <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-facebook.svg" alt="icon facebook" width="20"></a>
           <a href="mailto:<?php the_field('company_email','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email.svg" alt="icon email" width="20"></a>
-          <a class="active" href="#">VIE</a>
-          <a href="#">ENG</a>
+          <div class="language-selector"> 
+            <a class="active" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/flag/vn.jpg" alt="vietnam flag"></a>
+            <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/flag/en.jpg" alt="English flag"></a>
+          </div>
         </div>
       </div>
     </div>
@@ -66,6 +68,7 @@
           )
       );
     ?>
+    <div class="nav-item"><a class="nav-link nav-link-search" href="#"><i class="i-search"></i></a></div>
     </div>
 </div>
   </div>
