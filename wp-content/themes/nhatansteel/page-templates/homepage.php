@@ -266,20 +266,21 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                 $project_image = get_the_post_thumbnail_url($project->ID, 'full');
                 $project_title = get_the_title($project->ID);
                 $project_investor = get_field('investor', $project->ID);
-                $project_area = get_field('area', $project->ID);
+                $project_steel = get_field('steel_tonnage', $project->ID);
                 $project_location = get_field('location', $project->ID); ?>
-            <div class="col-xl-4 col-md-6">
+            <div class="col-xl-4 col-md-6 mt-0">
             <div class="project-card">
                 <div class="project-card-img">
                     <a href="<?php echo get_permalink($project->ID); ?>" class="project-title"><img src="<?php echo $project_image; ?>" class="img-fluid" alt="Dự án"></a>
                 </div>
                 <a href="<?php echo get_permalink($project->ID); ?>" class="project-title">
-                    <strong><?php echo $project_title ?></strong>
+                    <strong><?php
+                    echo wp_trim_words($project_title, 8, '...'); ?></strong>
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow-right" class="img-fluid" width="22">
                 </a>
                 <ul class="project-info ps-0 mb-0">
                     <li><strong>Chủ đầu tư:</strong> <?php echo $project_investor ?></li>
-                    <li><strong>Diện tích:</strong> <?php echo $project_area ?></li>
+                    <li><strong>Khối lượng:</strong> <?php echo $project_steel ?></li>
                     <li><strong>Địa điểm:</strong> <?php echo $project_location ?></li>
                 </ul>
             </div>
@@ -298,7 +299,6 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                 <?php
                 foreach ($customers_partners as $customer_partner) {
                 ?>
-                
                     <div class="carousel-cell">
                     <a href="#"><img class="img-fluid" src="<?php echo $customer_partner['url'];?>" alt="đối tác"></a>
                 </div>

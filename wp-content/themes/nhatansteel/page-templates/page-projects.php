@@ -10,7 +10,7 @@ get_header();
 <?php
 // Banner image
 $image_url_banner = get_field('projects_page_banner');
-$default_image_url = get_stylesheet_directory_uri() . '/assets/images/duan01.jpg';
+$default_image_url = get_stylesheet_directory_uri() . '/assets/images/banner-project.jpg';
 $image_url = !empty($image_url_banner) && isset($image_url_banner['url'])
     ? esc_url($image_url_banner['url'])
     : $default_image_url;
