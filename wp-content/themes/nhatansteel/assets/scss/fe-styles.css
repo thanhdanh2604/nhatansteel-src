@@ -549,9 +549,9 @@ section {
   font-size: 48px;
   font-weight: 700;
   color: #f5a623;
-  letter-spacing: -2px;
+  /* letter-spacing: -2px; */
   border-top: 1px solid #eee;
-  padding-top: 30px;
+  padding-top: 21px;
 }
 .about-section .stats-row p {
   font-size: 32px;
