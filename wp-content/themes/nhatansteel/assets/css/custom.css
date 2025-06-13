@@ -86,3 +86,8 @@ footer hr{
     width: fit-content;
     /* Hoặc dùng width: 60%; để border ngắn hơn nữa */
 }
+
+.customers-partners-section .flickity-prev-next-button .flickity-button-icon {
+    left: 0;
+    top: 0;
+}

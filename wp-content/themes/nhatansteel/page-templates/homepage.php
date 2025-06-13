@@ -25,7 +25,11 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
 ?>
 <div class="homepage">
     <section class="section-banner">
-        <div class="carousel" data-flickity>
+        <div class="carousel" data-flickity='{
+                "autoPlay": 5000,
+                "wrapAround": true,
+                "pauseAutoPlayOnHover": true
+            }'>
             <?php
                 foreach ($banners as $banner){ 
                 $image_src = $banner['image'];
@@ -69,18 +73,18 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
         </div>
 
         <div class="row text-center mt-5 stats-row">
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
             <img src="<?php echo get_field('about_image_number_project') ?>" alt="Dự án" class="mb-4" style="height: 120px;">
             <h4><span class="count-number" data-target="<?php echo get_field('about_number_project') ?>">0</span>+</h4>
             <p class="mb-0"><?php echo get_field('about_title_number_projects') ?></p>
             </div>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4">
             <img src="<?php echo get_field('about_image_steel_output_number') ?>" alt="Sản lượng" class="mb-4" style="height: 120px;">
             <h4><span class="count-number" data-target="<?php echo get_field('about_number_output_steel') ?>">0</span>+</h4>
             <p class="mb-0"><?php echo get_field('about_image_title_output_steel_number') ?></p>
             </div>
-            <div class="col-md-4 mb-4">
-            <img src="<?php echo get_field('about_image_number_customer') ?>" alt="Khách hàng" class="mb-4" style="height: 120px;">
+            <div class="col-md-4">
+            <img src="<?php echo get_field('about_image_number_customer') ?>" alt="Khách hàng" class="" style="height: 120px;margin-bottom:28px;">
             <h4><span class="count-number" data-target="<?php echo get_field('about_number_of_customer') ?>">0</span>+</h4>
             <p class="mb-0"><?php echo get_field('about_title_number_customer') ?></p>
             </div>
@@ -295,7 +299,13 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
         <div class="row">
             <div class="col-12">
             <h2 class="title">Khách hàng & Đối tác</h2>
-            <div class="carousel" data-flickity='{ "groupCells": true, "pageDots": false }'>
+            <div class="carousel" data-flickity='{
+                    "groupCells": true, 
+                    "pageDots": false,
+                    "autoPlay": 3000,
+                    "wrapAround": true,
+                    "pauseAutoPlayOnHover": true
+                }'>
                 <?php
                 foreach ($customers_partners as $customer_partner) {
                 ?>
