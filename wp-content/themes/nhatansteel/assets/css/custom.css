@@ -89,3 +89,7 @@ footer hr{
 .banner-text h1{
     text-transform: uppercase;
 }
+.customers-partners-section .flickity-prev-next-button .flickity-button-icon {
+    left: 0;
+    top: 0;
+}
