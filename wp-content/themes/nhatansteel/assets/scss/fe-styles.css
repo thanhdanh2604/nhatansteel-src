@@ -1048,7 +1048,7 @@ section {
 .contact-section .social-follow span {
   color: #0b2c6b;
   display: inline-block;
-  border-right: 1px solid #0b2c6b;
+  /* border-right: 1px solid #0b2c6b; */
   padding-right: 5px;
 }
 .contact-section .social-follow a {

@@ -86,7 +86,9 @@ footer hr{
     width: fit-content;
     /* Hoặc dùng width: 60%; để border ngắn hơn nữa */
 }
-
+.banner-text h1{
+    text-transform: uppercase;
+}
 .customers-partners-section .flickity-prev-next-button .flickity-button-icon {
     left: 0;
     top: 0;
