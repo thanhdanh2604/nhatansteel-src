@@ -42,8 +42,8 @@ get_header();
                             <div class="head-office">
                                 <h6>TRỤ SỞ CHÍNH</h6>
                                 <div class="map"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="map" class="img-fluid rounded w-100"></div>
-                                <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> <?php the_field('company_address','option')?></p>
-                                <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:<?php the_field('company_phone','option')?>"><?php the_field('company_phone','option')?></a></p>
+                                <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> 285/18A Trịnh Đình Trọng, Phường Hòa Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh</p>
+                                <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:<?php the_field('company_phone','option')?>">(028) 39733385</a></p>
                                 <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email-2.svg" alt="email" class="img-fluid" width="24"> <a href="mailto:<?php the_field('company_email','option')?>"><?php the_field('company_email','option')?></a></p>
                             </div>
                         </div>
@@ -53,17 +53,17 @@ get_header();
                             <div class="head-office">
                                 <h6>NHÀ MÁY</h6>
                                 <div class="map"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="map" class="img-fluid rounded w-100"></div>
-                                <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> <?php the_field('factory_address','option')?></p>
-                                <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:<?php the_field('factory_phone','option')?>"><?php the_field('factory_phone','option')?></a></p>
+                                <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> Lô 1, Đường số 7A, KCN Nhơn Trạch, Huyện Nhơn Trạch, Tỉnh Đồng Nai</p>
+                                <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:+842513569138">(02513) 569138</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="social-follow mt-4 gap-3">
-                        <span>Theo dõi chúng tôi trên mạng xã hội</span>
+                        <span class="fw-bold">Liên hệ nhanh với chúng tôi qua:</span>
                         <div class="d-flex gap-2">
-                            <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-fb.svg" alt="facebook" class="img-fluid" width="32"></a>
-                            <a href="<?php the_field('linkedin','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-in.svg" alt="In" class="img-fluid" width="32"></a>
-                            <a href="<?php the_field('youtube','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-ytb.svg" alt="youtube" class="img-fluid" width="32"></a>
+                            <a href="https://zalo.me/0937102070"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/zalo 1.svg" alt="Zalo" class="img-fluid" width="32"></a>
+                            <a href="https://wa.me/0937102070"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/whatsapp-black-logo-on-transparent-background-free-vector 1.svg" alt="Whatsapp" class="img-fluid" width="32"></a>
+                            <a href="viber://contact?number=%2B84937102070"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/viber.svg" alt="viber" class="img-fluid" width="32"></a>
                         </div>
                     </div>
                 </div>

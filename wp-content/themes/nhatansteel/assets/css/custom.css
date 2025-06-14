@@ -86,3 +86,6 @@ footer hr{
     width: fit-content;
     /* Hoặc dùng width: 60%; để border ngắn hơn nữa */
 }
+.banner-text h1{
+    text-transform: uppercase;
+}
