@@ -33,3 +33,5 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+error_log
+wp-admin/error_log

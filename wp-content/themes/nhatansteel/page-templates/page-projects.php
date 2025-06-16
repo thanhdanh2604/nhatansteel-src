@@ -25,7 +25,6 @@ $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào
 
 <section class="about-banner project-banner" style="
     background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0)), url('<?php echo $image_url; ?>');
-    background-position: center center<?php if ($image_url === $default_image_url): ?>, center -62rem<?php else: ?>, center center<?php endif; ?>;
     background-repeat: no-repeat;
     background-size: cover;
 ">

@@ -93,3 +93,6 @@ footer hr{
     left: 0;
     top: 0;
 }
+.banner-text h1{
+	text-transform:uppercase;
+}
