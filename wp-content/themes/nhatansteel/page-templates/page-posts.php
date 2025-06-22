@@ -8,6 +8,9 @@ get_header();
 ?>
 
 <?php
+// Current language
+$current_lang = function_exists('pll_current_language') ? pll_current_language() : 'vi';
+
 // Banner image
 $image_url_banner = get_field('banner_image');
 $image_url = !empty($image_url_banner) && isset($image_url_banner['url'])
@@ -16,10 +19,6 @@ $image_url = !empty($image_url_banner) && isset($image_url_banner['url'])
 
 // Title
 $news_title = get_field('news_title') ?? '';
-
-// Posts configurations
-$see_more_button_content = get_field('see_more_button_content') ?? "Xem thêm";
-$no_post_found = get_field('no_post_found') ?? "Không có bài viết nào";
 
 // Categories and category auto-navigation
 $default_cat_id = get_option('default_category');
@@ -32,7 +31,20 @@ $categories = get_categories(array(
 ));
 
 // Get the first category's slug or use 'uncategorized' as default
-$first_category_slug = !empty($categories) ? $categories[0]->slug : 'uncategorized';
+$first_category_slug = 'uncategorized';
+foreach ($categories as $category) {
+    $posts = get_posts(array(
+        'post_type' => 'post',
+        'posts_per_page' => 1,
+        'category' => $category->term_id,
+        'post_status' => 'publish',
+    ));
+
+    if (!empty($posts)) {
+        $first_category_slug = $category->slug;
+        break;
+    }
+}
 
 // Check if the 'cat' parameter is in the URL, otherwise default to the first category
 $category_slug = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : $first_category_slug;
@@ -41,6 +53,17 @@ $category_slug = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : $firs
 if (empty($_GET['cat']) && !empty($categories)) {
   wp_redirect(add_query_arg('cat', $first_category_slug, get_permalink()));
   exit;
+}
+
+// Dynamic contents
+if ( $current_lang === 'en' ) {
+    $front_page_title = "Home";
+    $see_more_button_content = "See more";
+    $no_post_found = "No posts found.";
+} else {
+    $front_page_title = "Trang chủ";
+    $see_more_button_content = "Xem thêm";
+    $no_post_found = "Không có bài viết nào.";
 }
 ?>
 
@@ -53,7 +76,7 @@ if (empty($_GET['cat']) && !empty($categories)) {
     <div class="banner-text">
       <h1><?php echo esc_html(get_the_title()); ?></h1>
       <p class="breadcrumb-text mb-0">
-        <a href="<?php echo home_url(); ?>">Trang chủ</a> / <?php echo esc_html(get_the_title()); ?>
+        <a href="<?php echo home_url(); ?>"><?php echo $front_page_title ?></a> / <?php echo esc_html(get_the_title()); ?>
       </p>
     </div>
   </div>
