@@ -115,3 +115,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// change breadcrumb
+document.addEventListener("DOMContentLoaded", function () {
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const breadcrumbText = document.querySelector(".breadcrumb-dynamic");
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        if (breadcrumbText) {
+          breadcrumbText.textContent = this.textContent;
+        }
+      });
+    });
+  });
