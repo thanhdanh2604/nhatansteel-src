@@ -5,7 +5,7 @@ if (!function_exists('render_custom_pagination')) {
         $total_pages = $query->max_num_pages;
 
         if ($total_pages <= 1) {
-            return; // Không cần hiển thị nếu chỉ có 1 trang
+            return;
         }
 
         $paginate_links = paginate_links([

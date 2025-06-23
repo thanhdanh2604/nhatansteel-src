@@ -11,6 +11,10 @@
   background-color: white;
 }
 
+.project-search-input::placeholder {
+  color: #283678 !important;
+}
+
 .select-selected:after {
   position: absolute;
   content: "";

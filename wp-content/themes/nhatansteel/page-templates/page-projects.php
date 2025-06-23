@@ -8,6 +8,9 @@ get_header();
 ?>
 
 <?php
+// Current language
+$current_lang = function_exists('pll_current_language') ? pll_current_language() : 'vi';
+
 // Banner image
 $image_url_banner = get_field('projects_page_banner');
 $default_image_url = get_stylesheet_directory_uri() . '/assets/images/banner-project.jpg';
@@ -20,8 +23,32 @@ $projects_page_title = get_field('projects_page_title') ?? '';
 
 // Posts configurations
 $projects_page_desc = get_field('projects_page_desc') ?? '';
-$no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào'
-    ?>
+
+// Dynamic contents
+$front_page_id = get_option('page_on_front');
+if (function_exists('pll_get_post')) {
+    $front_page_id = pll_get_post($front_page_id, $current_lang);
+}
+$front_page_title = $front_page_id ? get_the_title($front_page_id) : '';
+
+$no_projects_found = "Không có dự án nào.";
+$all_projects = "Tất cả danh mục";
+$projects_name = "Tên dự án";
+$search_btn = "Tìm kiếm";
+$lb_investor = "Chủ đầu tư";
+$lb_tonnage = "Khối lượng";
+$lb_location = "Địa điểm";
+if ($current_lang === 'en') {
+    $no_projects_found = "No projects found.";
+    $all_projects = "All projects";
+    $projects_name = "Project's name";
+    $search_btn = "Search";
+    $lb_investor = "Investor";
+    $lb_tonnage = "Tonnage";
+    $lb_location = "Location";
+}
+
+?>
 
 <section class="about-banner project-banner" style="
     background-image: linear-gradient(to top, rgba(0, 32, 96, 0.9), rgba(0, 0, 0, 0)), url('<?php echo $image_url; ?>');
@@ -32,7 +59,8 @@ $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào
         <div class="banner-text">
             <h1><?php echo esc_html(get_the_title()); ?></h1>
             <p class="breadcrumb-text mb-0">
-                <a href="<?php echo home_url(); ?>">Trang chủ</a> / <?php echo esc_html(get_the_title()); ?>
+                <a href="<?php echo home_url(); ?>"><?php echo $front_page_title; ?></a> /
+                <?php echo esc_html(get_the_title()); ?>
             </p>
         </div>
     </div>
@@ -60,7 +88,7 @@ $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào
             <div class="form-group">
                 <div class="custom-select">
                     <select name="project_category">
-                        <option value="" selected>Tất cả danh mục</option>
+                        <option value="" selected><?php echo $all_projects; ?></option>
                         <?php
                         $terms = get_terms(array(
                             'taxonomy' => 'project_category',
@@ -77,7 +105,7 @@ $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào
 
             <!-- Tên dự án -->
             <div class="form-group search-group position-relative">
-                <input type="text" class="form-control" name="search_term" placeholder="Tên dự án"
+                <input type="text" class="form-control project-search-input" name="search_term" placeholder="<?php echo $projects_name; ?>"
                     value="<?php echo isset($_GET['search_term']) ? esc_attr($_GET['search_term']) : ''; ?>">
                 <span class="search-icon">
                     <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icons/i-search.svg' ?>"
@@ -86,7 +114,7 @@ $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào
             </div>
 
             <!-- Nút tìm kiếm -->
-            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            <button type="submit" class="btn btn-primary"><?php echo $search_btn; ?></button>
         </form>
     </div>
 </section>
@@ -151,13 +179,13 @@ $no_projects_found = get_field('no_projects_found') ?? 'Không có dự án nào
                             </h5>
                             <ul class="project-meta list-unstyled mb-0">
                                 <?php if ($investor): ?>
-                                    <li><strong>Chủ đầu tư:</strong> <?php echo esc_html($investor); ?></li>
+                                    <li><strong><?php echo $lb_investor; ?>:</strong> <?php echo esc_html($investor); ?></li>
                                 <?php endif; ?>
                                 <?php if ($steel_tonnage): ?>
-                                    <li><strong>Khối lượng:</strong> <?php echo esc_html($steel_tonnage); ?></li>
+                                    <li><strong><?php echo $lb_tonnage; ?>:</strong> <?php echo esc_html($steel_tonnage); ?></li>
                                 <?php endif; ?>
                                 <?php if ($location): ?>
-                                    <li><strong>Địa điểm:</strong> <?php echo esc_html($location); ?></li>
+                                    <li><strong><?php echo $lb_location; ?>:</strong> <?php echo esc_html($location); ?></li>
                                 <?php endif; ?>
                             </ul>
                         </div>
