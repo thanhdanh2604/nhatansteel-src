@@ -56,14 +56,17 @@ if (empty($_GET['cat']) && !empty($categories)) {
 }
 
 // Dynamic contents
+$front_page_id = get_option('page_on_front');
+if (function_exists('pll_get_post')) {
+    $front_page_id = pll_get_post($front_page_id, $current_lang);
+}
+$front_page_title = $front_page_id ? get_the_title($front_page_id) : '';
+
+$see_more_button_content = "Xem thêm";
+$no_post_found = "Không có bài viết nào.";
 if ( $current_lang === 'en' ) {
-    $front_page_title = "Home";
     $see_more_button_content = "See more";
     $no_post_found = "No posts found.";
-} else {
-    $front_page_title = "Trang chủ";
-    $see_more_button_content = "Xem thêm";
-    $no_post_found = "Không có bài viết nào.";
 }
 ?>
 

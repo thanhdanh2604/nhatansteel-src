@@ -7,6 +7,9 @@ get_header();
 ?>
 
 <?php
+// Current language
+$current_lang = function_exists('pll_current_language') ? pll_current_language() : 'vi';
+
 $project_slug = get_query_var('project');
 $project = get_page_by_path($project_slug, OBJECT, 'project');
 
@@ -29,15 +32,41 @@ if ($project && isset($project->ID)) {
 }
 $base_projects_url = get_page_permalink_by_template('page-projects.php');
 $link = !empty($category_slug) ? $base_projects_url . '?project_category=' . $category_slug : $base_projects_url;
+
+// Dynamic contents
+$front_page_id = get_option('page_on_front');
+if (function_exists('pll_get_post')) {
+    $front_page_id = pll_get_post($front_page_id, $current_lang);
+}
+$front_page_title = $front_page_id ? get_the_title($front_page_id) : '';
+
+$page_title = "Dự án";
+$lb_investor = "Chủ đầu tư";
+$lb_tonnage = "Khối lượng";
+$lb_location = "Địa điểm";
+$lb_industry = "Ngành nghề";
+$lb_related_projects = "Dự án liên quan";
+$btn_see_all = "Xem tất cả";
+if ($current_lang === 'en') {
+    $page_title = "Projects";
+    $lb_investor = "Investor";
+    $lb_tonnage = "Tonnage";
+    $lb_location = "Location";
+    $lb_industry = "Industry";
+    $lb_related_projects = "Related projects";
+    $btn_see_all = "See all";
+}
 ?>
 
 <section class="about-banner">
     <div class="container">
         <div class="banner-text">
-            <h1>Dự án</h1>
+            <h1><?php echo $page_title ?></h1>
             <p class="breadcrumb-text mb-0">
-                <a href="<?php echo home_url(); ?>">Trang chủ</a> /
-                <a href="<?php echo get_page_permalink_by_template('page-projects.php'); ?>">Dự án</a> /
+                <a href="<?php echo home_url(); ?>"><?php echo $front_page_title; ?></a> /
+                <a href="<?php echo get_page_permalink_by_template('page-projects.php'); ?>">
+                    <?php echo get_page_title_by_template('page-projects.php'); ?>
+                </a> /
                 <a href="<?php echo get_permalink($project->ID); ?>"><?php echo $title; ?></a>
             </p>
         </div>
@@ -51,10 +80,10 @@ $link = !empty($category_slug) ? $base_projects_url . '?project_category=' . $ca
             <!-- Left: Info -->
             <div class="col-12 col-md-4">
                 <ul class="list-unstyled project-info">
-                    <li><strong>Chủ đầu tư:</strong> <?php echo esc_html($investor) ?></li>
-                    <li><strong>Địa điểm:</strong> <?php echo esc_html($location) ?></li>
-                    <li><strong>Khối lượng:</strong> <?php echo esc_html($steel_tonnage) ?></li>
-                    <li><strong>Ngành nghề:</strong> <?php echo esc_html($industry) ?></li>
+                    <li><strong><?php echo $lb_investor ?>:</strong> <?php echo esc_html($investor) ?></li>
+                    <li><strong><?php echo $lb_location ?>:</strong> <?php echo esc_html($location) ?></li>
+                    <li><strong><?php echo $lb_tonnage ?>:</strong> <?php echo esc_html($steel_tonnage) ?></li>
+                    <li><strong><?php echo $lb_industry ?>:</strong> <?php echo esc_html($industry) ?></li>
                     <li><strong>FDI/DDI:</strong> <?php echo esc_html($fdi_ddi) ?></li>
                 </ul>
             </div>
@@ -109,9 +138,9 @@ $link = !empty($category_slug) ? $base_projects_url . '?project_category=' . $ca
 <section class="project-detail-section py-5">
     <div class="container">
         <div class="d-flex mb-4 align-items-center">
-            <h2 class="title mb-0">Dự án liên quan</h2>
+            <h2 class="title mb-0"><?php echo $lb_related_projects ?></h2>
             <a href="<?php echo esc_url($link); ?>" class="btn btn-xemtatca ms-auto">
-                Xem tất cả
+                <?php echo $btn_see_all ?>
                 <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/icons/i-arrow-right-blue.svg'); ?>"
                     alt="22">
             </a>
@@ -168,13 +197,13 @@ $link = !empty($category_slug) ? $base_projects_url . '?project_category=' . $ca
                                 </h5>
                                 <ul class="project-meta list-unstyled mb-0">
                                     <?php if ($investor): ?>
-                                        <li><strong>Chủ đầu tư:</strong> <?php echo esc_html($investor); ?></li>
+                                        <li><strong><?php echo $lb_investor; ?>:</strong> <?php echo esc_html($investor); ?></li>
                                     <?php endif; ?>
                                     <?php if ($steel_tonnage): ?>
-                                        <li><strong>Khối lượng:</strong> <?php echo esc_html($steel_tonnage); ?></li>
+                                        <li><strong><?php echo $lb_tonnage; ?>:</strong> <?php echo esc_html($steel_tonnage); ?></li>
                                     <?php endif; ?>
                                     <?php if ($location): ?>
-                                        <li><strong>Địa điểm:</strong> <?php echo esc_html($location); ?></li>
+                                        <li><strong><?php echo $lb_location; ?>:</strong> <?php echo esc_html($location); ?></li>
                                     <?php endif; ?>
                                 </ul>
                             </div>
@@ -183,7 +212,11 @@ $link = !empty($category_slug) ? $base_projects_url . '?project_category=' . $ca
                     endwhile;
                     wp_reset_postdata();
                 else:
-                    echo '<li>Không có dự án liên quan.</li>';
+                    if ($current_lang === 'en') {
+                        echo '<li>No related project.</li>';
+                    } else {
+                        echo '<li>Không có dự án liên quan.</li>';
+                    }
                 endif;
                 ?>
             </ul>
