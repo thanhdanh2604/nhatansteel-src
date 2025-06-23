@@ -87,8 +87,16 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
         <div class="banner-text">
             <h1><?php echo esc_html(get_the_title()); ?></h1>
             <p class="breadcrumb-text mb-0">
-                <a href="<?php echo home_url(); ?>">Trang chủ</a> / <a href="<?php echo esc_url(get_permalink()); ?>"><?php echo esc_html(get_the_title()); ?></a> / <a href="#">Sản phẩm</a>
+                <?php
+                $front_page_id = get_option('page_on_front');
+                $front_page_url = get_permalink($front_page_id);
+                $front_page_title = get_the_title($front_page_id);
+                ?>
+                <a href="<?php echo esc_url($front_page_url); ?>"><?php echo esc_html($front_page_title); ?></a> /
+                <a href="<?php echo esc_url(get_permalink()); ?>"><?php echo esc_html(get_the_title()); ?></a> /
+                <span class="breadcrumb-dynamic"><?php echo $title_tap_sp; ?></span>
             </p>
+
         </div>
     </div>
 </section>
