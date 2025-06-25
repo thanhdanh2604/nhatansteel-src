@@ -30,3 +30,9 @@
 .custom-nav-btn:focus {
   outline: none;
 }
+
+#thumbnailGallery {
+  max-width: 676px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
