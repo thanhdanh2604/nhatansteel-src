@@ -90,10 +90,38 @@ if ($current_lang === 'en') {
                     <select name="project_category">
                         <option value="" selected><?php echo $all_projects; ?></option>
                         <?php
+                        $priority_slugs_map = [
+                            'vi' => ['du-an-tieu-bieu', 'du-an-nhieu-giai-doan', 'du-an-khac'],
+                            'en' => ['typical-projects', 'multi-phase-projects', 'other-projects'],
+                        ];
+
+                        $priority_slugs = $priority_slugs_map[$current_lang] ?? [];
+
                         $terms = get_terms(array(
                             'taxonomy' => 'project_category',
                             'hide_empty' => false,
                         ));
+
+                        $priority_terms = [];
+                        $other_terms = [];
+
+                        foreach ($terms as $term) {
+                            if (in_array($term->slug, $priority_slugs)) {
+                                $priority_terms[$term->slug] = $term;
+                            } else {
+                                $other_terms[] = $term;
+                            }
+                        }
+
+                        $sorted_terms = [];
+                        foreach ($priority_slugs as $slug) {
+                            if (isset($priority_terms[$slug])) {
+                                $sorted_terms[] = $priority_terms[$slug];
+                            }
+                        }
+
+                        $terms = array_merge($sorted_terms, $other_terms);
+
                         foreach ($terms as $term) {
                             $selected = (isset($_GET['project_category']) && $_GET['project_category'] == $term->slug) ? 'selected' : '';
                             echo "<option value='{$term->slug}' {$selected}>{$term->name}</option>";
@@ -105,7 +133,8 @@ if ($current_lang === 'en') {
 
             <!-- Tên dự án -->
             <div class="form-group search-group position-relative">
-                <input type="text" class="form-control project-search-input" name="search_term" placeholder="<?php echo $projects_name; ?>"
+                <input type="text" class="form-control project-search-input" name="search_term"
+                    placeholder="<?php echo $projects_name; ?>"
                     value="<?php echo isset($_GET['search_term']) ? esc_attr($_GET['search_term']) : ''; ?>">
                 <span class="search-icon">
                     <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icons/i-search.svg' ?>"
@@ -136,7 +165,7 @@ if ($current_lang === 'en') {
 
             $args = array(
                 'post_type' => 'project',
-                'posts_per_page' => 9,
+                'posts_per_page' => 6,
                 'post_status' => 'publish',
                 'paged' => $paged,
                 's' => isset($_GET['search_term']) ? sanitize_text_field($_GET['search_term']) : '',

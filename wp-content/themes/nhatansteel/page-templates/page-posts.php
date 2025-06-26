@@ -30,6 +30,40 @@ $categories = get_categories(array(
   'order' => 'DES',
 ));
 
+// Sort categories
+$priority_cat_map = [
+  'vi' => ['tin-noi-bo', 'tin-du-an'],
+  'en' => ['internal-news', 'project-news'],
+];
+
+$priority_slugs = $priority_cat_map[$current_lang] ?? [];
+
+$all_categories = get_categories([
+  'taxonomy' => 'category',
+  'hide_empty' => true,
+  'exclude' => $default_cat_id,
+]);
+
+$priority_categories = [];
+$other_categories = [];
+
+foreach ($all_categories as $cat) {
+  if (in_array($cat->slug, $priority_slugs)) {
+    $priority_categories[$cat->slug] = $cat;
+  } else {
+    $other_categories[] = $cat;
+  }
+}
+
+$sorted_categories = [];
+foreach ($priority_slugs as $slug) {
+  if (isset($priority_categories[$slug])) {
+    $sorted_categories[] = $priority_categories[$slug];
+  }
+}
+
+$categories = array_merge($sorted_categories, $other_categories);
+
 // Get the first category's slug or use 'uncategorized' as default
 $first_category_slug = 'uncategorized';
 foreach ($categories as $category) {
