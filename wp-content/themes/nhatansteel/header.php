@@ -98,7 +98,7 @@
 
 <div class="navbar-search-overlay">
   <div class="search-container">
-    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+    <input type="text" class="form-control" placeholder="<?php echo ($current_language == 'vi') ? 'Tìm kiếm...' : 'Search...'; ?>">
     <button class="btn btn-close-search" aria-label="Close"><i class="bi bi-x-lg"></i></button>
   </div>
 </div>

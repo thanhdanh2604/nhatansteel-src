@@ -20,7 +20,7 @@
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="building" width="20">
                 <div class="footer-heading-text">
                     <h6>Office</h6>
-                    <p><?php the_field('company_name_english','option')?></p>
+                    <p><?php the_field('company_address_english','option')?></p>
                 </div>
             </div>
           <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Phone:</strong> <?php the_field('company_phone','option')?></p>

@@ -328,4 +328,6 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom-about-us.js?v=20250604"></script>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-about-us.css">
-<?php get_footer(); ?>
+
+<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':'');
+; ?>
