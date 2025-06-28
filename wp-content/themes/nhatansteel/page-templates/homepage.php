@@ -295,7 +295,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
         <div class="container">
         <div class="row">
             <div class="col-12">
-            <h2 class="title"><?php echo get_field('title_customer_and_partner') ?></h2>
+            <h2 class="title" style="text-aligh:center"><?php echo get_field('title_customer_and_partner') ?></h2>
             <div class="carousel" data-flickity='{
                     "groupCells": true, 
                     "pageDots": false,
@@ -399,7 +399,13 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
             <div class="col-lg-12">
                 <div class="contact-form p-4 rounded">
                     <h5><?php echo get_field('sub_title_contact_form') ?></h5>
-                    <?php echo do_shortcode('[contact-form-7 id="481c905" title="Contact form 1"]') ?>
+                    <?php
+                    if (substr(get_locale(), 0, 2) === 'en') {
+                        echo do_shortcode('[contact-form-7 id="f98bc6b" title="Homepage - Contactform_English"]');
+                    } else {
+                        echo do_shortcode('[contact-form-7 id="481c905" title="Contact form 1"]');
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -408,4 +414,5 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
 </div>
     
 <?php
-get_footer(($current_language === 'en') ? 'en':''); // Gọi footer tương ứng với ngôn ngữ hiện tại
+get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':'');
+?>

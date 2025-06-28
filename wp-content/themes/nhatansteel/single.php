@@ -134,4 +134,6 @@ if ($current_lang === 'en') {
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles-single-post.css">
 
-<?php get_footer(); ?>
+<?php 
+get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':'');
+; ?>

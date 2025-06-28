@@ -416,4 +416,5 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
 </section>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom-sanpham-dichvu.js"></script>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-sanpham-dichvu.css">
-<?php get_footer(); ?>
+<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':'');
+; ?>

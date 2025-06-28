@@ -255,4 +255,6 @@ if ($current_lang === 'en') {
 </script>
 
 
-<?php get_footer(); ?>
+<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':'');
+
+ ?>

@@ -26,4 +26,7 @@ get_header();
 
 <?php
 get_sidebar();
-get_footer();
+get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':'');
+
+
+
