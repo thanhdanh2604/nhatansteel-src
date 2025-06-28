@@ -19,29 +19,29 @@
             <div class="footer-heading">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="building" width="20">
                 <div class="footer-heading-text">
-                    <h6>Trụ sở chính</h6>
-                    <p><?php the_field('company_address','option')?></p>
+                    <h6>Office</h6>
+                    <p><?php the_field('company_name_english','option')?></p>
                 </div>
             </div>
-          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Điện thoại:</strong> <?php the_field('company_phone','option')?></p>
+          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Phone:</strong> <?php the_field('company_phone','option')?></p>
           <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-printer.svg" alt="printer" width="20"> <strong>Fax:</strong> <?php the_field('company_fax','option')?></p>
         </div>
         <div class="col-12 col-md-4 content-footer">
             <div class="footer-heading">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-industry.svg" alt="industry" width="20">
                 <div class="footer-heading-text">
-                    <h6>Nhà máy</h6>
-                    <p><?php the_field('factory_address','option')?></p>
+                    <h6>Factory</h6>
+                    <p><?php the_field('factory_address_english','option')?></p>
                 </div>
             </div>
-          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Điện thoại:</strong> <?php the_field('factory_phone','option')?></p>
+          <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call.svg" alt="building" width="20"> <strong>Phone:</strong> <?php the_field('factory_phone','option')?></p>
           <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-printer.svg" alt="printer" width="20"> <strong>Fax:</strong> <?php the_field('factory_fax','option')?></p>
         </div>
       </div>
     </div>
   </div>
   <div class="footer-bottom text-center">
-     © Bản quyền thuộc về <a href="<?php echo home_url(); ?>"><?php the_field('company_name','option')?></a>
+      <a href="<?php echo home_url(); ?>">Copyright © 2014 Nhat An Steel. All Rights Reserved.</a>
   </div>
 </footer>
 

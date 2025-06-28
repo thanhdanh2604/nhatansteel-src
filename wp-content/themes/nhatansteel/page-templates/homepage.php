@@ -4,7 +4,7 @@
  *
  * @package Nhatansteel
  */
-
+// lấy ngôn ngữ hiện tại
 get_header(); 
 ?>
 <?php 
@@ -56,7 +56,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
             <div class="col-lg-6 mb-4 mb-lg-0 position-relative">
             <div class="box-about-img">
                 <div class="about-image-center">
-                    <img src="<?php echo get_field('home_image_center') ?>" alt="ảnh giữa" class="img-fluid rounded shadow">
+                    <img src="<?php echo get_field('home_image_center') ?>" class="img-fluid rounded shadow">
                 </div>
             </div>
             </div>
@@ -96,7 +96,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: #283678; opacity: 0.7; pointer-events: none; z-index: 1;"></div>
         <div class="position-relative" style="z-index: 2;">
         <div class="container">
-        <h2 class="title">Sản phẩm</h2>
+        <h2 class="title"><?php echo get_field('title_section_san_pham') ?></h2>
         <div class="row align-items-center">
             <div class="col-md-5 mb-4">
             <div class="product-main-img">
@@ -105,84 +105,81 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
             </div>
             <div class="col-md-7">
             <div class="row gy-3 gx-2">
-                <div class="col-sm-6">
-                <div class="product-item">
-                    <div class="product-item-img">
-                        <a href="/san-pham-dich-vu/#mo-hinh">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/homepage/san pham/1.jpg" alt="" class="img-fluid">
+                <?php 
+                //lấy mã ngôn ngữ hiện tại
+                $current_language = substr(get_locale(), 0, 2); // Lấy 2 ký tự đầu tiên
+                $product_titles_array = array(
+                    'vi' => array(
+                        [
+                            'title'=>'MÔ HÌNH NHÀ XƯỞNG TIÊU CHUẨN',
+                            'link'=>'/san-pham-dich-vu/#mo-hinh'
+                        ],
+                        [
+                            'title'=>'KẾT CẤU PHỤ KHÁC',
+                            'link'=>'/san-pham-dich-vu/#ketcau-phukhac'
+                        ],
+                        [
+                            'title'=>'HỆ THỐNG KHUNG TIÊU CHUẨN',
+                            'link'=>'/san-pham-dich-vu/#hethong-khung'
+                        ],
+                        [
+                            'title'=>'HỆ THỐNG BAO CHE HOÀN THIỆN',
+                            'link'=>'/san-pham-dich-vu/#hethong-baoche'
+                        ],
+                        [
+                            'title'=>'CHI TIẾT KẾT CẤU',
+                            'link'=>'/san-pham-dich-vu/#chitiet-ketcau'
+                        ],
+                        [
+                            'title'=>'PHỤ KIỆN KHÁC',
+                            'link'=>'/san-pham-dich-vu/#phu-kien'
+                        ]
+                    ),
+                    'en' => array(
+                        [
+                            'title'=>'STANDARD FACTORY MODEL',
+                            'link'=>'/en/products-services/#mo-hinh'
+                        ],
+                        [
+                            'title'=>'OTHER STRUCTURAL COMPONENTS',
+                            'link'=>'/en/products-services/#ketcau-phukhac'
+                        ],
+                        [
+                            'title'=>'STANDARD FRAME SYSTEM',
+                            'link'=>'/en/products-services/#hethong-khung'
+                        ],
+                        [
+                            'title'=>'FINISHED ENCLOSURE SYSTEM',
+                            'link'=>'/en/products-services/#hethong-baoche'
+                        ],
+                        [
+                            'title'=>'STRUCTURAL DETAILS',
+                            'link'=>'/en/products-services/#chitiet-ketcau'
+                        ],
+                        [
+                            'title'=>'OTHER ACCESSORIES',
+                            'link'=>'/en/products-services/#phu-kien'
+                        ]
+                    )
+                );
+                ?>
+                <?php
+                $product_titles = $product_titles_array[$current_language];
+                foreach ($product_titles as $key => $product) {
+                    echo '<div class="col-sm-6">
+                        <div class="product-item">
+                            <div class="product-item-img">
+                                <a href="' . esc_url($product['link']) . '">
+                                    <img src="' . get_stylesheet_directory_uri() . '/assets/images/homepage/san pham/' . ($key+1) . '.jpg" alt="" class="img-fluid">
+                                </a>
                             </div>
                             <div class="product-item-content">
-                            <p class="mb-0">Mô hình nhà xưởng tiêu chuẩn</p>
-                            <span class="arrow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
-                        </a>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-6">
-                <div class="product-item">
-                    <div class="product-item-img">
-                        <a href="/san-pham-dich-vu/#ketcau-phukhac">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/homepage/san pham/2.jpg" alt="" class="img-fluid">
+                                <p class="mb-0">' . esc_html($product['title']) . '</p>
+                                <span class="arrow"><img src="' . get_stylesheet_directory_uri() . '/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
+                            </div>
                         </div>
-                        <div class="product-item-content">
-                        <p class="mb-0">Kết cấu phụ khác</p>
-                        <span class="arrow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
-                        </a>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-6">
-                <div class="product-item">
-                    <div class="product-item-img">
-                        <a href="/san-pham-dich-vu/#hethong-khung">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/homepage/san pham/3.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="product-item-content">
-                            <p class="mb-0">Hệ thống khung tiêu chuẩn</p>
-                            <span class="arrow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
-                        </a>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-6">
-                <div class="product-item">
-                    <div class="product-item-img">
-                        <a href="/san-pham-dich-vu/#hethong-baoche">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/homepage/san pham/4.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="product-item-content">
-                            <p class="mb-0">Hệ thống bao che hoàn thiện</p>
-                            <span class="arrow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
-                        </a>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-6">
-                <div class="product-item">
-                    <div class="product-item-img">
-                        <a href="/san-pham-dich-vu/#chitiet-ketcau">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/homepage/san pham/5.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="product-item-content">
-                            <p class="mb-0 small fw-bold text-uppercase">Chi tiết kết cấu</p>
-                            <span class="arrow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
-                        </a>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-6">
-                <div class="product-item">
-                    <div class="product-item-img">
-                        <a href="/san-pham-dich-vu/#phu-kien">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/homepage/san pham/6.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="product-item-content">
-                            <p class="mb-0 small fw-bold text-uppercase">Phụ kiện khác</p>
-                            <span class="arrow"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
-                        </a>
-                    </div>
-                </div>
-                </div>
+                    </div>';
+                } ?>
             </div>
             </div>
         </div>
@@ -191,7 +188,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
 
     <section class="service-section">
         <div class="container">
-        <h2 class="title text-center">Dịch vụ</h2>
+        <h2 class="title text-center"><?php echo get_field('title_chinh_service')?></h2>
 
         <div class="row g-4 justify-content-center">
             <!-- Block 1 (Active/Default) -->
@@ -257,7 +254,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
     <section class="project-section">
         <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-            <h2 class="title mb-0">Dự án thực hiện</h2>
+            <h2 class="title mb-0"><?php echo get_field('title_chinh_du_an') ?></h2>
             <a href="/du-an" class="btn-xemtatca fw-medium text-decoration-none">Xem tất cả
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-all.svg" alt="Xem tất cả" width="16">
             </a>
@@ -298,7 +295,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
         <div class="container">
         <div class="row">
             <div class="col-12">
-            <h2 class="title">Khách hàng & Đối tác</h2>
+            <h2 class="title"><?php echo get_field('title_customer_and_partner') ?></h2>
             <div class="carousel" data-flickity='{
                     "groupCells": true, 
                     "pageDots": false,
@@ -328,8 +325,8 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
     <section class="news-section text-white">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-                <h2 class="title mb-0">Tin tức nổi bật</h2>
-                <a href="/tin-tuc" class="btn-xemtatca text-white text-decoration-none fw-medium">Xem tất cả →</a>
+                <h2 class="title mb-0"><?php echo get_field('title_chinh_tin_tuc') ?></h2>
+                <a href="/tin-tuc" class="btn-xemtatca text-white text-decoration-none fw-medium"><?php echo get_field('read_all') ?> →</a>
             </div>
             <div class="row">
                 <!-- Tin chính -->
@@ -347,13 +344,13 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                     }
                     ?>
                     <div class="highlight-news">
-                        <span class="badge-new">Tin mới</span>
+                        <span class="badge-new"><?php echo get_field('the_tin_tuc_moi')?></span>
                         <div class="highlight-news-img">
                             <img src="<?php echo esc_url($thumbnail_feature_url); ?>" alt="<?php echo esc_attr($first_post->post_title); ?>" class="img-fluid">
                         </div>
                         <h6><?php echo esc_html($first_post->post_title); ?></h6>
                         <p><?php echo wp_trim_words($first_post->post_excerpt, 20, '...'); ?></p>
-                        <a href="<?php echo get_permalink($first_post->ID); ?>" class="text-decoration-none">Xem chi tiết</a>
+                        <a href="<?php echo get_permalink($first_post->ID); ?>" class="text-decoration-none"><?php echo get_field('xem_chi_tiet_tin') ?></a>
                     </div>
                 </div>
                 <!-- Danh sách tin phụ -->
@@ -411,4 +408,4 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
 </div>
     
 <?php
-get_footer();
+get_footer(($current_language === 'en') ? 'en':''); // Gọi footer tương ứng với ngôn ngữ hiện tại
