@@ -8,7 +8,9 @@
 .steel-tabs-section .steel-tabs .tab-btn.active {
   background-color: #f9a61c;
 }
-
+.steel-tabs-section .steel-tabs .tab-btn{
+  text-transform: uppercase;
+}
 #tieuchuan-phanmem .design-list li .box-img {
   background-color: transparent;
 }
