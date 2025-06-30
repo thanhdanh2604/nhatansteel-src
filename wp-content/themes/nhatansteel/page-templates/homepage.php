@@ -26,9 +26,8 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
 <div class="homepage">
     <section class="section-banner">
         <div class="carousel" data-flickity='{
-                "autoPlay": 5000,
-                "wrapAround": true,
-                "pauseAutoPlayOnHover": true
+                "autoPlay": 2000,
+                "wrapAround": true
             }'>
             <?php
                 foreach ($banners as $banner){ 
@@ -67,7 +66,9 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                 <p class="mb-3">
                     <?php echo get_field('home_short_description') ?>
                 </p>
-                <a href="#" class="btn-aboutus text-orange text-decoration-none"><?php echo get_field('home_label_link_to_about_us') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow-right" class="img-fluid" width="16"></a>
+                <a href="<?php
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                ?>" class="btn-aboutus text-orange text-decoration-none"><?php echo get_field('home_label_link_to_about_us') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right.svg" alt="arrow-right" class="img-fluid" width="16"></a>
             </div>
             </div>
         </div>
@@ -167,6 +168,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                 $product_titles = $product_titles_array[$current_language];
                 foreach ($product_titles as $key => $product) {
                     echo '<div class="col-sm-6">
+                    
                         <div class="product-item">
                             <div class="product-item-img">
                                 <a href="' . esc_url($product['link']) . '">
@@ -174,10 +176,13 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                                 </a>
                             </div>
                             <div class="product-item-content">
+                                <a href="' . esc_url($product['link']) . '">
                                 <p class="mb-0">' . esc_html($product['title']) . '</p>
                                 <span class="arrow"><img src="' . get_stylesheet_directory_uri() . '/assets/images/icons/i-arrow-right.svg" alt="arrow" class="img-fluid" width="22"></span>
+                                </a>
                             </div>
                         </div>
+                        
                     </div>';
                 } ?>
             </div>
@@ -202,9 +207,13 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                 <p>
                   <?php echo get_field('noi_dung_dich_vu_1') ?>
                 </p>
-                <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
+                <a href="<?php
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
                 </div>
-                <a href="#" class="custom-btn">
+                <a href="<?php
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                ?>" class="custom-btn">
                <?php echo get_field('title_block_1') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-white.svg" alt="arrow white" class="img-fluid" width="22">
                 </a>
             </div>
@@ -221,9 +230,13 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                 <p>
                     <?php echo get_field('noi_dung_dich_vu_2') ?>
                 </p>
-                <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
+                <a href="<?php
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
                 </div>
-                <a href="#" class="custom-btn">
+                <a href="<?php
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                ?>" class="custom-btn">
                <?php echo get_field('title_dich_vu_2') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-white.svg" alt="arrow white" class="img-fluid" width="22">
                 </a>
             </div>
@@ -240,9 +253,13 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                 <p>
                     <?php echo get_field('noi_dung_dich_vu_3') ?>
                 </p>
-                <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
+                <a href="<?php
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
                 </div>
-                <a href="#" class="custom-btn">
+                <a href="<?php
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                ?>" class="custom-btn">
                <?php echo get_field('title_dich_vu_3') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-white.svg" alt="arrow white" class="img-fluid" width="22">
                 </a>
             </div>
