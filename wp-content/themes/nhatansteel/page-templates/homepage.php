@@ -208,11 +208,11 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                   <?php echo get_field('noi_dung_dich_vu_1') ?>
                 </p>
                 <a href="<?php
-                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/en/products-services/' : '/san-pham-dich-vu';
                 ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
                 </div>
                 <a href="<?php
-                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/en/products-services/' : '/san-pham-dich-vu';
                 ?>" class="custom-btn">
                <?php echo get_field('title_block_1') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-white.svg" alt="arrow white" class="img-fluid" width="22">
                 </a>
@@ -231,11 +231,11 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                     <?php echo get_field('noi_dung_dich_vu_2') ?>
                 </p>
                 <a href="<?php
-                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/en/products-services/' : '/san-pham-dich-vu';
                 ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
                 </div>
                 <a href="<?php
-                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/en/products-services/' : '/san-pham-dich-vu';
                 ?>" class="custom-btn">
                <?php echo get_field('title_dich_vu_2') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-white.svg" alt="arrow white" class="img-fluid" width="22">
                 </a>
@@ -254,11 +254,11 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                     <?php echo get_field('noi_dung_dich_vu_3') ?>
                 </p>
                 <a href="<?php
-                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/en/products-services/' : '/san-pham-dich-vu';
                 ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg" alt="arrow blue" class="img-fluid" width="22"></a>
                 </div>
                 <a href="<?php
-                   echo (substr(get_locale(), 0, 2) === 'en') ? '/about-us' : '/gioi-thieu';
+                   echo (substr(get_locale(), 0, 2) === 'en') ? '/en/products-services/' : '/san-pham-dich-vu';
                 ?>" class="custom-btn">
                <?php echo get_field('title_dich_vu_3') ?> <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-white.svg" alt="arrow white" class="img-fluid" width="22">
                 </a>
