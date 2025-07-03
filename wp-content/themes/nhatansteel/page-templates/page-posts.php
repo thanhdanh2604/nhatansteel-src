@@ -67,17 +67,17 @@ $categories = array_merge($sorted_categories, $other_categories);
 // Get the first category's slug or use 'uncategorized' as default
 $first_category_slug = 'uncategorized';
 foreach ($categories as $category) {
-    $posts = get_posts(array(
-        'post_type' => 'post',
-        'posts_per_page' => 1,
-        'category' => $category->term_id,
-        'post_status' => 'publish',
-    ));
+  $posts = get_posts(array(
+    'post_type' => 'post',
+    'posts_per_page' => 1,
+    'category' => $category->term_id,
+    'post_status' => 'publish',
+  ));
 
-    if (!empty($posts)) {
-        $first_category_slug = $category->slug;
-        break;
-    }
+  if (!empty($posts)) {
+    $first_category_slug = $category->slug;
+    break;
+  }
 }
 
 // Check if the 'cat' parameter is in the URL, otherwise default to the first category
@@ -92,15 +92,15 @@ if (empty($_GET['cat']) && !empty($categories)) {
 // Dynamic contents
 $front_page_id = get_option('page_on_front');
 if (function_exists('pll_get_post')) {
-    $front_page_id = pll_get_post($front_page_id, $current_lang);
+  $front_page_id = pll_get_post($front_page_id, $current_lang);
 }
 $front_page_title = $front_page_id ? get_the_title($front_page_id) : '';
 
 $see_more_button_content = "Xem thêm";
 $no_post_found = "Không có bài viết nào.";
-if ( $current_lang === 'en' ) {
-    $see_more_button_content = "See more";
-    $no_post_found = "No posts found.";
+if ($current_lang === 'en') {
+  $see_more_button_content = "See more";
+  $no_post_found = "No posts found.";
 }
 ?>
 
@@ -113,7 +113,8 @@ if ( $current_lang === 'en' ) {
     <div class="banner-text">
       <h1><?php echo esc_html(get_the_title()); ?></h1>
       <p class="breadcrumb-text mb-0">
-        <a href="<?php echo home_url(); ?>"><?php echo $front_page_title ?></a> / <?php echo esc_html(get_the_title()); ?>
+        <a href="<?php echo home_url(); ?>"><?php echo $front_page_title ?></a> /
+        <?php echo esc_html(get_the_title()); ?>
       </p>
     </div>
   </div>
@@ -183,7 +184,13 @@ if ( $current_lang === 'en' ) {
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </h5>
               <p class="news-desc">
-                <?php echo wp_trim_words(get_the_content(), 50, ''); ?>...
+                <?php
+                if (has_excerpt()) {
+                  echo esc_html(get_the_excerpt());
+                } else {
+                  echo wp_trim_words(get_the_content(), 50, '...');
+                }
+                ?>
               </p>
               <p class="d-flex justify-content-end">
                 <a href="<?php the_permalink(); ?>" class="read-more">
@@ -209,4 +216,4 @@ if ( $current_lang === 'en' ) {
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles-posts.css">
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles-pagination.css">
 
-<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':''); ?>
+<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en' : ''); ?>
