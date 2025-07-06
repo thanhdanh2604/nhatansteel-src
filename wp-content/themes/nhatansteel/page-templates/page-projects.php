@@ -24,6 +24,9 @@ $projects_page_title = get_field('projects_page_title') ?? '';
 // Posts configurations
 $projects_page_desc = get_field('projects_page_desc') ?? '';
 
+$title = get_the_title();
+$clean_title = preg_replace('/<br\s*\/?>/i', '', $title);
+
 // Dynamic contents
 $front_page_id = get_option('page_on_front');
 if (function_exists('pll_get_post')) {
@@ -60,7 +63,7 @@ if ($current_lang === 'en') {
             <h1><?php echo esc_html(get_the_title()); ?></h1>
             <p class="breadcrumb-text mb-0">
                 <a href="<?php echo home_url(); ?>"><?php echo $front_page_title; ?></a> /
-                <?php echo esc_html(get_the_title()); ?>
+                <?php echo esc_html($clean_title);  ?>
             </p>
         </div>
     </div>
@@ -208,13 +211,13 @@ if ($current_lang === 'en') {
                             </h5>
                             <ul class="project-meta list-unstyled mb-0">
                                 <?php if ($investor): ?>
-                                    <li><strong><?php echo $lb_investor; ?>:</strong> <?php echo esc_html($investor); ?></li>
+                                    <li><strong><?php echo $lb_investor; ?>:</strong> <?php echo wp_kses($investor, ['br' => []]); ?></li>
                                 <?php endif; ?>
                                 <?php if ($steel_tonnage): ?>
-                                    <li><strong><?php echo $lb_tonnage; ?>:</strong> <?php echo esc_html($steel_tonnage); ?></li>
+                                    <li><strong><?php echo $lb_tonnage; ?>:</strong> <?php echo wp_kses($steel_tonnage, ['br' => []]); ?></li>
                                 <?php endif; ?>
                                 <?php if ($location): ?>
-                                    <li><strong><?php echo $lb_location; ?>:</strong> <?php echo esc_html($location); ?></li>
+                                    <li><strong><?php echo $lb_location; ?>:</strong> <?php echo wp_kses($location, ['br' => []]); ?></li>
                                 <?php endif; ?>
                             </ul>
                         </div>

@@ -89,6 +89,9 @@ if (empty($_GET['cat']) && !empty($categories)) {
   exit;
 }
 
+$title = get_the_title();
+$clean_title = preg_replace('/<br\s*\/?>/i', '', $title);
+
 // Dynamic contents
 $front_page_id = get_option('page_on_front');
 if (function_exists('pll_get_post')) {
@@ -114,7 +117,7 @@ if ($current_lang === 'en') {
       <h1><?php echo esc_html(get_the_title()); ?></h1>
       <p class="breadcrumb-text mb-0">
         <a href="<?php echo home_url(); ?>"><?php echo $front_page_title ?></a> /
-        <?php echo esc_html(get_the_title()); ?>
+        <?php echo esc_html($clean_title); ?>
       </p>
     </div>
   </div>

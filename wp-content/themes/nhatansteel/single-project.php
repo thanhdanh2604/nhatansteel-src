@@ -14,6 +14,7 @@ $project_slug = get_query_var('project');
 $project = get_page_by_path($project_slug, OBJECT, 'project');
 
 $title = $project ? get_the_title($project->ID) : '';
+$clean_title = preg_replace('/<br\s*\/?>/i', '', $title);
 
 // ACF fields
 $investor = get_field('investor', $project->ID);
@@ -67,7 +68,7 @@ if ($current_lang === 'en') {
                 <a href="<?php echo get_page_permalink_by_template('page-projects.php'); ?>">
                     <?php echo get_page_title_by_template('page-projects.php'); ?>
                 </a> /
-                <a href="<?php echo get_permalink($project->ID); ?>"><?php echo $title; ?></a>
+                <a href="<?php echo get_permalink($project->ID); ?>"><?php echo esc_html($clean_title); ?></a>
             </p>
         </div>
     </div>
@@ -80,11 +81,11 @@ if ($current_lang === 'en') {
             <!-- Left: Info -->
             <div class="col-12 col-md-4">
                 <ul class="list-unstyled project-info">
-                    <li><strong><?php echo $lb_investor ?>:</strong> <?php echo esc_html($investor) ?></li>
-                    <li><strong><?php echo $lb_location ?>:</strong> <?php echo esc_html($location) ?></li>
-                    <li><strong><?php echo $lb_tonnage ?>:</strong> <?php echo esc_html($steel_tonnage) ?></li>
-                    <li><strong><?php echo $lb_industry ?>:</strong> <?php echo esc_html($industry) ?></li>
-                    <li><strong>FDI/DDI:</strong> <?php echo esc_html($fdi_ddi) ?></li>
+                    <li><strong><?php echo $lb_investor ?>:</strong> <?php echo wp_kses($investor, ['br' => []]); ?></li>
+                    <li><strong><?php echo $lb_location ?>:</strong> <?php echo wp_kses($location, ['br' => []]); ?></li>
+                    <li><strong><?php echo $lb_tonnage ?>:</strong> <?php echo wp_kses($steel_tonnage, ['br' => []]); ?></li>
+                    <li><strong><?php echo $lb_industry ?>:</strong> <?php echo wp_kses($industry, ['br' => []]); ?></li>
+                    <li><strong>FDI/DDI:</strong> <?php echo wp_kses($fdi_ddi, ['br' => []]); ?></li>
                 </ul>
             </div>
 
