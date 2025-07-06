@@ -16,6 +16,9 @@ $categories = get_categories(array(
 $post_categories = get_the_category();
 $post_cat_slugs = wp_list_pluck($post_categories, 'slug');
 
+$title = get_the_title();
+$clean_title = preg_replace('/<br\s*\/?>/i', '', $title);
+
 // Dynamic contents
 $front_page_id = get_option('page_on_front');
 if (function_exists('pll_get_post')) {
@@ -41,7 +44,7 @@ if ($current_lang === 'en') {
                 <a href="<?php echo get_page_permalink_by_template('page-posts.php'); ?>">
                     <?php echo get_page_title_by_template('page-posts.php'); ?>
                 </a> /
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                <a href="<?php the_permalink(); ?>"><?php echo esc_html($clean_title); ?></a>
             </p>
         </div>
     </div>
