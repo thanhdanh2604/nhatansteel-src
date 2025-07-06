@@ -127,3 +127,78 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+  
+// Xử lý anchor link và offset cho sticky header
+document.addEventListener("DOMContentLoaded", () => {
+  // Hàm cuộn đến element với offset
+  function scrollToElementWithOffset(element, offset = 100) {
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+
+  // Xử lý anchor link từ URL
+  function handleAnchorFromURL() {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetElement = document.querySelector(hash);
+      if (targetElement) {
+        // Delay để đảm bảo trang đã load hoàn toàn
+        setTimeout(() => {
+          scrollToElementWithOffset(targetElement, 120);
+        }, 100);
+      }
+    }
+  }
+
+  // Xử lý khi trang load
+  handleAnchorFromURL();
+
+  // Xử lý khi URL thay đổi (popstate)
+  window.addEventListener('popstate', handleAnchorFromURL);
+
+  // Xử lý click trên các link anchor trong trang
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        // Cập nhật URL
+        history.pushState(null, null, targetId);
+        
+        // Cuộn đến element
+        scrollToElementWithOffset(targetElement, 120);
+      }
+    });
+  });
+});
+// Kiểm tra param của trình duyệt có biến servies=yes không
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  console.log(urlParams);
+  if (urlParams.get("services") === "yes") {
+    const serviceTab = document.querySelector('.tab-btn[data-tab="service"]');
+    const productTab = document.querySelector('.tab-btn[data-tab="product"]');
+    if (serviceTab) {
+      serviceTab.classList.add("active");
+      productTab.classList.remove("active");
+      const targetPane = document.getElementById("service");
+      const productPane = document.getElementById("product");
+      if (productPane) {
+        productPane.classList.add("d-none");
+        productPane.classList.remove("active");
+      }
+      if (targetPane) {
+        targetPane.classList.remove("d-none");
+        setTimeout(() => targetPane.classList.add("active"), 10);
+      }
+    } 
+  }
+});
