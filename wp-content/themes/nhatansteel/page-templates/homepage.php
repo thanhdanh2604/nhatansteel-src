@@ -327,12 +327,6 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                     <a href="#"><img class="img-fluid" src="<?php echo $customer_partner['url'];?>" alt="đối tác"></a>
                 </div>
                 <?php } ?>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac02.png" alt="đối tác"></a>
-                </div>
-                <div class="carousel-cell">
-                <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/doitac01.png" alt="đối tác"></a>
-                </div>
             </div>
             </div>
         </div>
