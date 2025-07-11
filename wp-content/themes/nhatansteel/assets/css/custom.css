@@ -1,98 +1,137 @@
-.navbar .nav-item:hover .nav-link{
-    color: #f5a623;
-    text-decoration: none;
-}
-.navbar{
-    background-color: #ffffffd9 !important;
-}
-.nav-item:hover,.nav_active{
-    color: #f5a623;
-    background-color: #ffffff;
-    border-radius: 8px;
-    border: 2px solid white;
-    font-weight: 500;
-}
-.nav_active a{
-    color:#f5a623!important;
-}
-.nav-item a{
-    padding: 5px 10px;
+.navbar .nav-item:hover .nav-link {
+  color: #f5a623;
+  text-decoration: none;
 }
 .navbar {
-    text-transform: uppercase;
+  background-color: #ffffffd9 !important;
 }
-.menu-item{
-    border: 2px solid transparent;
+.nav-item:hover,
+.nav_active {
+  color: #f5a623;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid white;
+  font-weight: 500;
 }
-span.logo{
-    color:#283678;
-    font-weight: 600;
-    padding-left:6px;
+.nav_active a {
+  color: #f5a623 !important;
 }
-.link-brochure:hover,a.link-brochure{
-    color:#283678;
-    border: 1px solid white;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 8px;
+.nav-item a {
+  padding: 5px 10px;
+}
+.navbar {
+  text-transform: uppercase;
+}
+.menu-item {
+  border: 2px solid transparent;
+}
+span.logo {
+  color: #283678;
+  font-weight: 600;
+  padding-left: 6px;
+}
+.link-brochure:hover,
+a.link-brochure {
+  color: #283678;
+  border: 1px solid white;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
 }
 .social-icon {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    width: 148px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 148px;
 }
-footer hr{
-    width: 148px;
+footer hr {
+  width: 148px;
 }
 .contact-two-row p {
-    display: flex;
-    justify-content: center;
-    gap:11px;
+  display: flex;
+  justify-content: center;
+  gap: 11px;
 }
-.library-section{
-    background: rgb(255, 255, 255);
-    padding: 70px 0px 50px;
+.library-section {
+  background: rgb(255, 255, 255);
+  padding: 70px 0px 50px;
 }
-.lib-btn-download{
-    background-color: #283678;
-    color: #ffffff;
+.lib-btn-download {
+  background-color: #283678;
+  color: #ffffff;
 }
-.link-view{
-    color:#283678;
+.link-view {
+  color: #283678;
 }
-.logo-footer{
-    max-height: 109px;
+.logo-footer {
+  max-height: 109px;
 }
-.content-footer img{
-   margin: -1px 5px;
+.content-footer img {
+  margin: -1px 5px;
 }
-.language-selector{
-    margin-left:35.5px;
+.language-selector {
+  margin-left: 35.5px;
 }
 .language-selector img {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 .language-selector a:first-child {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 .language-selector a:nth-child(2) {
-    margin-right: 0!important;
+  margin-right: 0 !important;
 }
-.language-selector .active{
-    padding-bottom: 5px;
-    border-bottom: 3px solid white;
-    display: inline-block;
-    width: fit-content;
-    /* Hoặc dùng width: 60%; để border ngắn hơn nữa */
+.language-selector .active {
+  padding-bottom: 5px;
+  border-bottom: 3px solid white;
+  display: inline-block;
+  width: fit-content;
+  /* Hoặc dùng width: 60%; để border ngắn hơn nữa */
 }
-.banner-text h1{
-    text-transform: uppercase;
+.banner-text h1 {
+  text-transform: uppercase;
 }
 .customers-partners-section .flickity-prev-next-button .flickity-button-icon {
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
 }
-.banner-text h1{
-	text-transform:uppercase;
+.banner-text h1 {
+  text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
+  .mobile-menu-expand {
+    background: #f5a623;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+  }
+
+  .social-icons a {
+    margin: 0 4px;
+  }
+
+  .social-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .mb-md-down-15 {
+    margin-bottom: 15px;
+  }
+
+  .language-selector {
+    margin-left: 15px;
+  }
+
+  .link-brochure {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .i-download {
+    display: none;
+  }
 }

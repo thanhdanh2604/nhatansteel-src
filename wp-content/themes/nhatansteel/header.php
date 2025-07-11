@@ -1,63 +1,74 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nhat An Steel</title>
-    <link data-n-head="ssr" rel="icon" type="image/x-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nhat An Steel</title>
+  <link data-n-head="ssr" rel="icon" type="image/x-icon"
+    href="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
 
-    <!-- LightGallery CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/scss/fe-styles.css">
-     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/custom.css">
+  <!-- LightGallery CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/scss/fe-styles.css">
+  <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/custom.css">
 </head>
-<?php 
- $current_language = substr(get_locale(), 0, 2);
+<?php
+$current_language = substr(get_locale(), 0, 2);
 ?>
 <!-- Top Bar -->
 <div class="top-bar">
   <div class="container">
     <div class="row">
-      <div class="col-6 d-flex align-items-center text-uppercase">
+      <div
+        class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start text-uppercase">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="icon building">
         <span class="logo" href="#" style="padding-top: 3px;font-weight: 700;"><?php
-        if( $current_language == 'vi' ) {
-            echo the_field('company_name','option');
+        if ($current_language == 'vi') {
+          echo the_field('company_name', 'option');
         } else {
-            echo the_field('company_name_english','option');
-        }?></span>
+          echo the_field('company_name_english', 'option');
+        } ?></span>
       </div>
-      <div class="col-6 d-flex justify-content-end align-items-center">
-        <a class="nav-link link-brochure ripple-btn" href="<?php echo esc_url( home_url( '/thu-vien' ) ); ?>" data-tooltip="Tải brochure">Brochure <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg" alt="icon download"> </a>
+      <div class="col-12 col-md-6 d-none d-md-flex justify-content-end align-items-center">
+        <a class="nav-link link-brochure ripple-btn" href="<?php echo esc_url(home_url('/thu-vien')); ?>"
+          data-tooltip="Tải brochure">Brochure <img
+            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg" alt="icon download">
+        </a>
         <div class="social-icons">
-          <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-facebook.svg" alt="icon facebook" width="20"></a>
-          <a href="mailto:<?php the_field('company_email','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email.svg" alt="icon email" width="20"></a>
-          <div class="language-selector"> 
+          <a href="<?php the_field('facebook', 'option') ?>"><img
+              src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-facebook.svg" alt="icon facebook"
+              width="20"></a>
+          <a href="mailto:<?php the_field('company_email', 'option') ?>"><img
+              src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email.svg" alt="icon email"
+              width="20"></a>
+          <div class="language-selector">
             <?php
-              if (function_exists('pll_the_languages')) {
-                  $languages = pll_the_languages(array('raw' => 1));
-                  if (!empty($languages)) {
-                      foreach ($languages as $lang) {
-                          $class = $lang['current_lang'] ? 'active' : '';
-                          $lang_slug = $lang['slug']; // Lấy mã ngôn ngữ (ví dụ: 'vi', 'en')
-                          $custom_flag_url = get_stylesheet_directory_uri() . '/assets/images/flag/' . $lang_slug . '.jpg';
-                          $lang_name = esc_attr($lang['name']); // Escape tên ngôn ngữ cho văn bản alt
-                          $lang_url = esc_url($lang['url']); // Escape URL
-
-                          echo '<a class="' . $class . '" href="' . $lang_url . '"><img src="' . $custom_flag_url . '" alt="' . $lang_name . ' flag"></a>';
-                      }
-                  }
+            if (function_exists('pll_the_languages')) {
+              $languages = pll_the_languages(array('raw' => 1));
+              if (!empty($languages)) {
+                foreach ($languages as $lang) {
+                  $class = $lang['current_lang'] ? 'active' : '';
+                  $lang_slug = $lang['slug']; // Lấy mã ngôn ngữ (ví dụ: 'vi', 'en')
+                  $custom_flag_url = get_stylesheet_directory_uri() . '/assets/images/flag/' . $lang_slug . '.jpg';
+                  $lang_name = esc_attr($lang['name']); // Escape tên ngôn ngữ cho văn bản alt
+                  $lang_url = esc_url($lang['url']); // Escape URL
+            
+                  echo '<a class="' . $class . '" href="' . $lang_url . '"><img src="' . $custom_flag_url . '" alt="' . $lang_name . ' flag"></a>';
+                }
               }
-              ?>
+            }
+            ?>
           </div>
         </div>
       </div>
@@ -68,37 +79,78 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+    <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
       <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/logo.svg" alt="Nhat An Steel">
     </a>
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <span class="navbar-toggler-icon"></span>
     </button> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  data-bs-target="#mainNav">
-        <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
-    <?php
+      <?php
       wp_nav_menu(
-          array(
-              'theme_location'  => 'primary-menu',
-              'container'       => false,
-              'menu_class'      => 'navbar-nav ms-auto mb-2 mb-lg-0',
-              'fallback_cb'     => false,
-              'depth'           => 2,
-              'walker'          => new Bootstrap_NavWalker(), // Custom walker for Bootstrap
-          )
+        array(
+          'theme_location' => 'primary-menu',
+          'container' => false,
+          'menu_class' => 'navbar-nav ms-auto mb-2 mb-lg-0',
+          'fallback_cb' => false,
+          'depth' => 2,
+          'walker' => new Bootstrap_NavWalker(), // Custom walker for Bootstrap
+        )
       );
-    ?>
-    <div class="nav-item"><a class="nav-link nav-link-search" href="#"><i class="i-search"></i></a></div>
+      ?>
+      <div class="col-12 d-flex d-md-none align-items-center mobile-menu-expand">
+        <div class="col-6">
+          <a class="nav-link link-brochure ripple-btn" href="<?php echo esc_url(home_url('/thu-vien')); ?>"
+            data-tooltip="Tải brochure">Brochure <img
+              class="i-download"
+              src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-download.svg"
+              alt="icon download">
+          </a>
+        </div>
+        <div class="col-6 social-icons d-flex justify-content-end align-items-center">
+          <div class="d-flex justify-content-center align-items-center flex-wrap">
+            <a href="<?php the_field('facebook', 'option') ?>"><img
+                src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-facebook.svg"
+                alt="icon facebook" width="20">
+            </a>
+            <a href="mailto:<?php the_field('company_email', 'option') ?>"><img
+                src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email.svg" alt="icon email"
+                width="20">
+            </a>
+          </div>
+          <div class="d-flex justify-content-center align-items-center language-selector">
+            <?php
+            if (function_exists('pll_the_languages')) {
+              $languages = pll_the_languages(array('raw' => 1));
+              if (!empty($languages)) {
+                foreach ($languages as $lang) {
+                  $class = $lang['current_lang'] ? 'active' : '';
+                  $lang_slug = $lang['slug']; // Lấy mã ngôn ngữ (ví dụ: 'vi', 'en')
+                  $custom_flag_url = get_stylesheet_directory_uri() . '/assets/images/flag/' . $lang_slug . '.jpg';
+                  $lang_name = esc_attr($lang['name']); // Escape tên ngôn ngữ cho văn bản alt
+                  $lang_url = esc_url($lang['url']); // Escape URL
+
+                  echo '<a class="' . $class . '" href="' . $lang_url . '"><img src="' . $custom_flag_url . '" alt="' . $lang_name . ' flag"></a>';
+                }
+              }
+            }
+            ?>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link nav-link-search" href="#"><i class="i-search"></i></a></div>
     </div>
-</div>
+  </div>
   </div>
 </nav>
 
 <div class="navbar-search-overlay">
   <div class="search-container">
-    <input type="text" class="form-control" placeholder="<?php echo ($current_language == 'vi') ? 'Tìm kiếm...' : 'Search...'; ?>">
+    <input type="text" class="form-control"
+      placeholder="<?php echo ($current_language == 'vi') ? 'Tìm kiếm...' : 'Search...'; ?>">
     <button class="btn btn-close-search" aria-label="Close"><i class="bi bi-x-lg"></i></button>
   </div>
 </div>

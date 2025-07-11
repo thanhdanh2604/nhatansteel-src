@@ -48,3 +48,15 @@ img {
   display: flex;
   justify-content: start;
 }
+
+@media (max-width: 500px) {
+  .categories-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .categories-wrapper .category-btn {
+    margin: 0;
+    text-align: center;
+  }
+}
