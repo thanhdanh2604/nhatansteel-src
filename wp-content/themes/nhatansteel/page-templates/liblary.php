@@ -29,9 +29,9 @@ $language = substr(get_locale(), 0, 2);
             <div class="row g-4">
                 <!-- Brochure tiếng Việt -->
                 <div class="col-md-6">
-                    <div class="p-4 rounded-3 bg-light h-100 d-flex align-items-center gap-5 flex-wrap justify-content-center">
+                    <div class="p-4 rounded-3 bg-light h-100 d-flex align-items-center gap-md-5 gap-2 flex-wrap justify-content-center">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Brochure/thumb brochure tieng viet.jpg" class="img-fluid rounded mb-3" alt="Brochure Tiếng Việt">
-                        <div class="">
+                        <div>
                             <h6 class="fw-bold mb-3 brochure-title">BROCHURE (<?php echo ($language === 'vi') ? 'TIẾNG VIỆT' : 'VIETNAMESE'; ?>)</h6>
                             <div class="d-flex justify-content-center align-items-center gap-3">
                                 <a download href="<?php echo get_field('brochure_vi') ?>" class="btn btn-primary fw-bold px-4 lib-btn-download ">Download</a>
@@ -44,7 +44,7 @@ $language = substr(get_locale(), 0, 2);
                 </div>
                 <!-- Brochure tiếng Anh -->
                  <div class="col-md-6">
-                    <div class="p-4 rounded-3 bg-light h-100 d-flex align-items-center gap-5 flex-wrap justify-content-center">
+                    <div class="p-4 rounded-3 bg-light h-100 d-flex align-items-center gap-md-5 gap-2 flex-wrap justify-content-center">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Brochure/thumb brochure tieng anh.jpg" class="img-fluid rounded mb-3" alt="Brochure Tiếng Anh">
                         <div class="">
                             <h6 class="fw-bold mb-3 brochure-title">BROCHURE (<?php echo ($language === 'vi') ? 'TIẾNG ANH' : 'ENGLISH'; ?>)</h6>
@@ -64,7 +64,7 @@ $language = substr(get_locale(), 0, 2);
             <div class="row g-4">
                 <!-- Brochure tiếng Việt -->
                 <div class="col-md-6">
-                    <div class="p-4 rounded-3 bg-light h-100 d-flex align-items-center gap-5 flex-wrap justify-content-center">
+                    <div class="p-4 rounded-3 bg-light h-100 d-flex align-items-center gap-md-5 gap-2 flex-wrap justify-content-center">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Brochure/thumb branding guidelines.jpg" class="img-fluid rounded mb-3" alt="Brochure Tiếng Việt">
                         <div class="">
                             <h6 class="fw-bold mb-3 brochure-title">BRAND GUIDELINES (<?php echo ($language === 'vi') ? 'TIẾNG VIỆT' : 'VIETNAMESE'; ?>)</h6>

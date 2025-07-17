@@ -1,8 +1,7 @@
-
 .banner-text h1 {
   text-transform: uppercase;
 }
-.box-nhasanglap .nhasanglap-info .nhasanglap-img{
+.box-nhasanglap .nhasanglap-info .nhasanglap-img {
   background: transparent;
 }
 @media (max-width: 1024px) {
@@ -60,7 +59,25 @@
 .timeline-list .timeline-item:hover .year {
   opacity: 0;
 }
+.btn-expand {
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-expand.rotated {
+  transform: rotate(180deg);
+}
 @media (max-width: 768px) {
+  .limited-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .limited-lines.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
   .vision-section .vision-tab svg {
     width: 50px;
     height: 50px;
@@ -79,12 +96,19 @@
   .timeline-list {
     flex-direction: column;
     align-items: center;
+    margin: 0;
   }
   .timeline-item {
     margin: 50px 0;
     text-align: center;
     position: unset;
     width: 100%;
+  }
+  .timeline-item:first-child {
+    margin-top: 0;
+  }
+  .timeline-item:first-child .dot {
+    display: none;
   }
   .timeline-item .year {
     top: unset;
@@ -103,6 +127,74 @@
   }
   .timeline-item .hover-content::after {
     display: none;
+  }
+  .m-core-values-tab-list {
+    gap: 0 !important;
+  }
+  .m-core-values-tab-list li {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  .m-core-values-tab-list .core-content-wrap.active {
+    margin-top: 10px;
+  }
+  .m-core-values-tab-list .core-content-wrap:not(.active) {
+    height: 0;
+    overflow: hidden;
+    min-height: 0 !important;
+    padding: 0 !important;
+    visibility: hidden;
+    border: 0 !important;
+    transition: all 0.3s ease;
+  }
+  .core-values-section ul {
+    margin-bottom: 0;
+  }
+  .m-vision-tab-list {
+    margin: 0;
+    list-style: none;
+  }
+  .m-vision-tab-list li {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  .m-vision-tab-list .vision-content-wrap {
+    margin-top: 10px;
+  }
+  .m-vision-tab-list .vision-content-wrap:not(.active) {
+    height: 0;
+    overflow: hidden;
+    min-height: 0 !important;
+    padding: 0 !important;
+    visibility: hidden;
+    border: 0 !important;
+    transition: all 0.3s ease;
+  }
+  .m-mission-tab-list {
+    margin: 0;
+    list-style: none;
+  }
+  .m-mission-tab-list li {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  .m-mission-tab-list .mission-content-wrap {
+    margin-top: 10px;
+  }
+  .m-mission-tab-list .mission-content-wrap:not(.active) {
+    height: 0;
+    overflow: hidden;
+    min-height: 0 !important;
+    padding: 0 !important;
+    visibility: hidden;
+    border: 0 !important;
+    transition: all 0.3s ease;
+  }
+  .mission-content-wrap .highlight-bar,
+  .vision-content-wrap .highlight-bar,
+  .core-content-wrap .highlight-bar {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
 }
 @media (max-width: 768px) {

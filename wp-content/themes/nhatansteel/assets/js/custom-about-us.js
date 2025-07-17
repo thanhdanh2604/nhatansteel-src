@@ -1,7 +1,7 @@
 // js for tap active
 document.addEventListener("DOMContentLoaded", () => {
   // COMMON fade + highlight logic for tabs
-  function createTabSystem({ tabSelector, contentSelector, highlightId }) {
+  function createTabSystem({ tabSelector, contentSelector, highlightId, mobiletabListSelector, mobileContentWrapperSelector }) {
     const tabs = document.querySelectorAll(tabSelector);
     const contents = document.querySelectorAll(contentSelector);
     const highlightBar = document.getElementById(highlightId);
@@ -43,6 +43,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    function removeAllActiveMobileContentItem () {
+      const contentElements = document.querySelectorAll(`${mobiletabListSelector} ${mobileContentWrapperSelector}`);
+      contentElements.forEach((content) => {
+        content.classList.remove("active");
+      });
+    }
+
+    const mobileTabItems = document.querySelectorAll(`${mobiletabListSelector} li ${tabSelector}`);
+    if (mobileTabItems) {
+      mobileTabItems.forEach((tab) => {
+        ["click", "mouseenter"].forEach((evt) => {
+          tab.addEventListener(evt, () => {
+            // Remove previos active items
+            removeAllActiveMobileContentItem();
+            const contentElement = tab.parentElement.querySelector(mobileContentWrapperSelector);
+            contentElement.classList.add("active");
+          });
+        });
+      });
+    }
+
     window.addEventListener("resize", () => {
       const currentTab = document.querySelector(`${tabSelector}.active`);
       if (currentTab) updateHighlight(currentTab);
@@ -54,6 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     tabSelector: ".vision-tab",
     contentSelector: ".vision-content",
     highlightId: "highlightBar",
+    mobiletabListSelector: ".m-vision-tab-list",
+    mobileContentWrapperSelector: ".vision-content-wrap"
   });
 
   // Init for Mission
@@ -61,6 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
     tabSelector: ".mission-tab",
     contentSelector: ".mission-content",
     highlightId: "highlightBarMission",
+    mobiletabListSelector: ".m-mission-tab-list",
+    mobileContentWrapperSelector: ".mission-content-wrap"
   });
 
   // Init for Core Values
@@ -68,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
     tabSelector: ".core-tab",
     contentSelector: ".core-content",
     highlightId: "highlightBarCore",
+    mobiletabListSelector: ".m-core-values-tab-list",
+    mobileContentWrapperSelector: ".core-content-wrap"
   });
 });
 // timeline
@@ -107,5 +134,13 @@ document.addEventListener("DOMContentLoaded", () => {
     item.addEventListener("mouseleave", () => {
       progress.style.width = "0";
     });
+  });
+
+  const contentDiv = document.getElementById("chairmanMessage");
+  const toggleBtn = document.getElementById("toggleMessageBtn");
+
+  toggleBtn.addEventListener("click", function () {
+    contentDiv.classList.toggle("expanded");
+    this.classList.toggle("rotated");
   });
 });
