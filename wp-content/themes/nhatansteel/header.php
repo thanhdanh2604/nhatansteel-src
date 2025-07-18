@@ -33,7 +33,7 @@ $current_language = substr(get_locale(), 0, 2);
       <div
         class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start text-uppercase">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="icon building">
-        <span class="logo" href="#" style="padding-top: 3px;font-weight: 700;"><?php
+        <span class="logo company-name" href="#" style="padding-top: 3px;font-weight: 700;"><?php
         if ($current_language == 'vi') {
           echo the_field('company_name', 'option');
         } else {

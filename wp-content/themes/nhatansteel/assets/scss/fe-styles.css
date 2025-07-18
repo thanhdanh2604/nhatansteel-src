@@ -2701,4 +2701,25 @@ section {
     right: 0;
     margin: auto;
   }
+  .flickity-page-dots {
+    bottom: 1.08rem !important;
+    left: calc(50% - 38px) !important;
+  }
+  .box-content {
+    bottom: 2.4rem !important;
+  }
+  .carousel-content p {
+    margin-bottom: 5px;
+    font-size: 1.3rem !important;
+    text-align: left;
+  }
+  .carousel-content h1 {
+    font-size: 1.3rem !important;
+    text-align: left;
+  }
+  .company-name {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-left: 0 !important;
+  }
 }/*# sourceMappingURL=fe-styles.css.map */
