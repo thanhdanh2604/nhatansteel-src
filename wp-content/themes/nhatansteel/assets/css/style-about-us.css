@@ -196,10 +196,18 @@
     left: 50% !important;
     transform: translateX(-50%) !important;
   }
+  #su-menh {
+    margin-bottom: 0 !important;
+    border: 0 !important;
+  }
+  .about-wrapper {
+    padding-bottom: 0 !important;
+  }
 }
 @media (max-width: 768px) {
   .timeline-section {
-    padding: 20px 0;
+    padding-top: 0 !important;
+    padding-bottom: 20px;
     margin-bottom: 50px;
   }
 }

@@ -132,7 +132,7 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                     </div>
                 </div>
 
-                <section class="about-wrapper products-wrapper py-0 py-md-5">
+                <section class="about-wrapper products-wrapper py-5">
                     <div class="container">
                         <div class="row">
                             <!-- Sidebar -->

@@ -39,7 +39,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                     <img src="<?php echo $image_src ?>" alt="banner" class="img-fluid"
                     onerror="this.onerror=null; this.src='<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner01.jpg';">
                     <div class="box-content">
-                    <div class="container">
+                    <div class="container carousel-content">
                         <p><?php echo esc_html($title) ?></p>
                         <h1><?php echo esc_html($sub_title) ?></h1>
                     </div>

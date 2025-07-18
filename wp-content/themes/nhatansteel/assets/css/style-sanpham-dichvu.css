@@ -148,6 +148,11 @@
   .mo-hinh-desc-group p {
     margin: 0;
   }
+  #phu-kien {
+    margin-bottom: 0;
+    padding-bottom: 50px;
+    border: 0;
+  }
 }
 @media (max-width: 640px) {
   .list-products.accessory-list {

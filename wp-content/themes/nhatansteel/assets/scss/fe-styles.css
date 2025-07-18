@@ -2615,9 +2615,11 @@ section {
     padding: 0;
   }
   .timeline::before {
+    height: 94%;
     width: 1px;
-    height: 100%;
     left: 33px;
+    top: 0;
+    bottom: auto;
   }
   .timeline-list {
     flex-direction: column;
@@ -2658,10 +2660,17 @@ section {
     width: 20px;
     height: 20px;
   }
+  .contact-form .row>*{
+    margin: 0;
+  }
 }
 @media (max-width: 767px) {
   .timeline-section {
-    padding: 20px 0;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  #lich-su {
+    padding-bottom: 30px;
   }
   .core-values-section .core-tab svg {
     width: 20px;
@@ -2692,4 +2701,31 @@ section {
     right: 0;
     margin: auto;
   }
+  .flickity-page-dots {
+    bottom: 1.08rem !important;
+    left: calc(50% - 38px) !important;
+  }
+  .box-content {
+    bottom: 2.5rem !important;
+  }
+  .company-name {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-left: 0 !important;
+  }
+  .carousel-content p {
+    margin-bottom: 8px;
+  }
 }/*# sourceMappingURL=fe-styles.css.map */
+
+@media (max-width: 400px) {
+  .carousel-content p {
+    margin-bottom: 8px;
+    font-size: 1.3rem !important;
+    text-align: left;
+  }
+  .carousel-content h1 {
+    font-size: 1.3rem !important;
+    text-align: left;
+  }
+}
