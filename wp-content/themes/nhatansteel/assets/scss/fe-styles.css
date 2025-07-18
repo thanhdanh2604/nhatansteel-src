@@ -2706,10 +2706,21 @@ section {
     left: calc(50% - 38px) !important;
   }
   .box-content {
-    bottom: 2.4rem !important;
+    bottom: 2.5rem !important;
+  }
+  .company-name {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-left: 0 !important;
   }
   .carousel-content p {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+  }
+}/*# sourceMappingURL=fe-styles.css.map */
+
+@media (max-width: 400px) {
+  .carousel-content p {
+    margin-bottom: 8px;
     font-size: 1.3rem !important;
     text-align: left;
   }
@@ -2717,9 +2728,4 @@ section {
     font-size: 1.3rem !important;
     text-align: left;
   }
-  .company-name {
-    text-align: center;
-    font-size: 0.8rem;
-    padding-left: 0 !important;
-  }
-}/*# sourceMappingURL=fe-styles.css.map */
+}
