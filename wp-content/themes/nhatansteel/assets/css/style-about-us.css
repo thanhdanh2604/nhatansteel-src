@@ -199,7 +199,8 @@
 }
 @media (max-width: 768px) {
   .timeline-section {
-    padding: 20px 0;
+    padding-top: 0 !important;
+    padding-bottom: 20px;
     margin-bottom: 50px;
   }
 }
