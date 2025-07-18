@@ -1,14 +1,14 @@
 .banner-text h1 {
   text-transform: uppercase;
 }
-.steel-tabs-section{
+.steel-tabs-section {
   padding-top: 10px;
   padding-bottom: 48px;
 }
 .steel-tabs-section .steel-tabs .tab-btn.active {
   background-color: #f9a61c;
 }
-.steel-tabs-section .steel-tabs .tab-btn{
+.steel-tabs-section .steel-tabs .tab-btn {
   text-transform: uppercase;
 }
 #tieuchuan-phanmem .design-list li .box-img {
@@ -113,6 +113,9 @@
   }
 }
 @media (max-width: 768px) {
+  .steel-tabs-section {
+    padding-bottom: 0;
+  }
   .steel-tabs-section .box-product-info .tab-product-img {
     top: -85px;
   }
@@ -122,9 +125,28 @@
   .design-list {
     grid-template-columns: repeat(3, 1fr);
   }
-  #mo-hinh .box-big-img img{
+  #mo-hinh .box-big-img img {
     height: auto;
     object-fit: contain;
+  }
+  .intro-paragraph {
+    padding-top: 3rem !important;
+  }
+  .product-img-wrapper {
+    margin-bottom: -1rem !important;
+  }
+  .m-mo-hinh-desc {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .mo-hinh-desc-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .mo-hinh-desc-group p {
+    margin: 0;
   }
 }
 @media (max-width: 640px) {

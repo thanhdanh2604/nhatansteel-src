@@ -337,7 +337,7 @@ section {
 }
 .section-banner .box-content h1 {
   font-size: 72px;
-  letter-spacing: -3px;
+  letter-spacing: 0.01rem;
   color: #f5a623;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2509803922);
   color: white;
@@ -665,11 +665,10 @@ section {
   }
   .product-section .product-main-img {
     width: 100%;
-    height: auto;
+    height: 300px;
   }
   .product-section .product-item {
     width: 100%;
-    margin-bottom: 20px;
     padding: 10px;
     border-radius: 8px;
   }
@@ -1081,6 +1080,10 @@ section {
   margin-right: 10px;
 }
 
+.title {
+  text-align: center;
+}
+
 @media (max-width: 767px) {
   .contact-section .contact-form {
     padding: 1.5rem 1rem;
@@ -1094,6 +1097,7 @@ section {
 @media (max-width: 767px) {
   .title {
     font-size: 36px;
+    text-align: left;
   }
   .navbar {
     padding: 15px 0;
@@ -2607,6 +2611,9 @@ section {
   }
 }
 @media (max-width: 768px) {
+  .project-section {
+    padding: 0;
+  }
   .timeline::before {
     width: 1px;
     height: 100%;

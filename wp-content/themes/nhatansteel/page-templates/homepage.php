@@ -193,7 +193,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
 
     <section class="service-section">
         <div class="container">
-        <h2 class="title text-center"><?php echo get_field('title_chinh_service')?></h2>
+        <h2 class="title"><?php echo get_field('title_chinh_service')?></h2>
 
         <div class="row g-4 justify-content-center">
             <!-- Block 1 (Active/Default) -->

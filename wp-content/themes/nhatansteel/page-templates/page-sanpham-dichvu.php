@@ -18,9 +18,9 @@ $content_intro = $section_gioi_thieu['content'] ?? '';
 
 // Section Mô hình
 $section_mo_hinh = $detail['section_mo_hinh'] ?? [];
-$image_mo_hinh = $section_mo_hinh['main_image']['url']  ?? '';
+$image_mo_hinh = $section_mo_hinh['main_image']['url'] ?? '';
 $title_mo_hinh = $section_mo_hinh['title'] ?? '';
-$desc_mo_hinh = $section_mo_hinh['list_colum_desc'] ??  [];
+$desc_mo_hinh = $section_mo_hinh['list_colum_desc'] ?? [];
 
 // Section Hệ thống khung
 $section_khung = $detail['section_hethong_khung'] ?? [];
@@ -35,7 +35,7 @@ $list_content_tap = $section_ketcau['list_content_tap'] ?? [];
 
 // Section kết cấu phụ khác
 $section_ketcau_phukhac = $detail['section_ketcau_phukhac'] ?? [];
-$title_ketcau_phukhac = $section_ketcau_phukhac['title']  ?? '';
+$title_ketcau_phukhac = $section_ketcau_phukhac['title'] ?? '';
 $list_products_ketcau_phukhac = $section_ketcau_phukhac['list_products'] ?? [];
 
 // Section Hệ thống bao che
@@ -45,7 +45,7 @@ $list_products_baoche = $section_baoche['list_products'] ?? [];
 
 // Section Phụ kiện
 $section_phukien = $detail['section_phu_kien'] ?? [];
-$title_phukien = $section_phukien['title']  ?? '';
+$title_phukien = $section_phukien['title'] ?? '';
 $list_products_phukien = $section_phukien['list_products'] ?? [];
 
 //tap dich vu
@@ -118,11 +118,11 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                 <div class="box-product-info">
                     <div class="row align-items-center mt-4">
                         <div class="col-12 col-md-8">
-                            <div class="content-box">
-                                <?php echo $content_intro  ?>
+                            <div class="content-box intro-paragraph">
+                                <?php echo $content_intro ?>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 text-center mt-4 mt-md-0">
+                        <div class="col-12 col-md-4 text-center mt-4 mt-md-0 product-img-wrapper">
                             <div class="tab-product-img">
                                 <?php if (!empty($image_intro)): ?>
                                     <img src="<?= esc_url($image_intro) ?>" alt="Ứng dụng" class="img-fluid rounded">
@@ -132,7 +132,7 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                     </div>
                 </div>
 
-                <section class="about-wrapper products-wrapper py-5">
+                <section class="about-wrapper products-wrapper py-0 py-md-5">
                     <div class="container">
                         <div class="row">
                             <!-- Sidebar -->
@@ -159,15 +159,35 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                         </div>
                                     <?php endif; ?>
                                     <?php if (!empty($desc_mo_hinh)): ?>
-                                        <div class="mo-hinh-desc">
+                                        <?php
+                                        $half = ceil(count($desc_mo_hinh) / 2);
+                                        $first_half = array_slice($desc_mo_hinh, 0, $half);
+                                        $second_half = array_slice($desc_mo_hinh, $half);
+                                        ?>
+                                        <div class="mo-hinh-desc d-none d-md-flex">
                                             <?php foreach ($desc_mo_hinh as $item): ?>
                                                 <div class="mo-hinh-desc-col">
                                                     <?php echo ($item['content_detail']); ?>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>
+                                        <div class="m-mo-hinh-desc d-md-none">
+                                            <div class="mo-hinh-desc-group">
+                                                <?php foreach ($first_half as $item): ?>
+                                                    <div class="mo-hinh-desc-col">
+                                                        <?php echo $item['content_detail']; ?>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                            <div class="mo-hinh-desc-group">
+                                                <?php foreach ($second_half as $item): ?>
+                                                    <div class="mo-hinh-desc-col">
+                                                        <?php echo $item['content_detail']; ?>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
                                     <?php endif; ?>
-
                                 </div>
 
                                 <div id="hethong-khung" class="section-block mb-5">
@@ -182,7 +202,8 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                 <li>
                                                     <div class="box-img">
                                                         <?php if ($image_url): ?>
-                                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-fluid">
+                                                            <img src="<?php echo esc_url($image_url); ?>"
+                                                                alt="<?php echo esc_attr($title); ?>" class="img-fluid">
                                                         <?php endif; ?>
                                                     </div>
                                                     <h4><?php echo esc_html($title); ?></h4>
@@ -194,14 +215,15 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
 
                                 <div id="chitiet-ketcau" class="section-block mb-5">
                                     <h2 class="title"><?php echo $title_ketcau ?></h2>
-                                    <section class="structure-detail-section py-5 pt-0">
+                                    <section class="structure-detail-section py-0 py-md-5 pt-0">
                                         <div class="container">
                                             <!-- Tabs Navigation -->
                                             <?php if (!empty($list_tap) && is_array($list_tap)): ?>
                                                 <div class="nav-tabs-scroll">
                                                     <div class="nav nav-tabs">
                                                         <?php foreach ($list_tap as $index => $tab): ?>
-                                                            <button class="nav-link <?php echo $index === 0 ? 'active' : ''; ?>" data-tab="tab<?php echo $index + 1; ?>">
+                                                            <button class="nav-link <?php echo $index === 0 ? 'active' : ''; ?>"
+                                                                data-tab="tab<?php echo $index + 1; ?>">
                                                                 <?php echo esc_html($tab['title'] ?? ''); ?>
                                                             </button>
                                                         <?php endforeach; ?>
@@ -213,13 +235,16 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                             <?php if (!empty($list_content_tap) && is_array($list_content_tap)): ?>
                                                 <div class="tab-content-area">
                                                     <?php foreach ($list_content_tap as $index => $content): ?>
-                                                        <div class="tab-content-detail <?php echo $index === 0 ? 'active' : 'd-none'; ?>" id="tab<?php echo $index + 1; ?>">
+                                                        <div class="tab-content-detail <?php echo $index === 0 ? 'active' : 'd-none'; ?>"
+                                                            id="tab<?php echo $index + 1; ?>">
                                                             <ul class="list-products">
                                                                 <?php foreach ($content['list_products'] ?? [] as $item): ?>
                                                                     <li>
                                                                         <div class="box-img">
                                                                             <?php if (!empty($item['main_image']['url'])): ?>
-                                                                                <img src="<?php echo esc_url($item['main_image']['url']); ?>" alt="<?php echo esc_attr($item['title'] ?? ''); ?>" class="img-fluid">
+                                                                                <img src="<?php echo esc_url($item['main_image']['url']); ?>"
+                                                                                    alt="<?php echo esc_attr($item['title'] ?? ''); ?>"
+                                                                                    class="img-fluid">
                                                                             <?php endif; ?>
                                                                         </div>
                                                                         <?php if (!empty($item['title'])): ?>
@@ -248,7 +273,8 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                 <li>
                                                     <div class="box-img">
                                                         <?php if ($image_url): ?>
-                                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-fluid">
+                                                            <img src="<?php echo esc_url($image_url); ?>"
+                                                                alt="<?php echo esc_attr($title); ?>" class="img-fluid">
                                                         <?php endif; ?>
                                                     </div>
                                                     <h4><?php echo esc_html($title); ?></h4>
@@ -269,7 +295,8 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                 <li>
                                                     <div class="box-img">
                                                         <?php if ($image_url): ?>
-                                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-fluid">
+                                                            <img src="<?php echo esc_url($image_url); ?>"
+                                                                alt="<?php echo esc_attr($title); ?>" class="img-fluid">
                                                         <?php endif; ?>
                                                     </div>
                                                     <h4><?php echo esc_html($title); ?></h4>
@@ -293,7 +320,8 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                 <li>
                                                     <div class="box-img">
                                                         <?php if ($image_url): ?>
-                                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-fluid">
+                                                            <img src="<?php echo esc_url($image_url); ?>"
+                                                                alt="<?php echo esc_attr($title); ?>" class="img-fluid">
                                                         <?php endif; ?>
                                                     </div>
                                                     <h4><?php echo esc_html($title); ?></h4>
@@ -348,7 +376,8 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                 <li>
                                                     <div class="box-img">
                                                         <?php if ($image_url): ?>
-                                                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-fluid">
+                                                            <img src="<?php echo esc_url($image_url); ?>"
+                                                                alt="<?php echo esc_attr($title); ?>" class="img-fluid">
                                                         <?php endif; ?>
                                                     </div>
                                                     <p><?php echo esc_html($title); ?></p>
@@ -372,7 +401,8 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                                 ?>
                                                                 <?php if (!empty($img_url)): ?>
                                                                     <div class="software-category__image-item">
-                                                                        <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt); ?>" class="img-fluid" />
+                                                                        <img src="<?php echo esc_url($img_url); ?>"
+                                                                            alt="<?php echo esc_attr($img_alt); ?>" class="img-fluid" />
                                                                     </div>
                                                                 <?php endif; ?>
                                                             <?php endforeach; ?>
@@ -416,5 +446,5 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
 </section>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom-sanpham-dichvu.js"></script>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-sanpham-dichvu.css">
-<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en':'');
+<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en' : '');
 ; ?>
