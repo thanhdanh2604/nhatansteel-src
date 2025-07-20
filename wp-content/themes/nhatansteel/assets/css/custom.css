@@ -135,3 +135,11 @@ footer hr {
     display: none;
   }
 }
+.footer-heading-text p {
+    /* width: 319px; */
+}
+@media (max-width: 376px) and (min-width: 425px) {
+    .section-banner .box-content p {
+        font-size: 1.2rem;
+    }
+}

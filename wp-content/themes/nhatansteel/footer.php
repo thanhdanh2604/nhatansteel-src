@@ -52,7 +52,32 @@
     <path d="M5 15l7-7 7 7"></path>
   </svg>
 </button>
-
+<script>
+  //kiểm tra màn hình mobile dưới 320px
+  function checkScreenSize() {
+    const screenWidth = window.innerWidth;
+    let originalText = "Trụ sở chính, Nhà máy"; // Text mặc định
+    if (screenWidth <= 320) {
+      // Xử lý khi màn hình dưới 320px
+      console.log('Màn hình nhỏ hơn 320px');
+      //lấy thẻ p con của class footer-heading-text
+      const footerHeadingText = document.querySelector('.footer-heading-text p');
+      if (footerHeadingText) {
+        const text = footerHeadingText.textContent;
+        const formattedText = text.split(',').join(',<br>');
+        footerHeadingText.innerHTML = formattedText;
+      }
+    } else {
+      // đổi text về mặc định
+      
+    }
+  }
+    // Kiểm tra khi trang load
+  window.addEventListener('load', checkScreenSize);
+  
+  // Kiểm tra khi resize window
+  window.addEventListener('resize', checkScreenSize);
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
