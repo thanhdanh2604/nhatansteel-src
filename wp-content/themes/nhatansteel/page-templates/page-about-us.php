@@ -127,35 +127,35 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
                     <h2 class="title"> <?php echo $chairman_message_title ?></h2>
                     <div class="box-nhasanglap">
                         <div class="row">
-                            <div class="limited-lines" id="chairmanMessage">
-                                <?php echo $chairman_message_content ?>
+                            <div class="col-12 col-lg-8">
+                                <div class="limited-lines" id="chairmanMessage">
+                                    <?php echo $chairman_message_content ?>
+                                </div>
+                                <div class="d-flex justify-content-start d-md-none mt-2 mb-2">
+                                    <button class="btn-expand" id="toggleMessageBtn">
+                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg"
+                                            alt="arrow-right" class="img-fluid" width="22">
+                                    </button>
+                                </div>
                             </div>
-                            <div class="d-flex justify-content-start d-md-none mt-2">
-                                <button class="btn-expand" id="toggleMessageBtn">
-                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-arrow-right-blue.svg"
-                                        alt="arrow-right" class="img-fluid" width="22">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div class="nhasanglap-info">
-                                <?php
-                                $avatar = $chairman_message_avatar['url'] ?? '';
-                                ?>
-                                <?php if (!empty($avatar)): ?>
-                                    <div class="nhasanglap-img">
-                                        <img src="<?= esc_url($avatar) ?>"
-                                            alt="<?php echo esc_attr($chairman_message_name) ?>" class="img-fluid mb-2">
-                                    </div>
-                                <?php endif; ?>
+                            <div class="col-12 col-lg-4">
+                                <div class="nhasanglap-info">
+                                    <?php
+                                    $avatar = $chairman_message_avatar['url'] ?? '';
+                                    ?>
+                                    <?php if (!empty($avatar)): ?>
+                                        <div class="nhasanglap-img">
+                                            <img src="<?= esc_url($avatar) ?>" alt="<?php echo esc_attr($chairman_message_name) ?>" class="img-fluid mb-2">
+                                        </div>
+                                    <?php endif; ?>
 
-                                <p class="mb-0 fw-bold text-center"> <?php echo $chairman_message_name ?>
-                                </p>
-                                <p class="mb-0 text-center"><small><?php echo $chairman_message_position ?></small>
-                                </p>
+                                    <p class="mb-0 fw-bold text-center"><?php echo $chairman_message_name ?></p>
+                                    <p class="mb-0 text-center"><small><?php echo $chairman_message_position ?></small></p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div id="lich-su" class="section-block mb-5">
@@ -411,5 +411,4 @@ $core_value_list_content_tap = $core_value['list_content_tap'] ?? [];
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/custom-about-us.js?v=20250604"></script>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/style-about-us.css">
 
-<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en' : '');
-; ?>
+<?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en' : '');; ?>

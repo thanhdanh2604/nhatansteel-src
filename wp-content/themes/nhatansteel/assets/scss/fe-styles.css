@@ -1079,11 +1079,6 @@ section {
 .contact-section .head-office p img {
   margin-right: 10px;
 }
-
-.title {
-  text-align: center;
-}
-
 @media (max-width: 767px) {
   .contact-section .contact-form {
     padding: 1.5rem 1rem;
