@@ -4,6 +4,9 @@
 .box-nhasanglap .nhasanglap-info .nhasanglap-img {
   background: transparent;
 }
+.limited-lines{
+  text-align: justify;
+}
 @media (max-width: 1024px) {
   .core-values-section ul {
     flex-wrap: wrap;
