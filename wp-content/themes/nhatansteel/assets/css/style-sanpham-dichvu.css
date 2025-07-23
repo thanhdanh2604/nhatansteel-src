@@ -106,6 +106,10 @@
   height: auto;
   object-fit: cover;
 }
+.no-tel-detect {
+  pointer-events: none !important;
+  user-select: text !important;
+}
 @media (max-width: 1024px) {
   .steel-tabs-section .box-product-info .tab-product-img {
     top: -25px;

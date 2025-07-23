@@ -93,7 +93,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
         </div>
     </section>
 
-    <section class="product-section text-white position-relative" style="background-image: url('<?php echo wp_get_upload_dir()['baseurl']; ?>/2025/06/san-pham-background.jpg');background-position: center;">
+    <section class="product-section text-white position-relative home-product-bg" style="background-image: url('<?php echo wp_get_upload_dir()['baseurl']; ?>/2025/06/san-pham-background.jpg');background-position: center;">
         <div class="position-absolute top-0 start-0 w-100 h-100" style="background: #283678; opacity: 0.7; pointer-events: none; z-index: 1;"></div>
         <div class="position-relative" style="z-index: 2;">
         <div class="container">

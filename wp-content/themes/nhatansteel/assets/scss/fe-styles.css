@@ -1624,9 +1624,9 @@ section {
   margin: 0 auto;
   text-align: center;
 }
-.list-products li:hover h4 {
+/* .list-products li:hover h4 {
   color: #f5a623;
-}
+} */
 .list-products li:hover .box-img img {
   transform: scale(1.05);
 }
