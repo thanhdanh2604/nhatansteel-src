@@ -36,3 +36,10 @@
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+@media (max-width: 767px) {
+  .project-detail-title {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}

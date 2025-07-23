@@ -299,7 +299,17 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                                 alt="<?php echo esc_attr($title); ?>" class="img-fluid">
                                                         <?php endif; ?>
                                                     </div>
-                                                    <h4><?php echo esc_html($title); ?></h4>
+                                                    <h4 class="no-tel-detect">
+                                                        <?php
+                                                            preg_match('/^(.*?)\s*(\([^)]+\))$/', $title, $matches);
+                                                            $main_title = isset($matches[1]) ? $matches[1] : $title;
+                                                            $code = isset($matches[2]) ? $matches[2] : '';
+                                                            echo esc_html($main_title);
+                                                            if ($code) {
+                                                                echo '<span class="d-block d-sm-inline">' . esc_html($code) . '</span>';
+                                                            }
+                                                        ?>
+                                                    </h4>
                                                 </li>
                                             <?php endforeach; ?>
                                         </ul>

@@ -76,7 +76,7 @@ if ($current_lang === 'en') {
 
 <section class="project-detail-section py-5">
     <div class="container">
-        <h2 class="title"><?php echo $title ?></h2>
+        <h2 class="title project-detail-title"><?php echo $title ?></h2>
         <div class="row align-items-start gy-4">
             <!-- Left: Info -->
             <div class="col-12 col-md-4">
