@@ -1643,6 +1643,10 @@ section {
   width: 100%;
 }
 
+.list-products li h4 {
+  word-break: break-word;
+}
+
 .structure-detail-section .nav-tabs-scroll {
   margin-bottom: 35px;
 }

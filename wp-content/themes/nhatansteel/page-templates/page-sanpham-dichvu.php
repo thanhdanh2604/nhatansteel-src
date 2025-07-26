@@ -301,13 +301,13 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                                     </div>
                                                     <h4 class="no-tel-detect">
                                                         <?php
-                                                            preg_match('/^(.*?)\s*(\([^)]+\))$/', $title, $matches);
-                                                            $main_title = isset($matches[1]) ? $matches[1] : $title;
-                                                            $code = isset($matches[2]) ? $matches[2] : '';
-                                                            echo esc_html($main_title);
-                                                            if ($code) {
-                                                                echo '<span class="d-block d-sm-inline">' . esc_html($code) . '</span>';
-                                                            }
+                                                        preg_match('/^(.*?)\s*(\([^)]+\))$/', $title, $matches);
+                                                        $main_title = isset($matches[1]) ? $matches[1] : $title;
+                                                        $code = isset($matches[2]) ? $matches[2] : '';
+                                                        echo esc_html($main_title);
+                                                        if ($code) {
+                                                            echo '<span class="d-block d-sm-inline">' . esc_html($code) . '</span>';
+                                                        }
                                                         ?>
                                                     </h4>
                                                 </li>
@@ -319,9 +319,7 @@ $content_an_toan = $section_an_toan['desc'] ?? '';
                                 <div id="phu-kien" class="section-block mb-5">
                                     <h2 class="title"><?php echo $title_phukien ?></h2>
                                     <?php if (!empty($list_products_phukien)): ?>
-
                                         <ul class="list-products accessory-list">
-
                                             <?php foreach ($list_products_phukien as $item): ?>
                                                 <?php
                                                 $image_url = $item['main_image']['url'] ?? '';
