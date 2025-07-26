@@ -6,16 +6,18 @@
   <div class="footer-top py-4">
     <div class="container">
       <div class="row align-items-start">
-        <div class="col-12 col-md-3 text-center text-md-start">
+        <div class="col-12 col-md-3 text-center text-md-start mb-md-down-15">
           <img class="logo-footer" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/logo-footer.svg" alt="Nhat An Steel" class="mb-3" width="148">
-          <hr style="margin:10px">
-          <div class="social-icon">
-            <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/FB icon.svg" alt=""></a>
-            <a href="<?php the_field('linkedin','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/Linkedin icon.svg" alt=""></a>
-            <a href="<?php the_field('youtube','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/youtube 1.svg" alt=""></a>
+          <div class="social-center">
+            <hr style="margin:10px">
+            <div class="social-icon">
+              <a href="<?php the_field('facebook','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/FB icon.svg" alt=""></a>
+              <a href="<?php the_field('linkedin','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/Linkedin icon.svg" alt=""></a>
+              <a href="<?php the_field('youtube','option')?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/social/youtube 1.svg" alt=""></a>
+            </div>
           </div>
         </div>
-        <div class="col-12 col-md-5 content-footer">
+        <div class="col-12 col-md-5 content-footer mb-md-down-15">
             <div class="footer-heading">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-building.svg" alt="building" width="20">
                 <div class="footer-heading-text">
