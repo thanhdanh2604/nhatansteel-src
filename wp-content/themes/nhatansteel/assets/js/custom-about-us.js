@@ -1,7 +1,13 @@
 // js for tap active
 document.addEventListener("DOMContentLoaded", () => {
   // COMMON fade + highlight logic for tabs
-  function createTabSystem({ tabSelector, contentSelector, highlightId, mobiletabListSelector, mobileContentWrapperSelector }) {
+  function createTabSystem({
+    tabSelector,
+    contentSelector,
+    highlightId,
+    mobiletabListSelector,
+    mobileContentWrapperSelector,
+  }) {
     const tabs = document.querySelectorAll(tabSelector);
     const contents = document.querySelectorAll(contentSelector);
     const highlightBar = document.getElementById(highlightId);
@@ -43,21 +49,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    function removeAllActiveMobileContentItem () {
-      const contentElements = document.querySelectorAll(`${mobiletabListSelector} ${mobileContentWrapperSelector}`);
+    function removeAllActiveMobileContentItem() {
+      const contentElements = document.querySelectorAll(
+        `${mobiletabListSelector} ${mobileContentWrapperSelector}`
+      );
       contentElements.forEach((content) => {
         content.classList.remove("active");
       });
     }
 
-    const mobileTabItems = document.querySelectorAll(`${mobiletabListSelector} li ${tabSelector}`);
+    const mobileTabItems = document.querySelectorAll(
+      `${mobiletabListSelector} li ${tabSelector}`
+    );
     if (mobileTabItems) {
       mobileTabItems.forEach((tab) => {
         ["click", "mouseenter"].forEach((evt) => {
           tab.addEventListener(evt, () => {
             // Remove previos active items
             removeAllActiveMobileContentItem();
-            const contentElement = tab.parentElement.querySelector(mobileContentWrapperSelector);
+            const contentElement = tab.parentElement.querySelector(
+              mobileContentWrapperSelector
+            );
             contentElement.classList.add("active");
           });
         });
@@ -76,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contentSelector: ".vision-content",
     highlightId: "highlightBar",
     mobiletabListSelector: ".m-vision-tab-list",
-    mobileContentWrapperSelector: ".vision-content-wrap"
+    mobileContentWrapperSelector: ".vision-content-wrap",
   });
 
   // Init for Mission
@@ -85,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contentSelector: ".mission-content",
     highlightId: "highlightBarMission",
     mobiletabListSelector: ".m-mission-tab-list",
-    mobileContentWrapperSelector: ".mission-content-wrap"
+    mobileContentWrapperSelector: ".mission-content-wrap",
   });
 
   // Init for Core Values
@@ -94,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contentSelector: ".core-content",
     highlightId: "highlightBarCore",
     mobiletabListSelector: ".m-core-values-tab-list",
-    mobileContentWrapperSelector: ".core-content-wrap"
+    mobileContentWrapperSelector: ".core-content-wrap",
   });
 });
 // timeline
@@ -138,9 +150,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const contentDiv = document.getElementById("chairmanMessage");
   const toggleBtn = document.getElementById("toggleMessageBtn");
+  const originalHTML = contentDiv.innerHTML.trim();
+  const wordLimit = 34;
 
-  toggleBtn.addEventListener("click", function () {
-    contentDiv.classList.toggle("expanded");
-    this.classList.toggle("rotated");
-  });
+  const isMobile = window.innerWidth < 576;
+
+  if (isMobile) {
+    const temp = document.createElement("div");
+    temp.innerHTML = originalHTML;
+    const plainText = temp.innerText || temp.textContent;
+
+    const words = plainText.split(/\s+/);
+    if (words.length > wordLimit) {
+      const truncated = words.slice(0, wordLimit).join(" ") + "…";
+
+      contentDiv.setAttribute("data-full", originalHTML);
+      contentDiv.setAttribute("data-truncated", truncated);
+      contentDiv.innerText = truncated;
+
+      toggleBtn.addEventListener("click", function () {
+        const isExpanded = contentDiv.classList.toggle("expanded");
+        contentDiv.innerHTML = isExpanded
+          ? contentDiv.getAttribute("data-full")
+          : contentDiv.getAttribute("data-truncated");
+
+        toggleBtn.classList.toggle("rotated", isExpanded);
+      });
+    } else {
+      toggleBtn.style.display = "none";
+    }
+  } else {
+    toggleBtn.style.display = "none";
+  }
 });

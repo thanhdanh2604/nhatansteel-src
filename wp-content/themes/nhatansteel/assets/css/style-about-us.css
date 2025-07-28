@@ -4,7 +4,7 @@
 .box-nhasanglap .nhasanglap-info .nhasanglap-img {
   background: transparent;
 }
-.limited-lines{
+.limited-lines {
   text-align: justify;
 }
 @media (max-width: 1024px) {
@@ -71,15 +71,8 @@
   transform: rotate(180deg);
 }
 @media (max-width: 768px) {
-  .limited-lines {
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .limited-lines.expanded {
-    -webkit-line-clamp: unset;
-    overflow: visible;
+  .btn-expand {
+    padding: 0;
   }
   .vision-section .vision-tab svg {
     width: 50px;
