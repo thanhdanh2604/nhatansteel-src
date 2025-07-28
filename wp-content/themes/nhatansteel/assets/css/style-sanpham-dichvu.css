@@ -174,4 +174,7 @@
   .design-list {
     grid-template-columns: repeat(2, 1fr);
   }
+  .list-products li .box-img {
+    height: 132px;
+  }
 }
