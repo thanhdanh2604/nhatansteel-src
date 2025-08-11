@@ -76,7 +76,9 @@ $content = $translations[$current_language];
                         <div class="col-md-6">
                             <div class="head-office">
                                 <h6><?php echo $content['head_office_title']; ?></h6>
-                                <div class="map"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="map" class="img-fluid rounded w-100"></div>
+                                <div class="map">
+                                    <iframe src="https://www.google.com/maps?q=285/18+Trịnh+Đình+Trọng,+Hòa+Thạnh,+Tân+Phú,+Hồ+Chí+Minh,+Việt+Nam&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
                                 <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> <?php echo $content['head_office_address']; ?></p>
                                 <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:<?php echo preg_replace('/[^0-9+]/', '', $content['head_office_phone']); ?>"><?php echo $content['head_office_phone']; ?></a></p>
                                 <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-email-2.svg" alt="email" class="img-fluid" width="24"> <a href="mailto:<?php echo $content['head_office_email']; ?>"><?php echo $content['head_office_email']; ?></a></p>
@@ -87,7 +89,9 @@ $content = $translations[$current_language];
                         <div class="col-md-6">
                             <div class="head-office">
                                 <h6><?php echo $content['factory_title']; ?></h6>
-                                <div class="map"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="map" class="img-fluid rounded w-100"></div>
+                                <div class="map">
+                                    <iframe src="https://www.google.com/maps?q=10.718444,106.928722&output=embed" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
                                 <p class="d-flex align-items-start"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-location.svg" alt="location" class="img-fluid" width="24"> <?php echo $content['factory_address']; ?></p>
                                 <p><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icons/i-call-2.svg" alt="call" class="img-fluid" width="24"> <a href="tel:<?php echo preg_replace('/[^0-9+]/', '', $content['factory_phone']); ?>"><?php echo $content['factory_phone']; ?></a></p>
                             </div>

@@ -95,14 +95,18 @@ if ($current_lang === 'en') {
 
             <!-- Right: Gallery -->
             <div class="col-12 col-md-8">
-                <!-- Main Image Carousel -->
-                <div id="gallery" class="carousel-main mb-3"
+                <!-- Main Image Carousel với LightGallery -->
+                <div id="gallery" class="carousel-main mb-3 lightgallery-container"
                     data-flickity='{"pageDots": false, "wrapAround": true, "contain": true, "prevNextButtons": false}'>
-                    <?php foreach ($gallery as $image): ?>
+                    <?php foreach ($gallery as $index => $image): ?>
                         <div class="carousel-cell">
-                            <a href="<?php echo esc_url($image['url']); ?>" data-lg-size="1600-1200">
+                            <a href="<?php echo esc_url($image['url']); ?>" 
+                               data-lg-size="<?php echo $image['width']; ?>-<?php echo $image['height']; ?>"
+                               data-sub-html="<h4><?php echo esc_attr($image['alt'] ?: $title); ?></h4>"
+                               class="gallery-item cursor-pointer">
                                 <img src="<?php echo esc_url($image['url']); ?>"
-                                    alt="<?php echo esc_attr($image['alt']); ?>" class="img-fluid rounded w-100">
+                                    alt="<?php echo esc_attr($image['alt']); ?>" 
+                                    class="img-fluid rounded w-100 hover-zoom">
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -116,13 +120,19 @@ if ($current_lang === 'en') {
                         <i class="bi bi-chevron-left"></i>
                     </button>
 
-                    <!-- Thumbnail Nav Carousel -->
-                    <div class="carousel-nav" id="thumbnailGallery"
+                    <!-- Thumbnail Nav Carousel với LightGallery -->
+                    <div class="carousel-nav lightgallery-thumbnails" id="thumbnailGallery"
                         data-flickity='{"asNavFor": "#gallery", "contain": true, "pageDots": false, "prevNextButtons": false}'>
-                        <?php foreach ($gallery as $image): ?>
+                        <?php foreach ($gallery as $index => $image): ?>
                             <div class="carousel-cell">
-                                <img src="<?php echo esc_url($image['url']); ?>"
-                                    alt="<?php echo esc_attr($image['alt']); ?>" class="img-fluid rounded">
+                                <a href="<?php echo esc_url($image['url']); ?>" 
+                                   data-lg-size="<?php echo $image['width']; ?>-<?php echo $image['height']; ?>"
+                                   data-sub-html="<h4><?php echo esc_attr($image['alt'] ?: $title); ?></h4>"
+                                   class="thumbnail-item">
+                                    <img src="<?php echo esc_url($image['url']); ?>"
+                                        alt="<?php echo esc_attr($image['alt']); ?>" 
+                                        class="img-fluid rounded hover-zoom">
+                                </a>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -152,7 +162,7 @@ if ($current_lang === 'en') {
         </div>
 
         <div class="project-list">
-            <ul class="projects-grid list-unstyled">
+            <ul class="projects-grid list-unstyled lightgallery-related">
                 <?php
                 $current_project_id = $project->ID;
                 $terms = wp_get_post_terms($current_project_id, 'project_category', array('fields' => 'ids'));
@@ -176,7 +186,7 @@ if ($current_lang === 'en') {
                 if ($related_projects->have_posts()):
                     while ($related_projects->have_posts()):
                         $related_projects->the_post();
-                        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
 
                         if (!$image_url) {
                             $gallery = get_post_meta(get_the_ID(), 'gallery', true);
@@ -185,15 +195,29 @@ if ($current_lang === 'en') {
                             }
                         }
 
+                        // Lấy thông tin kích thước hình ảnh cho lightbox
+                        $image_id = get_post_thumbnail_id(get_the_ID());
+                        $image_meta = wp_get_attachment_metadata($image_id);
+                        $image_width = $image_meta['width'] ?? 1200;
+                        $image_height = $image_meta['height'] ?? 800;
+
                         $investor = get_field('investor');
                         $area = get_field('area');
                         $location = get_field('location');
                         ?>
                         <li class="project-item">
-                            <div class="project-thumb">
-                                <a href="<?php the_permalink(); ?>">
+                            <div class="project-thumb position-relative">
+                                <!-- Link với lightbox -->
+                                <a href="<?php echo esc_url($image_url); ?>" 
+                                   data-lg-size="<?php echo $image_width; ?>-<?php echo $image_height; ?>"
+                                   data-sub-html="<h4><?php echo esc_attr(get_the_title()); ?></h4><p><?php echo esc_attr($investor); ?></p>"
+                                   class="lightbox-thumb d-block">
                                     <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title_attribute(); ?>"
-                                        class="img-fluid">
+                                        class="img-fluid hover-zoom">
+                                </a>
+                                <!-- Link để đi đến trang chi tiết -->
+                                <a href="<?php the_permalink(); ?>" class="project-link-overlay">
+                                    <span class="visually-hidden">Xem chi tiết dự án</span>
                                 </a>
                             </div>
                             <div class="project-content">
@@ -236,8 +260,15 @@ if ($current_lang === 'en') {
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/styles-single-project.css">
 
+<!-- Load LightGallery JS -->
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/fullscreen/lg-fullscreen.min.js"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Khởi tạo Flickity cho carousel
         var galleryElement = document.querySelector('#gallery');
 
         if (!galleryElement) return;
@@ -261,8 +292,107 @@ if ($current_lang === 'en') {
                 mainGallery.next();
             });
         }
+
+        // Khởi tạo LightGallery cho main gallery
+        const lightGalleryMain = lightGallery(document.querySelector('.lightgallery-container'), {
+            plugins: [lgZoom, lgThumbnail, lgFullscreen],
+            speed: 500,
+            thumbnail: true,
+            animateThumb: false,
+            zoomFromOrigin: false,
+            allowMediaOverlap: true,
+            toggleThumb: true,
+            thumbWidth: 100,
+            thumbHeight: 80,
+            thumbMargin: 5,
+            selector: '.gallery-item'
+        });
+
+        // Khởi tạo LightGallery cho thumbnail gallery
+        const lightGalleryThumbs = lightGallery(document.querySelector('.lightgallery-thumbnails'), {
+            plugins: [lgZoom, lgThumbnail, lgFullscreen],
+            speed: 500,
+            thumbnail: true,
+            selector: '.thumbnail-item'
+        });
+
+        // Khởi tạo LightGallery cho related projects thumbnails
+        const lightGalleryRelated = lightGallery(document.querySelector('.lightgallery-related'), {
+            plugins: [lgZoom, lgThumbnail, lgFullscreen],
+            speed: 500,
+            thumbnail: false,
+            selector: '.lightbox-thumb'
+        });
+
+        // Ngăn chặn việc mở lightbox khi click vào flickity controls
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.flickity-button') || e.target.closest('.custom-nav-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
     });
 </script>
+
+<!-- Custom CSS cho lightbox effects -->
+<style>
+    .lg-sub-html h4,.lg-sub-html p{
+        color:white;
+    }
+    /* Hover effects cho images */
+    .hover-zoom {
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .hover-zoom,
+    .thumbnail-item:hover .hover-zoom,
+    .lightbox-thumb:hover .hover-zoom {
+        transform: scale(1.05);
+    }
+
+    /* Custom cursor for lightbox items */
+    .gallery-item,
+    .thumbnail-item,
+    .lightbox-thumb {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.375rem;
+    }
+
+    /* Project thumbnail positioning */
+    .project-thumb {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-link-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .lightbox-thumb {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Custom lightgallery styles */
+    .lg-backdrop {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .lg-toolbar {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+    }
+
+    .lg-thumb-outer {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+</style>
 
 
 <?php get_footer((substr(get_locale(), 0, 2) === 'en') ? 'en' : '');

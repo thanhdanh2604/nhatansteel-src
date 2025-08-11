@@ -316,7 +316,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
             <div class="carousel" data-flickity='{
                     "groupCells": true, 
                     "pageDots": false,
-                    "autoPlay": 3000,
+                    "autoPlay": 2000,
                     "wrapAround": true,
                     "pauseAutoPlayOnHover": true
                 }'>
@@ -345,7 +345,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                     <?php
                     // Lấy bài viết đầu tiên
                     $first_post = array_shift($posts); // Lấy bài viết đầu tiên và loại bỏ khỏi mảng
-                    $thumbnail_feature_url = get_the_post_thumbnail_url($first_post->ID, 'thumbnail');
+                    $thumbnail_feature_url = get_the_post_thumbnail_url($first_post->ID, 'medium_large');
                     // Nếu không có ảnh đại diện, lấy ảnh đầu tiên trong nội dung bài viết
                     if (!$thumbnail_feature_url) {
                         preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $first_post->post_content, $image);
@@ -369,7 +369,7 @@ $customers_partners = get_field('gallery_of_customer_and_partner');
                     <div class="border-start border-light ps-lg-4 ps-3">
                         <?php foreach ($posts as $post) : ?>
                             <?php
-                            $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'thumbnail');
+                            $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'medium_large');
 
                             // Nếu không có ảnh đại diện, lấy ảnh đầu tiên trong nội dung bài viết
                             if (!$thumbnail_url) {
