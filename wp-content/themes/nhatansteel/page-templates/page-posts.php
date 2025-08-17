@@ -164,7 +164,7 @@ if ($current_lang === 'en') {
       if ($news_query->have_posts()):
         while ($news_query->have_posts()):
           $news_query->the_post();
-          $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+          $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
           if (!$thumbnail_url) {
             // If the thumbnail image not set, render the first post's image
             preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', get_the_content(), $image);

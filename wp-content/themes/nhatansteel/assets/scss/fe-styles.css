@@ -71,27 +71,56 @@ section {
   max-width: 600px;
   margin: 0 auto;
   padding-top: 20vh;
+  position: relative;
+}
+
+.navbar-search-overlay .search-form {
   display: flex;
   gap: 10px;
   align-items: center;
+  position: relative;
 }
+
 .navbar-search-overlay .search-container input.form-control {
   flex: 1;
-  padding: 12px 16px;
+  padding: 12px 60px 12px 16px;
   font-size: 1.1rem;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
 }
-.navbar-search-overlay .search-container .btn-close-search {
+
+.navbar-search-overlay .search-container .btn-search-submit {
+  position: absolute;
+  right: 45px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 1.5rem;
+  color: #666;
+  padding: 5px;
+  z-index: 2;
+  font-size: 1.1rem;
+}
+
+.navbar-search-overlay .search-container .btn-search-submit:hover {
+  color: #f5a623;
+}
+
+.navbar-search-overlay .search-container .btn-close-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
   color: #333;
   transition: transform 0.3s ease;
+  z-index: 2;
 }
 .navbar-search-overlay .search-container .btn-close-search:hover {
-  transform: rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
   color: #f5a623;
 }
 

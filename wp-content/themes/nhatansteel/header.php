@@ -150,8 +150,145 @@ $current_language = substr(get_locale(), 0, 2);
 
 <div class="navbar-search-overlay">
   <div class="search-container">
-    <input type="text" class="form-control"
-      placeholder="<?php echo ($current_language == 'vi') ? 'Tìm kiếm...' : 'Search...'; ?>">
-    <button class="btn btn-close-search" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    <form role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>" class="search-form">
+      <input type="search" 
+             name="s" 
+             class="form-control search-input"
+             placeholder="<?php echo ($current_language == 'vi') ? 'Tìm kiếm...' : 'Search...'; ?>"
+             value="<?php echo get_search_query(); ?>"
+             autocomplete="off">
+      <input type="hidden" name="post_type" value="any">
+      <button type="submit" class="btn btn-search-submit" aria-label="Search" style="display: none;">
+        <i class="bi bi-search"></i>
+      </button>
+      <button type="button" class="btn btn-close-search" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    </form>
+    
+    <!-- Live search results container -->
+    <div id="live-search-results" class="live-search-results" style="display: none;">
+      <div class="search-loading">
+        <i class="bi bi-hourglass-split"></i> <?php echo ($current_language == 'vi') ? 'Đang tìm kiếm...' : 'Searching...'; ?>
+      </div>
+      <div class="search-results-container"></div>
+    </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-input');
+    const liveResults = document.getElementById('live-search-results');
+    const resultsContainer = document.querySelector('.search-results-container');
+    const loadingElement = document.querySelector('.search-loading');
+    let searchTimeout;
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            
+            clearTimeout(searchTimeout);
+            
+            if (query.length >= 2) {
+                liveResults.style.display = 'block';
+                loadingElement.style.display = 'block';
+                resultsContainer.innerHTML = '';
+                
+                searchTimeout = setTimeout(() => {
+                    performLiveSearch(query);
+                }, 300);
+            } else {
+                liveResults.style.display = 'none';
+            }
+        });
+
+        // Hide results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                liveResults.style.display = 'none';
+            }
+        });
+    }
+
+    function performLiveSearch(query) {
+        fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                action: 'live_search',
+                query: query,
+                nonce: '<?php echo wp_create_nonce('live_search_nonce'); ?>'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            loadingElement.style.display = 'none';
+            
+            if (data.success && data.data.length > 0) {
+                resultsContainer.innerHTML = data.data.map(item => `
+                    <div class="live-search-item" onclick="window.location.href='${item.url}'">
+                        <div class="d-flex align-items-center">
+                            <img src="${item.image}" alt="${item.title}" style="width: 60px; height: 45px; object-fit: cover; border-radius: 4px; margin-right: 15px;">
+                            <div>
+                                <h6 class="mb-1 fw-bold">${item.title}</h6>
+                                <small class="text-muted">${item.type}</small>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                resultsContainer.innerHTML = `
+                    <div class="live-search-item text-center">
+                        <p class="mb-0 text-muted"><?php echo $current_language == 'vi' ? 'Không tìm thấy kết quả' : 'No results found'; ?></p>
+                    </div>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Search error:', error);
+            loadingElement.style.display = 'none';
+        });
+    }
+});
+</script>
+
+<style>
+.live-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.search-loading {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.live-search-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.live-search-item:hover {
+    background-color: #f8f9fa;
+}
+
+.live-search-item:last-child {
+    border-bottom: none;
+}
+
+.search-container {
+    position: relative;
+}
+</style>
